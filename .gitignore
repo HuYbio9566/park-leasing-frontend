@@ -1,0 +1,13 @@
+# Publish only the static frontend and its required assets.
+/*
+!/.gitignore
+!/.nojekyll
+!/README.md
+!/*.html
+!/*.css
+!/*.js
+!/campus-hero.png
+!/vendor/
+!/miniprogram/
+/miniprogram/*
+!/miniprogram/assets/

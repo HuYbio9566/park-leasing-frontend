@@ -142,8 +142,36 @@
   visitorButton.textContent='保存本机访客申请';
   visitor.querySelector('.form-card').before(node('p',disclosure,'service-notice'));
   var datePicker=document.getElementById('date-picker'),dateField=document.getElementById('visitor-date');
-  var dateInput=node('input');dateInput.type='datetime-local';dateInput.className='service-date-input';dateInput.style.gridColumn='1 / -1';dateInput.style.alignSelf='center';dateInput.setAttribute('aria-label','到访日期和时间');
-  datePicker.querySelector('.date-wheels').replaceChildren(dateInput);
+  var dateInput=node('input');dateInput.type='hidden';dateInput.className='service-date-input';
+  var dateBody=datePicker.querySelector('.date-wheels');dateBody.className='service-calendar';
+  dateBody.innerHTML='<div class="service-calendar-month"><button type="button" aria-label="上个月">‹</button><b></b><button type="button" aria-label="下个月">›</button></div><div class="service-calendar-days"></div><div class="service-calendar-time"><span>到访时间</span><label>小时<input type="number" min="0" max="23" aria-label="小时"></label><span>:</span><label>分钟<input type="number" min="0" max="59" aria-label="分钟"></label></div>';
+  dateBody.appendChild(dateInput);
+  var monthTitle=dateBody.querySelector('b'),days=dateBody.querySelector('.service-calendar-days'),timeInputs=dateBody.querySelectorAll('input[type="number"]'),draftDate,viewMonth;
+  function syncDate(){
+    dateInput.value=localDateTime(draftDate).slice(0,10)+'T'+String(timeInputs[0].value).padStart(2,'0')+':'+String(timeInputs[1].value).padStart(2,'0');
+  }
+  function renderCalendar(){
+    var year=viewMonth.getFullYear(),month=viewMonth.getMonth(),today=new Date();today.setHours(0,0,0,0);
+    monthTitle.textContent=year+'年'+(month+1)+'月';days.replaceChildren();
+    ['一','二','三','四','五','六','日'].forEach(function(day){days.appendChild(node('span',day))});
+    var offset=(new Date(year,month,1).getDay()+6)%7;
+    for(var blank=0;blank<offset;blank++)days.appendChild(node('span',''));
+    for(var d=1;d<=new Date(year,month+1,0).getDate();d++){
+      (function(day){
+        var date=new Date(year,month,day),item=button(String(day),function(){draftDate=date;syncDate();renderCalendar()});
+        item.type='button';item.disabled=date<today;
+        item.setAttribute('aria-label',year+'年'+(month+1)+'月'+day+'日');
+        var selected=date.toDateString()===draftDate.toDateString();
+        item.classList.toggle('active',selected);item.setAttribute('aria-pressed',String(selected));days.appendChild(item);
+      })(d);
+    }
+    dateBody.querySelector('.service-calendar-month button').disabled=new Date(year,month+1,0)<today;
+  }
+  dateBody.querySelectorAll('.service-calendar-month button').forEach(function(item,i){item.onclick=function(){viewMonth.setMonth(viewMonth.getMonth()+(i?1:-1));renderCalendar()}});
+  timeInputs.forEach(function(input){input.addEventListener('input',syncDate)});
+  var calendarStyle=node('style');
+  calendarStyle.textContent='#date-picker .date-picker-sheet{background:#fff;max-height:80%;overflow:auto;padding-bottom:24px}.service-calendar{padding:0 0 8px}.service-calendar-month{display:flex;align-items:center;justify-content:space-between;margin:12px 0}.service-calendar-month button{width:36px;height:36px;border:0;border-radius:8px;background:var(--soft);color:var(--brand);font-size:24px}.service-calendar-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.service-calendar-days>span{font-size:12px;color:var(--muted);padding:6px 0}.service-calendar-days button{height:34px;border:0;border-radius:8px;background:transparent;color:var(--text)}.service-calendar-days button.active{background:var(--brand);color:#fff}.service-calendar button:disabled{opacity:.3}.service-calendar-time{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:16px;margin-top:12px;border-top:.5px solid #f0f2f0;font-size:14px}.service-calendar-time label{font-size:12px;color:var(--muted)}.service-calendar-time input{display:block;width:64px;height:40px;margin-top:4px;text-align:center;border:0;border-radius:8px;background:var(--soft);color:var(--brand);font-size:18px}.service-calendar button:focus-visible,.service-calendar input:focus-visible{outline:2px solid var(--brand);outline-offset:2px}';
+  document.head.appendChild(calendarStyle);
   datePicker.querySelector('.date-picker-subtitle').textContent='请选择未来的到访时间';
   var dateStatus=status(datePicker.querySelector('.date-picker-sheet'));
   function closeDate(){datePicker.classList.add('hidden');dateField.focus()}
@@ -159,39 +187,49 @@
   });
   function localDateTime(date){return new Date(date.getTime()-date.getTimezoneOffset()*60000).toISOString().slice(0,16)}
   dateField.onclick=function(){
-    dateInput.min=localDateTime(new Date(Date.now()+60000));dateInput.value=dateField.value||dateInput.min;dateStatus.textContent='';
-    datePicker.classList.remove('hidden');dateInput.focus();
+    draftDate=new Date(dateField.value||Date.now()+3600000);
+    if(draftDate<=new Date())draftDate=new Date(Date.now()+3600000);
+    viewMonth=new Date(draftDate.getFullYear(),draftDate.getMonth(),1);
+    timeInputs[0].value=draftDate.getHours();timeInputs[1].value=draftDate.getMinutes();
+    syncDate();renderCalendar();dateStatus.textContent='';
+    datePicker.classList.remove('hidden');document.getElementById('date-cancel').focus();
   };
   document.getElementById('date-confirm').onclick=function(){
-    if(!dateInput.value||!Number.isFinite(new Date(dateInput.value).getTime())||new Date(dateInput.value)<=new Date())return message(dateStatus,'请选择未来的有效到访时间。',dateInput);
+    if(Array.from(timeInputs).some(function(input){return input.value===''||!input.checkValidity()}))return message(dateStatus,'请填写有效的小时（0–23）和分钟（0–59）。',timeInputs[0]);
+    if(!dateInput.value||!Number.isFinite(new Date(dateInput.value).getTime())||new Date(dateInput.value)<=new Date())return message(dateStatus,'请选择未来的有效到访时间。',timeInputs[0]);
     dateField.value=dateInput.value;closeDate();
   };
   visitorButton.onclick=function(){
-    if(!required(visitorInputs[0],visitorStatus,'访客姓名')||!phoneValid(visitorInputs[1],visitorStatus)||!required(visitorInputs[2],visitorStatus,'到访企业或房间'))return;
+    if(!required(visitorInputs[0],visitorStatus,'访客姓名')||!phoneValid(visitorInputs[1],visitorStatus))return;
     if(!dateField.value||!Number.isFinite(new Date(dateField.value).getTime())||new Date(dateField.value)<=new Date())return message(visitorStatus,'请选择未来的有效到访时间。',dateField);
     if(!visitorConsent.checked)return message(visitorStatus,'请先同意仅在本机保存信息。',visitorConsent);
-    if(save('visitors',{title:'访客申请 · '+visitorInputs[0].value.trim(),fields:[['访客姓名',visitorInputs[0].value.trim()],['手机号',visitorInputs[1].value.trim()],['到访企业',visitorInputs[2].value.trim()],['到访时间',dateField.value.replace('T',' ')]]},visitorStatus)){
+    if(save('visitors',{title:'访客申请 · '+visitorInputs[0].value.trim(),fields:[['访客姓名',visitorInputs[0].value.trim()],['手机号',visitorInputs[1].value.trim()],['到访企业',visitorInputs[2].value.trim()||'未填写'],['到访时间',dateField.value.replace('T',' ')]]},visitorStatus)){
       visitorInputs.forEach(function(input){input.value=''});visitorConsent.checked=false;visitorStatus.textContent='';
     }
   };
   var repair=document.getElementById('repair'),repairCard=repair.querySelector('.form-card'),repairRoom=repairCard.querySelector('input'),repairNote=repairCard.querySelector('textarea'),repairSelects=repairCard.querySelectorAll('select');
   var repairName=field(repairCard,'联系人姓名'),repairPhone=field(repairCard,'联系电话','tel');
+  repairSelects[0].insertBefore(new Option('请选择报修位置（选填）',''),repairSelects[0].firstChild);
+  repairSelects[0].value='';
   var repairButton=repair.querySelector('.primary-button'),repairConsent=consent(repair,repairButton),repairStatus=status(repair);
   repairCard.before(node('p',disclosure,'service-notice'));repairButton.textContent='保存本机报修单';repairNote.maxLength=2000;
   repairButton.onclick=function(){
-    if(!required(repairRoom,repairStatus,'具体房间')||!required(repairNote,repairStatus,'问题描述')||!required(repairName,repairStatus,'联系人姓名')||!phoneValid(repairPhone,repairStatus))return;
+    if(!required(repairNote,repairStatus,'问题描述')||!phoneValid(repairPhone,repairStatus))return;
     if(!repairConsent.checked)return message(repairStatus,'请先同意仅在本机保存信息。',repairConsent);
-    if(save('repairs',{title:repairSelects[1].value+' · '+repairRoom.value.trim(),fields:[['报修位置',repairSelects[0].value+' · '+repairRoom.value.trim()],['问题类型',repairSelects[1].value],['问题描述',repairNote.value.trim()],['联系人姓名',repairName.value.trim()],['联系电话',repairPhone.value.trim()]]},repairStatus)){
+    if(save('repairs',{title:[repairSelects[1].value,repairRoom.value.trim()].filter(Boolean).join(' · '),fields:[['报修位置',[repairSelects[0].value,repairRoom.value.trim()].filter(Boolean).join(' · ')||'未填写'],['问题类型',repairSelects[1].value],['问题描述',repairNote.value.trim()],['联系人姓名',repairName.value.trim()||'未填写'],['联系电话',repairPhone.value.trim()]]},repairStatus)){
       [repairRoom,repairNote,repairName,repairPhone].forEach(function(input){input.value=''});repairConsent.checked=false;repairStatus.textContent='';
     }
   };
   var feedback=document.getElementById('feedback'),feedbackNote=feedback.querySelector('textarea'),feedbackPhone=feedback.querySelector('input'),feedbackButton=feedback.querySelector('.primary-button');
+  var feedbackType=feedback.querySelector('select');
+  feedbackType.insertBefore(new Option('请选择反馈类型（选填）',''),feedbackType.firstChild);
+  feedbackType.value='';
   var feedbackConsent=consent(feedback,feedbackButton),feedbackStatus=status(feedback);feedbackButton.textContent='保存本机反馈';feedbackNote.maxLength=2000;
   feedback.querySelector('.form-card').before(node('p',disclosure,'service-notice'));
   feedbackButton.onclick=function(){
     if(!required(feedbackNote,feedbackStatus,'反馈内容')||(feedbackPhone.value.trim()&&!phoneValid(feedbackPhone,feedbackStatus)))return;
     if(!feedbackConsent.checked)return message(feedbackStatus,'请先同意仅在本机保存信息。',feedbackConsent);
-    if(save('feedback',{title:feedback.querySelector('select').value,fields:[['反馈内容',feedbackNote.value.trim()],['联系电话',feedbackPhone.value.trim()]]},feedbackStatus)){feedbackNote.value='';feedbackPhone.value='';feedbackConsent.checked=false;feedbackStatus.textContent=''}
+    if(save('feedback',{title:feedbackType.value||'意见反馈',fields:[['反馈内容',feedbackNote.value.trim()],['联系电话',feedbackPhone.value.trim()]]},feedbackStatus)){feedbackNote.value='';feedbackPhone.value='';feedbackConsent.checked=false;feedbackStatus.textContent=''}
   };
   var profile=document.getElementById('profile'),login=profile.querySelector('.profile-login');
   var identity=profile.querySelector('.profile-identity');
@@ -317,14 +355,14 @@
     var container=document.querySelector(selector);
     container.querySelectorAll('.form-row').forEach(function(row){
       var label=row.querySelector('label'),input=row.querySelector('input,select,textarea');
-      if(input===document.getElementById('contact-email')||input===feedbackPhone){
+      if(input===document.getElementById('contact-email')||input===feedbackPhone||input===feedbackType||input===repairRoom||input===repairName||input===repairSelects[0]||input===visitorInputs[2]){
         input.required=false;input.removeAttribute('aria-required');
         label.htmlFor=input.id||(input.id='optional-field-'+store.id());
         label.appendChild(node('span','（选填）','optional-mark'));
       }else markRequired(label,input);
     });
     container.querySelectorAll('.agreement input').forEach(function(input){input.required=true;input.setAttribute('aria-required','true')});
-    container.querySelector('.form-card').before(node('p','* 为必填项','required-hint'));
+    if(container!==repair&&container!==visitor&&container!==feedback)container.querySelector('.form-card').before(node('p','* 为必填项','required-hint'));
   });
   var quickForm=document.getElementById('quick-booking-form');
   ['quick-name','quick-phone'].forEach(function(id){markRequired(quickForm.querySelector('label[for="'+id+'"]'),document.getElementById(id))});
@@ -366,7 +404,7 @@
     var label=select.parentElement.querySelector('label'),trigger=node('button',null,'service-select-trigger'),value=node('span');
     trigger.type='button';trigger.id='service-select-'+index;
     trigger.setAttribute('role','combobox');trigger.setAttribute('aria-haspopup','listbox');
-    trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-required','true');
+    trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-required',String(select.required));
     label.id=trigger.id+'-label';label.htmlFor=trigger.id;trigger.setAttribute('aria-labelledby',label.id);
     trigger.appendChild(value);trigger.insertAdjacentHTML('beforeend','<i data-lucide="chevron-down" aria-hidden="true"></i>');
     select.hidden=true;select.tabIndex=-1;select.after(trigger);

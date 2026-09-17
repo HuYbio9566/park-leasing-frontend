@@ -3,6 +3,8 @@
 !/.gitignore
 !/.nojekyll
 !/README.md
+!/VERSIONS.md
+!/versions/
 !/*.html
 !/*.css
 !/*.js

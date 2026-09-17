@@ -1,9 +1,5 @@
 # 星桥科创园前端预览
 
-当前小程序版本：**v2.0.0**。
-v1 封存预览：`versions/v1/miniprogram-view.html`。
-版本变更、数据兼容与回退说明见 `VERSIONS.md`。
-
 静态前端演示，包含小程序手机壳预览、招商门户和管理端页面。
 
 - 小程序预览：`miniprogram-view.html`

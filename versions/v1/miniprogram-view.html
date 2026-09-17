@@ -496,48 +496,10 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
   ];
   hero.innerHTML='<div class="hero-track">'+slides.map(function(slide){return '<div class="hero-slide"><img src="'+slide.image+'" alt="'+slide.title+'"><div class="hero-slide-shade"></div><div class="hero-slide-copy"><h1>'+slide.title+'</h1><p>'+slide.subtitle+'</p></div></div>'}).join('')+'</div><div class="hero-dots">'+slides.map(function(_,i){return '<span class="hero-dot '+(i===0?'active':'')+'"></span>'}).join('')+'</div><div class="facts">'+slides[0].facts.map(function(f){return '<div><b>'+f[0]+'</b><span>'+f[1]+'</span></div>'}).join('')+'</div>';
   var track=hero.querySelector('.hero-track'),dots=hero.querySelectorAll('.hero-dot'),facts=hero.querySelector('.facts');
-  var index=0,timer,pressed=false,drag=null,gesture=null,reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
-  var details=[
-    {heading:'从空间开始，了解园区',text:'浏览园区楼宇及在租空间，按楼宇、装修条件筛选适合团队的办公场所，再进入空间详情了解面积与租金。',action:'查看园区空间',page:'spaces'},
-    {heading:'为团队寻找合适的办公空间',text:'从精装修到毛坯空间，结合团队规模和使用需求查看房源。进入空间详情后，可进一步咨询并留下联系信息。',action:'寻找办公空间',page:'spaces'},
-    {heading:'按需选择会议空间',text:'根据区域、人数及会议类型筛选会议室，查看设施与价格，选择日期和多个可用时段后核对时长及合计金额。',action:'查看会议室',page:'meeting'}
-  ];
-  var detail=document.createElement('section');
-  detail.id='banner-detail';detail.className='hidden';
-  document.querySelector('.screen').appendChild(detail);
-  window.__setMiniRoute('banner-detail','园区介绍','home');
-  function openDetail(i){
-    var slide=slides[i],copy=details[i];
-    detail.innerHTML='<img class="banner-detail-image" src="'+slide.image+'" alt="'+slide.title+'"><div class="banner-detail-copy"><h1 tabindex="-1">'+slide.title+'</h1><p>'+slide.subtitle+'</p><h2>'+copy.heading+'</h2><p>'+copy.text+'</p><p class="banner-detail-note">当前为产品演示，房源、价格与配额仅供预览；提交信息仅保存在本机，不代表实际预约或服务受理。</p><button class="primary-button" type="button">'+copy.action+'</button></div>';
-    detail.querySelector('button').onclick=function(){window.__showMiniPage(copy.page)};
-    window.__setMiniRoute('banner-detail',slide.title,'home');
-    window.__showMiniPage('banner-detail');
-    detail.querySelector('h1').focus({preventScroll:true});
-  }
-  function renderFacts(){
-    facts.innerHTML=slides[index].facts.map(function(f){
-      return '<div role="link" tabindex="0" aria-label="'+f[0]+' '+f[1]+'，查看'+slides[index].title+'详情"><b>'+f[0]+'</b><span>'+f[1]+'</span></div>';
-    }).join('');
-  }
-  facts.addEventListener('click',function(event){
-    if(event.target.closest('[role="link"]'))openDetail(index);
-  });
-  facts.addEventListener('keydown',function(event){
-    if(event.target.closest('[role="link"]')&&(event.key==='Enter'||event.key===' ')){
-      event.preventDefault();openDetail(index);
-    }
-  });
-  renderFacts();
-  track.querySelectorAll('.hero-slide').forEach(function(slide,i){
-    slide.setAttribute('role','link');slide.tabIndex=i===0?0:-1;
-    slide.setAttribute('aria-label','查看'+slides[i].title+'详情');
-    slide.addEventListener('keydown',function(event){
-      if(event.key==='Enter'||event.key===' '){event.preventDefault();openDetail(i)}
-    });
-  });
+  var index=0,timer,pressed=false,drag=null,reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   function schedule(){
     clearTimeout(timer);
-    if(pressed||document.hidden||reduced.matches||hero.contains(document.activeElement))return;
+    if(pressed||document.hidden||reduced.matches)return;
     timer=setTimeout(function(){
       if(hero.getClientRects().length)go((index+1)%slides.length);
       else schedule();
@@ -551,8 +513,7 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
     if(!track.clientWidth)return;
     index=Math.max(0,Math.min(slides.length-1,Math.round(track.scrollLeft/track.clientWidth)));
     dots.forEach(function(dot,i){dot.classList.toggle('active',i===index);dot.setAttribute('aria-current',i===index?'true':'false')});
-    track.querySelectorAll('.hero-slide').forEach(function(slide,i){slide.tabIndex=i===index?0:-1});
-    renderFacts();
+    facts.innerHTML=slides[index].facts.map(function(f){return '<div><b>'+f[0]+'</b><span>'+f[1]+'</span></div>'}).join('');
     schedule();
   });
   dots.forEach(function(dot,i){
@@ -563,7 +524,6 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
   });
   track.addEventListener('pointerdown',function(event){
     if(event.button!==0)return;
-    gesture={x:event.clientX,y:event.clientY,index:index,moved:false};
     pressed=true;clearTimeout(timer);
     if(event.pointerType==='mouse'){
       drag={x:event.clientX,left:track.scrollLeft};
@@ -571,23 +531,15 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
       event.preventDefault();
     }
   });
-  track.addEventListener('pointermove',function(event){
-    if(gesture&&(Math.abs(event.clientX-gesture.x)>8||Math.abs(event.clientY-gesture.y)>8))gesture.moved=true;
-    if(drag)track.scrollLeft=drag.left+drag.x-event.clientX;
-  });
-  function release(event){
-    var tapped=gesture&&event.type==='pointerup'&&!gesture.moved&&Math.abs(event.clientX-gesture.x)<=8&&Math.abs(event.clientY-gesture.y)<=8;
-    var selected=gesture?gesture.index:index;gesture=null;
+  track.addEventListener('pointermove',function(event){if(drag)track.scrollLeft=drag.left+drag.x-event.clientX});
+  function release(){
     if(drag){drag=null;track.classList.remove('dragging');go(index)}
     pressed=false;schedule();
-    if(tapped)openDetail(selected);
   }
   track.addEventListener('pointerup',release);
   track.addEventListener('pointercancel',release);
   track.addEventListener('lostpointercapture',release);
   track.addEventListener('dragstart',function(event){event.preventDefault()});
-  hero.addEventListener('focusin',schedule);
-  hero.addEventListener('focusout',function(){setTimeout(schedule,0)});
   document.addEventListener('visibilitychange',schedule);
   reduced.addEventListener('change',schedule);
   schedule();
@@ -595,11 +547,6 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
 </script>
 <style>
 .hero-track{cursor:grab}.hero-track.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}.hero-dot{cursor:pointer}.hero-dot:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
-.hero-slide:focus-visible{outline:2px solid var(--brand);outline-offset:-4px}
-.hero .facts [role="link"]{cursor:pointer}.hero .facts [role="link"]:focus-visible{outline:2px solid var(--brand);outline-offset:-2px;border-radius:4px}
-.screen #banner-detail{background:#fff;min-height:100%;padding:0 0 24px}
-.banner-detail-image{display:block;width:100%;height:230px;object-fit:cover}
-.banner-detail-copy{padding:24px 16px}.banner-detail-copy h1{font-size:24px;margin:0 0 12px}.banner-detail-copy h2{font-size:17px;margin:24px 0 12px}.banner-detail-copy p{font-size:14px;line-height:1.8;color:var(--muted)}.banner-detail-copy .banner-detail-note{font-size:12px;padding:12px;background:var(--bg);border-radius:8px;margin:24px 0}
 .meeting-filters label{position:relative;display:block;height:36px;padding:0;overflow:visible;background:#f1f4f0}
 .meeting-filters label:after{display:none}
 .filter-trigger{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:0 6px;border:0;border-radius:8px;background:transparent;color:var(--text);font-size:12px;text-align:center;cursor:pointer}

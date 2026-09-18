@@ -98,7 +98,7 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
       });
       var footer=document.createElement('footer');footer.textContent='园区物业服务中心';
       var contact=document.createElement('p');contact.textContent='咨询电话：400-820-6618';footer.appendChild(contact);
-      var demo=document.createElement('p');demo.className='notice-demo';demo.textContent='演示公告，具体安排以园区正式通知为准。';footer.appendChild(demo);article.appendChild(footer);
+      article.appendChild(footer);
       noticeDetail.appendChild(article);show('notice-detail');
     };
     row.onkeydown=function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();row.click()}};
@@ -115,7 +115,7 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
   ];
   recordGroups.forEach(function(group){
     var section=document.createElement('section');section.id=group.id;section.className='hidden';
-    section.innerHTML='<div class="field-title"><b>全部记录 · '+group.records.length+'</b><span class="muted">演示数据</span></div>';
+    section.innerHTML='<div class="field-title"><b>全部记录 · '+group.records.length+'</b></div>';
     group.records.forEach(function(record){
       var card=document.createElement('article');card.className='booking-record card';
       card.innerHTML='<div class="booking-record-head"><b>'+record.title+'</b><span class="booking-status">'+record.status+'</span></div><div class="booking-record-meta">'+record.meta+'</div><div class="booking-record-time">'+record.time+'</div><div class="booking-record-meta">'+record.note+'</div><div class="booking-record-foot"><span>'+record.number+'</span></div>';
@@ -181,9 +181,10 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
     text.split('·').forEach(function(label){var tag=document.createElement('span');tag.textContent=label.trim();spaceInfo.appendChild(tag)});
   }
   renderSpaceInfo(spaceInfo.textContent);
-  document.getElementById('building-space-list').addEventListener('click',function(event){
+  document.addEventListener('click',function(event){
     var card=event.target.closest('[data-space-detail]');
     if(!card)return;
+    window.__setMiniRoute('space-detail','空间详情',card.closest('#home')?'home':'building-detail');
     document.getElementById('space-detail-title').textContent=card.dataset.spaceDetail+' · 研发办公';
     document.getElementById('space-detail-meta').textContent=card.dataset.spaceDetail.charAt(0)+'座 · '+card.dataset.spaceMeta;
     renderSpaceInfo(card.dataset.spaceInfo);
@@ -372,6 +373,37 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
 .booking-record-foot .text-link{font-size:12px}
 .empty-booking{padding:28px 0;text-align:center;font-size:12px}
 .booking-record[role="button"]{cursor:pointer}
+#my-bookings{background:#f5f7f5}
+#my-bookings .reservation-card{display:block;width:100%;margin:0 0 14px;padding:12px 12px 0;text-align:left;background:#fefefe;border:0;border-radius:8px;box-shadow:0 1px 4px #274c3410;color:#25382f}
+.reservation-main{display:grid;grid-template-columns:82px minmax(0,1fr);gap:18px;min-height:115px;padding-bottom:15px}
+.reservation-main,.reservation-action{width:100%;border:0;padding-inline:0;padding-top:0;background:transparent;text-align:left;font-family:inherit;color:inherit;cursor:pointer}
+.reservation-action{width:auto;min-height:44px;padding-bottom:0}
+.reservation-image{display:block;width:82px;height:82px;align-self:start;object-fit:cover;border-radius:4px}
+.reservation-copy{min-width:0}
+.reservation-main.without-image{grid-template-columns:minmax(0,1fr)}
+.reservation-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.reservation-name{font-size:19px;font-weight:650;line-height:28px;overflow-wrap:anywhere;min-width:0}
+.reservation-status{display:inline-flex;align-items:center;gap:3px;min-height:23px;padding:0 8px;border-radius:5px;background:#e8f0eb;color:#568269;font-size:12px;font-weight:500;flex-shrink:0;white-space:nowrap}
+.reservation-card[data-state="pending"] .reservation-status{background:#fcf3e7;color:#b78c58}
+.reservation-card[data-state="confirmed"] .reservation-status{background:#e8f0ec;color:#245c4a}
+.reservation-card[data-state="ongoing"] .reservation-status{background:#245c4a;color:#fff}
+.reservation-card[data-state="cancelled"] .reservation-status,.reservation-card[data-state="restricted"] .reservation-status{background:#f1f2f1;color:#707773}
+.reservation-card[data-state="failed"] .reservation-status{background:#fbeeee;color:#b43d3d}
+.reservation-date{display:block;margin:7px 0 0;color:#86948c;font-size:14px;line-height:22px}
+.reservation-times{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;color:#3e4f45;font-size:22px;font-weight:500;line-height:30px;font-variant-numeric:tabular-nums}
+.reservation-time{white-space:nowrap}
+.reservation-times.is-multiple{margin-top:10px}
+.reservation-times.is-multiple>span{padding:5px 8px;border-radius:4px;background:#f4f7f5;color:#3e4f45;font-size:13px;line-height:20px}
+.reservation-card[data-state="pending"] .reservation-times.is-multiple>span{background:#fcf3e9;color:#b78951}
+.reservation-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:50px;border-top:.5px solid #f0f3f1}
+.reservation-price{color:#38725a;font-size:18px;line-height:30px;font-weight:650}.reservation-action{display:inline-flex;align-items:center;gap:3px;color:#788c7e;font-size:12px}
+.reservation-action svg{width:12px;height:12px}
+.reservation-card[data-state="completed"] :is(.reservation-name,.reservation-date,.reservation-times,.reservation-price,.reservation-action){color:#707070}
+.reservation-card[data-state="completed"] .reservation-status,.reservation-card[data-state="completed"] .reservation-times.is-multiple>span{background:#e9e9e9;color:#707070}
+.meeting-reservation-link{display:block;margin:16px 0;padding:10px 0;border:0;background:transparent;color:var(--brand);font:inherit;cursor:pointer}
+.reservation-restricted{display:block;margin-top:16px;color:#69766f;font-size:14px}
+#my-bookings .reservation-main:focus-visible,#my-bookings .reservation-action:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+@media(max-width:374px){#my-bookings .reservation-card{padding-right:12px;padding-left:12px}.reservation-main{grid-template-columns:62px minmax(0,1fr);gap:10px}.reservation-image{width:62px;height:62px}.reservation-name{font-size:17px}.reservation-status{padding:0 4px;font-size:10px}.reservation-times{font-size:20px}.reservation-times.is-multiple>span{padding:5px;font-size:11px}}
 #meeting-detail{padding-top:0}
 .meeting-detail-hero{position:relative;width:calc(100% + 32px);height:255px;margin-left:-16px;overflow:hidden;background:#dfe5de}
 .meeting-detail-track{display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
@@ -383,6 +415,8 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
 #vehicle .field-title .chip{display:inline-flex;align-items:center;justify-content:center;gap:4px;line-height:1}
 #vehicle .field-title .chip svg{display:block;width:15px;height:15px;flex:0 0 15px}
 #home>.space.card{display:block;min-height:0;margin-top:16px;padding:0;overflow:hidden;border:0;border-radius:var(--r-md);background:#fff;box-shadow:0 6px 18px rgba(27,54,42,.08)}
+#home>.space.card[role="button"]{cursor:pointer}
+#home>.space.card[role="button"]:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
 #home>.space.card img{display:block;width:100%;height:156px;object-fit:cover;border-radius:0}
 #home>.space.card .space-info{padding:14px 16px 15px}
 #home>.space.card .space-info .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
@@ -420,10 +454,15 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
     'C座':{name:'C座 · 灵活办公楼',meta:'2 个可租空间 · 小型团队',count:'2',floor:'3',image:'meeting-02.jpg',spaces:[['C-302','3F · 96㎡ · 可分割','适合初创团队 · 支持定制装修','¥68','meeting-06.jpg'],['C-201','2F · 72㎡ · 毛坯','支持个性化装修 · 近电梯厅','¥62','meeting-07.jpg']]}
   };
   window.__buildingData=data;
+  var featured=document.querySelector('#home>.space.card');
+  var featuredSpace=data['A座'].spaces.find(function(space){return space[0]==='A-605'});
+  ['spaceDetail','spaceMeta','spaceInfo','spacePrice','spaceImage'].forEach(function(key,index){featured.dataset[key]=featuredSpace[index]});
+  featured.setAttribute('role','button');featured.tabIndex=0;featured.setAttribute('aria-label','查看A-605研发办公空间详情');
+  featured.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();featured.click()}});
   Object.keys(data).forEach(function(key){
     data[key].count=String(data[key].spaces.length);
-    data[key].meta=data[key].count+' 个示例空间 · '+data[key].meta.split(' · ')[1];
-    document.querySelector('[data-building-detail="'+key+'"] .building-card-tags span').textContent=data[key].count+' 个示例空间';
+    data[key].meta=data[key].count+' 个空间 · '+data[key].meta.split(' · ')[1];
+    document.querySelector('[data-building-detail="'+key+'"] .building-card-tags span').textContent=data[key].count+' 个空间';
   });
   function renderSpaces(spaces){
     list.innerHTML=spaces.map(function(space){return '<button type="button" class="space building-space-card" data-space-detail="'+space[0]+'" data-space-meta="'+space[1]+'" data-space-info="'+space[2]+'" data-space-price="'+space[3]+'" data-space-image="'+space[4]+'"><img src="miniprogram/assets/'+space[4]+'" alt="'+space[0]+'空间"><span class="space-info"><strong>'+space[0]+' · 研发办公</strong><span class="meta">'+space[1]+'</span><span class="meta">'+space[2]+'</span><span class="price">'+space[3]+' <small>/㎡/月起</small></span></span></button>'}).join('');
@@ -508,7 +547,7 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
   window.__setMiniRoute('banner-detail','园区介绍','home');
   function openDetail(i){
     var slide=slides[i],copy=details[i];
-    detail.innerHTML='<img class="banner-detail-image" src="'+slide.image+'" alt="'+slide.title+'"><div class="banner-detail-copy"><h1 tabindex="-1">'+slide.title+'</h1><p>'+slide.subtitle+'</p><h2>'+copy.heading+'</h2><p>'+copy.text+'</p><p class="banner-detail-note">当前为产品演示，房源、价格与配额仅供预览；提交信息仅保存在本机，不代表实际预约或服务受理。</p><button class="primary-button" type="button">'+copy.action+'</button></div>';
+    detail.innerHTML='<img class="banner-detail-image" src="'+slide.image+'" alt="'+slide.title+'"><div class="banner-detail-copy"><h1 tabindex="-1">'+slide.title+'</h1><p>'+slide.subtitle+'</p><h2>'+copy.heading+'</h2><p>'+copy.text+'</p><button class="primary-button" type="button">'+copy.action+'</button></div>';
     detail.querySelector('button').onclick=function(){window.__showMiniPage(copy.page)};
     window.__setMiniRoute('banner-detail',slide.title,'home');
     window.__showMiniPage('banner-detail');
@@ -702,10 +741,10 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
   var total=modal.querySelector('.quick-booking-total'),duration=total.querySelector('span');
   footer.append(total,submit);submit.setAttribute('form',form.id);
   total.appendChild(duration);
-  var selectedRoom,selectedTimes=[],opener,records=MiniStore.data.bookings;
+  var selectedRoom,selectedTimes=[],opener,records=MiniStore.data.bookings,editingRecord=null,editingState=null;
   form.querySelector('#quick-phone').pattern='1[3-9][0-9]{9}';
   var consent=document.createElement('label');
-  consent.innerHTML='<input type="checkbox" required style="width:auto;min-height:0"> 同意将本次预约及联系信息保存在此浏览器，仅供演示，不会发送给工作人员。';
+  consent.innerHTML='<input type="checkbox" required style="width:auto;min-height:0"> 我同意保存本次预约及联系信息。';
   form.querySelector('[role="status"]').before(consent);
   var roomData={};
   form.querySelector('.slots').previousElementSibling.textContent='可选时段 · 可多选，每场1小时';
@@ -756,24 +795,35 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
       else if(!event.shiftKey&&document.activeElement===items[items.length-1]){event.preventDefault();items[0].focus()}
     }
   });
-  function renderSlots(){
+  function updateTotal(){
+    modal.querySelector('#quick-total').textContent='¥'+selectedRoom.price*selectedTimes.length;
+    duration.textContent=selectedTimes.length?'已选'+selectedTimes.length+'个时段 · 共'+selectedTimes.length+'小时':'请选择预约时段';
+    submit.disabled=!selectedTimes.length;
+  }
+  function renderSlots(preset){
+    preset=Array.isArray(preset)?preset:[];
     selectedTimes=[];submit.disabled=true;modal.querySelector('#quick-total').textContent='¥0';duration.textContent='请选择预约时段';
     var slots=modal.querySelector('.slots');slots.replaceChildren();
-    ['09:00–10:00','10:00–11:00','11:00–12:00','13:30–14:30','14:30–15:30','15:30–16:30'].forEach(function(time,index){
+    var options=['09:00–10:00','10:00–11:00','11:00–12:00','13:30–14:30','14:30–15:30','15:30–16:30'];
+    if(editingRecord&&date.value===editingRecord.date)options=Array.from(new Set(options.concat(editingRecord.times))).sort();
+    options.forEach(function(time){
       var button=document.createElement('button');button.type='button';button.className='slot';button.textContent=time;
-      var elapsed=date.value===localToday&&time.slice(0,5)<=new Date().toTimeString().slice(0,5);
-      button.disabled=index===1||index===4||elapsed||records.some(function(record){return record.status!=='已取消'&&record.room===selectedRoom.name&&record.date===date.value&&record.times.includes(time)});
+      var own=editingRecord&&date.value===editingRecord.date&&editingRecord.times.includes(time);
+      var elapsed=new Date(date.value+'T'+time.slice(0,5)+':00+08:00')<=new Date();
+      var conflict=records.some(function(record){return record!==editingRecord&&record.status!=='已取消'&&record.room===selectedRoom.name&&record.date===date.value&&record.times.includes(time)});
+      button.disabled=editingState==='进行中'||(!own&&['10:00–11:00','14:30–15:30'].includes(time))||elapsed||conflict;
       if(button.disabled){button.classList.add('booked');button.setAttribute('aria-label',time+' 不可预订')}
-      button.setAttribute('aria-pressed','false');
+      var chosen=preset.includes(time)&&(!button.disabled||(own&&editingState==='进行中'));
+      if(chosen){selectedTimes.push(time);button.classList.add('selected')}
+      button.setAttribute('aria-pressed',String(chosen));
       button.onclick=function(){
         var selected=button.classList.toggle('selected');button.setAttribute('aria-pressed',String(selected));
         selectedTimes=Array.from(slots.querySelectorAll('.selected')).map(function(item){return item.textContent});
-        modal.querySelector('#quick-total').textContent='¥'+selectedRoom.price*selectedTimes.length;
-        duration.textContent=selectedTimes.length?'已选'+selectedTimes.length+'个时段 · 共'+selectedTimes.length+'小时':'请选择预约时段';
-        submit.disabled=!selectedTimes.length;
+        updateTotal();
       };
       slots.appendChild(button);
     });
+    updateTotal();
   }
   date.onchange=renderSlots;
   // 演示设备配置，实际数量以工作人员确认为准。
@@ -793,11 +843,14 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
     var room=event.target.closest('[data-room-detail]');
     if(room&&roomData[room.dataset.roomDetail]){
       var item=roomData[room.dataset.roomDetail];
+      document.getElementById('meeting-detail-name').textContent=item.name;
+      reservationLink.classList.toggle('hidden',!room.closest('.reservation-card'));
+      reservationLink.onclick=function(){showRecord(displayedReservation)};
       renderDetailEquipment(item.name);
       document.querySelector('#meeting-detail > .meta').textContent=item.meta;
       document.querySelector('#meeting-detail .detail-price').innerHTML='¥'+item.price+' <span>/小时起</span>';
-      document.querySelector('#meeting-detail .detail-section p').textContent=item.meta+'，适合会议、讨论与团队交流。设施数量为演示配置，以现场确认为准。';
-      document.querySelectorAll('.meeting-detail-track img').forEach(function(image,index){image.src=index===0?item.image:'miniprogram/assets/meeting-0'+(index+4)+'.jpg';image.alt=item.name+' · 示例环境图'});
+      document.querySelector('#meeting-detail .detail-section p').textContent=item.meta+'，适合会议、讨论与团队交流。';
+      document.querySelectorAll('.meeting-detail-track img').forEach(function(image,index){image.src=index===0?item.image:'miniprogram/assets/meeting-0'+(index+4)+'.jpg';image.alt=item.name+' · 环境图'});
       document.querySelector('.meeting-detail-track').scrollLeft=0;
       window.__showMiniPage('meeting-detail');
     }
@@ -820,50 +873,135 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
     var button=document.createElement('button');button.type='button';button.className='meeting-quick-open';button.textContent='预订';button.style.cssText='position:relative;z-index:2';button.setAttribute('aria-label','预订'+room.name);footer.appendChild(button);
     button.onclick=function(event){event.stopPropagation();openBooking(room,button)};
   });
-  function openBooking(room,source){
-    selectedRoom=room;opener=source;form.reset();date.value=localToday;updateDateLabel();
-    modal.querySelector('#quick-booking-title').textContent=room.name;
+  function openBooking(room,source,item){
+    editingRecord=item||null;editingState=item?meetingState(item):null;
+    if(item&&!['未开始','进行中'].includes(editingState)){showRecord(item);return}
+    selectedRoom=item?Object.assign({},room,{price:item.price}):room;opener=source;form.reset();date.value=item?item.date:localToday;updateDateLabel();
+    dateTrigger.disabled=editingState==='进行中';
+    modal.querySelector('#quick-booking-title').textContent=(item?'编辑预约 · ':'')+room.name;
     modal.querySelector('#quick-room-meta').textContent=room.meta+' · ¥'+room.price+'/小时';
-    modal.querySelector('[role="status"]').textContent='演示时段，不代表真实库存。信息仅保存在此浏览器，不会发送。';
-    submit.textContent='保存演示预约';renderSlots();modal.classList.remove('hidden');modal.querySelector('.quick-booking-close').focus();
+    modal.querySelector('[role="status"]').textContent=editingState==='进行中'?'会议进行中，仅可修改联系信息和备注。':'';
+    if(item){
+      form.querySelector('#quick-name').value=MiniStore.displayText(item,item.name);
+      form.querySelector('#quick-phone').value=/^1[3-9][0-9]{9}$/.test(item.phone)?item.phone:'';
+      form.querySelector('#quick-phone').placeholder='请输入11位手机号';
+      form.querySelector('#quick-purpose').value=item.purpose||'';
+    }
+    submit.textContent=item?'保存修改':'保存预约';renderSlots(item?item.times:[]);modal.classList.remove('hidden');modal.querySelector('.quick-booking-close').focus();
   }
   var detailAction=document.querySelector('#meeting-detail .detail-action button');
+  var displayedReservation=null;
+  var reservationLink=document.createElement('button');reservationLink.type='button';reservationLink.className='meeting-reservation-link hidden';reservationLink.textContent='查看本次预约';
+  detailAction.parentNode.before(reservationLink);
   detailAction.removeAttribute('data-page');
   detailAction.onclick=function(){openBooking(roomData[document.getElementById('meeting-detail-name').textContent],detailAction)};
   var recordDetail=document.createElement('section');recordDetail.id='booking-record-detail';recordDetail.className='hidden';document.querySelector('.screen').appendChild(recordDetail);
+  function meetingState(item){
+    var state=(item.status||'').replace(/\s*·\s*示例$/,'');
+    if(['已取消','预约失败','无权限查看'].includes(state))return state;
+    var now=Date.now();
+    var intervals=item.times.map(function(time){
+      var parts=time.split(/[–—-]/);
+      return parts.map(function(part){return new Date(item.date+'T'+part.trim()+':00+08:00').getTime()});
+    });
+    if(intervals.some(function(slot){return now>=slot[0]&&now<slot[1]}))return '进行中';
+    return intervals.some(function(slot){return now<slot[0]})?'未开始':'已结束';
+  }
   function showRecord(item){
+    window.__setMiniRoute('booking-record-detail','管理预约','my-bookings');
     recordDetail.replaceChildren();
-    [item.room,item.status||'本地演示预约','预约编号：'+item.id,item.meta,item.date+' · '+item.times.join('、'),'时长：'+item.times.length+'小时 · ¥'+item.price*item.times.length,'联系人：'+item.name,'电话：'+item.phone,'备注：'+(item.purpose||'无'),'仅保存在此浏览器，未发送工作人员；不代表真实预订或付款。'].forEach(function(text){
+    if((item.status||'').replace(/\s*·\s*示例$/,'')==='无权限查看'){
+      var denied=document.createElement('p');denied.textContent='无权限查看该预约的详细信息。';recordDetail.appendChild(denied);
+      window.__showMiniPage('booking-record-detail');return;
+    }
+    [item.room,meetingState(item),'预约编号：'+item.id,item.meta,item.date+' · '+item.times.join('、'),'时长：'+item.times.length+'小时 · ¥'+item.price*item.times.length,'联系人：'+MiniStore.displayText(item,item.name),'电话：'+item.phone,'备注：'+(item.purpose||'无')].forEach(function(text){
       var line=document.createElement('p');line.textContent=text;recordDetail.appendChild(line);
     });
-    if(!item.sample&&item.status!=='已取消'){
-      var cancel=document.createElement('button');cancel.className='primary-button';cancel.textContent='取消本地演示预约';
+    var state=meetingState(item);
+    if(['未开始','进行中'].includes(state)){
+      if(roomData[item.room]){
+        var edit=document.createElement('button');edit.className='primary-button';edit.textContent='编辑预约';
+        edit.onclick=function(){openBooking(roomData[item.room],edit,item)};recordDetail.appendChild(edit);
+      }
+      var cancel=document.createElement('button');cancel.className='primary-button';cancel.textContent='取消预约';
       cancel.onclick=function(){
-        var previous=item.status;item.status='已取消';
-        if(!MiniStore.save()){item.status=previous;alert('无法保存，请检查浏览器存储设置');return}
+        if(!['未开始','进行中'].includes(meetingState(item))){showRecord(item);return}
+        if(!confirm('确认取消本次预约？取消后将释放已选时段。'))return;
+        if(!saveRecordChanges(item,{status:'已取消'})){alert('无法保存，请检查浏览器存储设置');return}
         renderRecords();showRecord(item);
       };recordDetail.appendChild(cancel);
+    }else{
+      var readonly=document.createElement('p');readonly.textContent='当前预约'+state+'，不可修改或取消。';recordDetail.appendChild(readonly);
     }
     window.__showMiniPage('booking-record-detail');
+  }
+  function saveRecordChanges(item,changes){
+    var previous=Object.assign({},item),previousRecords=records.slice();
+    if(!records.includes(item)){
+      if(!records.length)records.push.apply(records,MiniStore.displayRecords('bookings'));
+      if(!records.includes(item))records.push(item);
+    }
+    Object.assign(item,changes);
+    if(MiniStore.save())return true;
+    Object.assign(item,previous);records.splice(0,records.length,...previousRecords);return false;
+  }
+  function reservationCard(item){
+    var state=meetingState(item);
+    var states={'未开始':'pending','已结束':'completed','已取消':'cancelled','预约失败':'failed','进行中':'ongoing','无权限查看':'restricted'};
+    var card=document.createElement('div');card.className='booking-record card reservation-card';card.dataset.state=states[state]||'local';
+    function text(tag,value,className){var el=document.createElement(tag);el.className=className;el.textContent=value;return el}
+    function icon(path){var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','2');svg.setAttribute('aria-hidden','true');var line=document.createElementNS(svg.namespaceURI,'path');line.setAttribute('d',path);svg.appendChild(line);return svg}
+    var main=document.createElement('button');main.type='button';main.className='reservation-main';
+    var room=state!=='无权限查看'&&roomData[item.room];
+    if(room){var image=document.createElement('img');image.className='reservation-image';image.src=room.image;image.alt='';main.appendChild(image)}else{main.classList.add('without-image')}
+    var copy=document.createElement('span');copy.className='reservation-copy';main.appendChild(copy);card.appendChild(main);
+    var head=document.createElement('span');head.className='reservation-head';
+    var badge=text('span',state,'reservation-status');
+    card.updateMeetingState=function(){var current=meetingState(item);badge.textContent=current;card.dataset.state=states[current]};
+    head.append(text('span',state==='无权限查看'?'预约记录':item.room,'reservation-name'),badge);copy.appendChild(head);
+    if(state==='无权限查看'){
+      copy.appendChild(text('span','无权限查看此预约，请联系管理员。','reservation-restricted'));
+    }else{
+      var dateParts=item.date.split('-').map(Number),day=new Date(dateParts[0],dateParts[1]-1,dateParts[2]);
+      var dateLabel=(dateParts[0]!==new Date().getFullYear()?dateParts[0]+'年':'')+dateParts[1]+'月'+dateParts[2]+'日 周'+'日一二三四五六'[day.getDay()];
+      copy.appendChild(text('span',dateLabel,'reservation-date'));
+      var times=document.createElement('span');times.className='reservation-times'+(item.times.length>1?' is-multiple':'');
+      item.times.forEach(function(time){times.appendChild(text('span',time,'reservation-time'))});copy.appendChild(times);
+      var foot=document.createElement('span');foot.className='reservation-foot';
+      var action=text('button','管理预约','reservation-action');action.type='button';action.onclick=function(){showRecord(item)};action.appendChild(icon('m9 18 6-6-6-6'));
+      foot.append(text('span','¥'+item.price*item.times.length,'reservation-price'),action);card.appendChild(foot);
+    }
+    if(room){main.dataset.roomDetail=item.room;main.setAttribute('aria-label','查看'+item.room+'会议室详情');main.onclick=function(){displayedReservation=item}}
+    else{main.onclick=function(){showRecord(item)}}
+    return card;
   }
   function renderRecords(){
     var container=document.getElementById('my-bookings');container.replaceChildren();
     var displayRecords=MiniStore.displayRecords('bookings');
-    var note=document.createElement('p');note.className='muted';note.textContent=records.length?'本机演示预约 · '+records.length+' 条 · 未发送工作人员':'演示样例 · '+displayRecords.length+' 条 · 非真实预约';container.appendChild(note);
-    var count=document.querySelector('.profile-stats [data-page="my-bookings"] b');count.textContent=displayRecords.length;count.title=records.length?'本机记录数量':'演示样例数量';
-    displayRecords.slice().reverse().forEach(function(item){
-      var card=document.createElement('button');card.type='button';card.className='booking-record card';card.style.cssText='width:100%;text-align:left;color:inherit';
-      [item.room,item.status||'本地演示预约',item.date+' · '+item.times.join('、'),'¥'+item.price*item.times.length+' · 查看详情'].forEach(function(text){var line=document.createElement('p');line.textContent=text;card.appendChild(line)});
-      card.onclick=function(){showRecord(item)};container.appendChild(card);
+    var count=document.querySelector('.profile-stats [data-page="my-bookings"] b');count.textContent=displayRecords.length;count.title='预约记录数量';
+    displayRecords.slice().reverse().sort(function(a,b){
+      return b.date.localeCompare(a.date)||b.times.map(function(time){return time.slice(0,5)}).sort()[0].localeCompare(a.times.map(function(time){return time.slice(0,5)}).sort()[0]);
+    }).forEach(function(item){
+      container.appendChild(reservationCard(item));
     });
   }
   renderRecords();
+  function refreshMeetingStates(){document.querySelectorAll('#my-bookings .reservation-card').forEach(function(card){card.updateMeetingState()})}
+  setInterval(refreshMeetingStates,1000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refreshMeetingStates()});
   window.addEventListener('mini-records-change',function(){records=MiniStore.data.bookings;renderRecords();if(selectedRoom)renderSlots()});
   form.onsubmit=function(event){
     event.preventDefault();if(!selectedTimes.length||!form.reportValidity())return;
     if(!form.querySelector('#quick-name').value.trim()){form.querySelector('[role="status"]').textContent='请输入联系人姓名';return}
-    if(selectedTimes.some(function(time){return new Date(date.value+'T'+time.slice(0,5))<=new Date()||records.some(function(record){return record.status!=='已取消'&&record.room===selectedRoom.name&&record.date===date.value&&record.times.includes(time)})})){
-      form.querySelector('[role="status"]').textContent='所选时段已过期或被本机预约占用，请重新选择';renderSlots();return;
+    if(editingRecord&&meetingState(editingRecord)!==editingState){form.querySelector('[role="status"]').textContent='会议状态已变化，请关闭后重新进入编辑。';return}
+    if(editingState!=='进行中'&&selectedTimes.some(function(time){return new Date(date.value+'T'+time.slice(0,5)+':00+08:00')<=new Date()||records.some(function(record){return record!==editingRecord&&record.status!=='已取消'&&record.room===selectedRoom.name&&record.date===date.value&&record.times.includes(time)})})){
+      form.querySelector('[role="status"]').textContent='所选时段已过期或已被预约占用，请重新选择';renderSlots();return;
+    }
+    if(editingRecord){
+      var changes={name:form.querySelector('#quick-name').value.trim(),phone:form.querySelector('#quick-phone').value,purpose:form.querySelector('#quick-purpose').value.trim()};
+      if(editingState==='未开始'){changes.date=date.value;changes.times=selectedTimes.slice()}
+      if(!saveRecordChanges(editingRecord,changes)){form.querySelector('[role="status"]').textContent='无法保存修改，请检查浏览器存储设置后重试';return}
+      renderRecords();close();showRecord(editingRecord);return;
     }
     var item={id:MiniStore.id(),room:selectedRoom.name,meta:selectedRoom.meta,price:selectedRoom.price,date:date.value,times:selectedTimes.slice(),name:form.querySelector('#quick-name').value.trim(),phone:form.querySelector('#quick-phone').value,purpose:form.querySelector('#quick-purpose').value.trim(),status:'本地演示预约'};
     records.push(item);

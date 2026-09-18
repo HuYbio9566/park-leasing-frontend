@@ -7,7 +7,6 @@
     var tags=meta.textContent.split('·').map(function(text){return node('span',text.trim())});
     meta.replaceChildren.apply(meta,tags);
   });
-  var disclosure='仅保存到当前浏览器，未发送至工作人员；不代表预约、入园或维修已受理。请勿在公共设备填写真实个人信息。';
   var names={visitors:'访客记录',repairs:'报修记录',consultations:'咨询记录',feedback:'反馈记录'};
   var pages={visitors:'visitor-records',repairs:'repair-records',consultations:'consultation-records',feedback:'feedback-records'};
   var entries={visitors:'visitor',repairs:'repair'};
@@ -44,7 +43,7 @@
   function consent(container,before){
     var label=node('label',undefined,'agreement');
     var input=node('input');input.type='checkbox';
-    label.append(input,node('span','我同意将本次填写的信息保存在本机浏览器，仅用于演示，不会发送给园区。'));
+    label.append(input,node('span','我同意保存本次填写的信息。'));
     container.insertBefore(label,before||null);return input;
   }
   function field(container,label,type){
@@ -59,7 +58,7 @@
     return !!input.value.trim()||message(target,'请填写'+label+'。',input);
   }
   function save(kind,record,target){
-    record.id=store.id();record.created=new Date().toISOString();record.state='本机已保存 · 未发送';
+    record.id=store.id();record.created=new Date().toISOString();record.state='已保存';
     store.data[kind].unshift(record);
     if(!store.save()){
       store.data[kind].shift();
@@ -74,35 +73,34 @@
   var detail=section('service-record-detail');detail.classList.add('service-record-detail');
   function showRecord(kind,record){
     detail.replaceChildren(button('返回'+names[kind],function(){go(pages[kind],names[kind])}));
-    detail.append(node('h2',record.title),node('p',record.sample?'演示样例，仅展示记录样式与流程，不代表实际提交或处理。':disclosure,'service-notice'));
+    detail.append(node('h2',record.title));
     var list=node('dl');
-    [['记录编号',record.id],['状态',record.state],['保存时间',new Date(record.created).toLocaleString('zh-CN')]].concat(record.fields).forEach(function(pair){list.append(node('dt',pair[0]),node('dd',pair[1]))});
+    [['记录编号',record.id],['状态',store.displayState(record)],['保存时间',new Date(record.created).toLocaleString('zh-CN')]].concat(record.fields).forEach(function(pair){list.append(node('dt',pair[0]),node('dd',store.displayText(record,pair[1])))});
     detail.appendChild(list);
     detail.append(button('查看全部'+names[kind],function(){go(pages[kind],names[kind])}));
     go(detail.id,names[kind]+'详情',pages[kind]);
   }
   function render(kind){
     var list=section(pages[kind]);list.replaceChildren();
-    list.append(node('p',disclosure,'service-notice'));
-    var records=store.displayRecords(kind),isExample=!store.data[kind].length&&records.length;
-    var title=node('div',undefined,'field-title');title.append(node('b',(isExample?'演示样例':'本机记录')+' · '+records.length));list.appendChild(title);
-    if(!records.length)list.append(node('p','暂无本机记录。填写并保存后，可在这里查看详情。','service-status'));
+    var records=store.displayRecords(kind);
+    var title=node('div',undefined,'field-title');title.append(node('b','全部记录 · '+records.length));list.appendChild(title);
+    if(!records.length)list.append(node('p','暂无记录。填写并保存后，可在这里查看详情。','service-status'));
     records.forEach(function(record){
       var card=button('',function(){showRecord(kind,record)},'booking-record card service-record-button');
-      card.append(node('b',record.title),node('p',record.state),node('p',new Date(record.created).toLocaleString('zh-CN')),node('p','查看详情 →'));list.appendChild(card);
+      card.append(node('b',record.title),node('p',store.displayState(record)),node('p',new Date(record.created).toLocaleString('zh-CN')),node('p','查看详情 →'));list.appendChild(card);
     });
     if(entries[kind])list.append(button(kind==='visitors'?'登记访客':'填写报修',function(){go(entries[kind])},'primary-button'));
     else if(kind==='consultations')list.append(button('新增咨询留言',openContact,'primary-button'));
     else list.append(button('填写反馈',function(){go('feedback')},'primary-button'));
     var count=document.querySelector('.profile-stats [data-page="'+pages[kind]+'"] b');
-    if(count){count.textContent=records.length;count.title=isExample?'演示样例数量':'本机记录数量'}
+    if(count){count.textContent=records.length;count.title='记录数量'}
   }
   function renderAll(){Object.keys(names).forEach(render)}
   var modal=document.getElementById('contact-modal'),contactButton=document.getElementById('contact-submit');
   var contactConsent=consent(modal.querySelector('.contact-sheet'),contactButton);
   var contactStatus=status(modal.querySelector('.contact-sheet'));
-  modal.querySelector('.contact-intro').textContent=disclosure;
-  contactButton.textContent='保存本机留言';
+  modal.querySelector('.contact-intro').remove();
+  contactButton.textContent='保存留言';
   var contactSource='园区咨询',contactOpener;
   function openContact(){
     contactOpener=document.activeElement;contactSource='园区咨询';
@@ -129,7 +127,7 @@
     if(!required(name,contactStatus,'姓名')||!phoneValid(phone,contactStatus))return;
     if(email.value.trim()&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()))return message(contactStatus,'请填写有效的邮箱地址。',email);
     if(!required(note,contactStatus,'留言内容'))return;
-    if(!contactConsent.checked)return message(contactStatus,'请先同意仅在本机保存信息。',contactConsent);
+    if(!contactConsent.checked)return message(contactStatus,'请先同意保存信息。',contactConsent);
     if(save('consultations',{title:contactSource,fields:[['姓名',name.value.trim()],['电话',phone.value.trim()],['邮箱',email.value.trim()],['留言备注',note.value.trim()]]},contactStatus)){
       modal.classList.add('hidden');[name,phone,email,note].forEach(function(input){input.value=''});contactConsent.checked=false;
     }
@@ -139,8 +137,7 @@
   var visitor=document.getElementById('visitor'),visitorInputs=visitor.querySelectorAll('.form-card input'),visitorButton=visitor.querySelector('.primary-button');
   var visitorAgreement=visitor.querySelector('.agreement');visitorAgreement.remove();
   var visitorConsent=consent(visitor,visitorButton),visitorStatus=status(visitor);
-  visitorButton.textContent='保存本机访客申请';
-  visitor.querySelector('.form-card').before(node('p',disclosure,'service-notice'));
+  visitorButton.textContent='保存访客申请';
   var datePicker=document.getElementById('date-picker'),dateField=document.getElementById('visitor-date');
   var dateInput=node('input');dateInput.type='hidden';dateInput.className='service-date-input';
   var dateBody=datePicker.querySelector('.date-wheels');dateBody.className='service-calendar';
@@ -202,7 +199,7 @@
   visitorButton.onclick=function(){
     if(!required(visitorInputs[0],visitorStatus,'访客姓名')||!phoneValid(visitorInputs[1],visitorStatus))return;
     if(!dateField.value||!Number.isFinite(new Date(dateField.value).getTime())||new Date(dateField.value)<=new Date())return message(visitorStatus,'请选择未来的有效到访时间。',dateField);
-    if(!visitorConsent.checked)return message(visitorStatus,'请先同意仅在本机保存信息。',visitorConsent);
+    if(!visitorConsent.checked)return message(visitorStatus,'请先同意保存信息。',visitorConsent);
     if(save('visitors',{title:'访客申请 · '+visitorInputs[0].value.trim(),fields:[['访客姓名',visitorInputs[0].value.trim()],['手机号',visitorInputs[1].value.trim()],['到访企业',visitorInputs[2].value.trim()||'未填写'],['到访时间',dateField.value.replace('T',' ')]]},visitorStatus)){
       visitorInputs.forEach(function(input){input.value=''});visitorConsent.checked=false;visitorStatus.textContent='';
     }
@@ -212,10 +209,10 @@
   repairSelects[0].insertBefore(new Option('请选择报修位置（选填）',''),repairSelects[0].firstChild);
   repairSelects[0].value='';
   var repairButton=repair.querySelector('.primary-button'),repairConsent=consent(repair,repairButton),repairStatus=status(repair);
-  repairCard.before(node('p',disclosure,'service-notice'));repairButton.textContent='保存本机报修单';repairNote.maxLength=2000;
+  repairButton.textContent='保存报修单';repairNote.maxLength=2000;
   repairButton.onclick=function(){
     if(!required(repairNote,repairStatus,'问题描述')||!phoneValid(repairPhone,repairStatus))return;
-    if(!repairConsent.checked)return message(repairStatus,'请先同意仅在本机保存信息。',repairConsent);
+    if(!repairConsent.checked)return message(repairStatus,'请先同意保存信息。',repairConsent);
     if(save('repairs',{title:[repairSelects[1].value,repairRoom.value.trim()].filter(Boolean).join(' · '),fields:[['报修位置',[repairSelects[0].value,repairRoom.value.trim()].filter(Boolean).join(' · ')||'未填写'],['问题类型',repairSelects[1].value],['问题描述',repairNote.value.trim()],['联系人姓名',repairName.value.trim()||'未填写'],['联系电话',repairPhone.value.trim()]]},repairStatus)){
       [repairRoom,repairNote,repairName,repairPhone].forEach(function(input){input.value=''});repairConsent.checked=false;repairStatus.textContent='';
     }
@@ -224,39 +221,38 @@
   var feedbackType=feedback.querySelector('select');
   feedbackType.insertBefore(new Option('请选择反馈类型（选填）',''),feedbackType.firstChild);
   feedbackType.value='';
-  var feedbackConsent=consent(feedback,feedbackButton),feedbackStatus=status(feedback);feedbackButton.textContent='保存本机反馈';feedbackNote.maxLength=2000;
-  feedback.querySelector('.form-card').before(node('p',disclosure,'service-notice'));
+  var feedbackConsent=consent(feedback,feedbackButton),feedbackStatus=status(feedback);feedbackButton.textContent='保存反馈';feedbackNote.maxLength=2000;
   feedbackButton.onclick=function(){
     if(!required(feedbackNote,feedbackStatus,'反馈内容')||(feedbackPhone.value.trim()&&!phoneValid(feedbackPhone,feedbackStatus)))return;
-    if(!feedbackConsent.checked)return message(feedbackStatus,'请先同意仅在本机保存信息。',feedbackConsent);
+    if(!feedbackConsent.checked)return message(feedbackStatus,'请先同意保存信息。',feedbackConsent);
     if(save('feedback',{title:feedbackType.value||'意见反馈',fields:[['反馈内容',feedbackNote.value.trim()],['联系电话',feedbackPhone.value.trim()]]},feedbackStatus)){feedbackNote.value='';feedbackPhone.value='';feedbackConsent.checked=false;feedbackStatus.textContent=''}
   };
   var profile=document.getElementById('profile'),login=profile.querySelector('.profile-login');
   var identity=profile.querySelector('.profile-identity');
-  identity.querySelector('span').textContent='无本机记录时展示样例，仅供体验';
-  login.textContent='演示身份';
+  identity.querySelector('span').textContent='查看预约与服务记录';
+  login.textContent='访客身份';
   login.onclick=function(){
-    var identityPage=section('local-identity');identityPage.replaceChildren(node('h2','本机演示身份'),node('p','本页面未接入微信或手机号认证，不会验证身份，也不提供跨设备同步。可继续以访客身份体验全部本机记录流程。','service-notice'),button('返回我的',function(){go('profile')},'primary-button'));
-    go(identityPage.id,'演示身份说明');
+    var identityPage=section('local-identity');identityPage.replaceChildren(node('h2','访客身份'),node('p','当前以访客身份使用园区服务。','service-notice'),button('返回我的',function(){go('profile')},'primary-button'));
+    go(identityPage.id,'身份信息');
   };
   profile.querySelectorAll('.profile-menu-row').forEach(function(row){
     var label=row.querySelector('b').textContent;
     if(label==='园区咨询')row.onclick=openContact;
     if(label==='隐私与授权')row.onclick=function(){
-      var privacy=section('local-privacy');privacy.replaceChildren(node('h2','隐私与本机保存'),node('p','本演示不进行登录认证，也不会向园区提交表单。勾选同意后，姓名、手机号、邮箱、留言及预约资料会保存在当前浏览器的本地存储中，关闭或刷新后仍可查看。同一设备的其他使用者也可能看到这些资料，请仅使用演示信息。','service-notice'),node('p','清除浏览器网站数据会删除记录。下方按钮仅清除此演示的本机记录，不影响其他网站。','service-status'));
+      var privacy=section('local-privacy');privacy.replaceChildren(node('h2','隐私与授权'),node('p','经你同意后，填写的联系信息及服务记录将保存在当前设备的浏览器中，刷新或关闭后仍可查看。共用设备时，请妥善管理个人信息。','service-notice'),node('p','清除浏览器网站数据或使用下方按钮可删除记录，删除后无法恢复。','service-status'));
       var result=status(privacy);
-      privacy.append(button('清除本机全部记录',function(){
-        if(!window.confirm('确认清除本机所有预约、访客、报修、咨询和反馈记录？此操作无法撤销。'))return;
+      privacy.append(button('清除全部记录',function(){
+        if(!window.confirm('确认清除所有预约、访客、报修、咨询和反馈记录？此操作无法撤销。'))return;
         var previous={};['bookings','visitors','repairs','consultations','feedback'].forEach(function(key){previous[key]=store.data[key];store.data[key]=[]});
         if(!store.save()){Object.keys(previous).forEach(function(key){store.data[key]=previous[key]});message(result,'清除失败，原记录已保留。');return}
-        renderAll();window.dispatchEvent(new Event('mini-records-change'));message(result,'已清除本机记录。');
+        renderAll();window.dispatchEvent(new Event('mini-records-change'));message(result,'记录已清除。');
       }),button('返回我的',function(){go('profile')}));
       go(privacy.id,'隐私与授权');
     };
   });
   ['consultations','feedback'].forEach(function(kind){
     var row=button('',function(){go(pages[kind],names[kind])},'profile-menu-row');
-    var copy=node('span',undefined,'profile-menu-copy');copy.append(node('b',names[kind]),node('small','查看本机保存的信息 · 未发送'));row.appendChild(copy);profile.querySelectorAll('.profile-menu')[1].appendChild(row);
+    var copy=node('span',undefined,'profile-menu-copy');copy.append(node('b',names[kind]),node('small','查看历史记录'));row.appendChild(copy);profile.querySelectorAll('.profile-menu')[1].appendChild(row);
   });
   // v2：导航找服务，首页发起办理，个人中心查询记录。
   document.documentElement.dataset.productVersion='2.0.0';
@@ -298,7 +294,7 @@
   profile.querySelectorAll('.profile-section-title')[0].textContent='我的记录';
   profile.querySelectorAll('.profile-section-title')[1].textContent='隐私与设置';
   profile.querySelector('.profile-stats [data-page="repair-records"] span').textContent='报修记录';
-  var version=node('p','当前版本 v2.0.0 · 本机演示','v2-version');
+  var version=node('p','当前版本 v2.0.0','v2-version');
   profile.appendChild(version);
 
   var bookingsButton=document.querySelector('#meeting .my-bookings-button');
@@ -327,12 +323,11 @@
   `;
   document.head.appendChild(v2Style);
   ['vehicle','restaurant'].forEach(function(id){
-    var page=document.getElementById(id),notice=node('p','演示展示：车辆、停车及餐饮服务尚未接通，不会绑定车辆、扣费或生成真实订单。','service-notice');
-    page.querySelector('.page-top').after(notice);
+    var page=document.getElementById(id);
     var feedbackLine=status(page);
     page.querySelectorAll(id==='vehicle'?'.chip,.profile-row,.list-row':'.chip').forEach(function(control){
       control.setAttribute('role','button');if(control.tagName!=='BUTTON')control.tabIndex=0;
-      control.onclick=function(event){event.preventDefault();event.stopPropagation();message(feedbackLine,'“'+control.textContent.trim()+'”尚未接通，当前仅作展示。未产生绑定、费用或订单。')};
+      control.onclick=function(event){event.preventDefault();event.stopPropagation();message(feedbackLine,'该服务暂未开通。')};
       if(control.tagName!=='BUTTON')control.onkeydown=function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();control.click()}};
     });
   });
@@ -370,7 +365,6 @@
   markRequired(quickForm.querySelector('.slots').previousElementSibling);
   var quickConsent=quickForm.querySelector('input[type="checkbox"]');
   quickConsent.required=true;quickConsent.setAttribute('aria-required','true');
-  quickForm.prepend(node('p','* 为必填项，时段至少选择一个','required-hint'));
   quickForm.querySelector('label[for="quick-purpose"]').appendChild(node('span','（选填）','optional-mark'));
   // 表单单选使用统一浮层；保留原 select 作为提交数据源。
   var selectStyle=node('style');
@@ -379,6 +373,12 @@
     .service-select-trigger:hover{border-color:var(--brand)}
     .service-select-trigger:focus-visible,.service-select-trigger[aria-expanded="true"]{outline:0;border-color:var(--brand);box-shadow:0 0 0 2px color-mix(in srgb,var(--brand) 20%,transparent)}
     .service-select-trigger:active{background:var(--soft)}
+    #repair{--form-control-height:30px}
+    #repair .form-row input,#repair .form-row select,#repair .service-select-trigger{height:var(--form-control-height)}
+    #repair .form-row:has(.service-select-trigger){padding-bottom:0}
+    #repair .service-select-trigger{border:0;border-radius:0;padding:0;background:transparent}
+    #repair .service-select-trigger[aria-expanded="true"]{box-shadow:none}
+    #repair .service-select-trigger:focus-visible{outline:2px solid var(--brand);outline-offset:-2px;box-shadow:none}
     .service-select-trigger svg{width:16px;height:16px;color:var(--muted);transition:transform .15s}
     .service-select-trigger[aria-expanded="true"] svg{transform:rotate(180deg)}
     .service-select-panel{position:fixed;z-index:1000;box-sizing:border-box;padding:8px;overflow-y:auto;border-radius:8px;background:var(--surface);box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s,transform .2s,visibility .2s}

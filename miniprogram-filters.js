@@ -11,7 +11,7 @@
       var spaces=window.__buildingData[card.dataset.buildingDetail].spaces.filter(function(space){return decoration==='全部装修'||(space[1]+' '+space[2]).includes(decoration)});
       card.hidden=(building!=='全部楼宇'&&card.dataset.buildingDetail!==building)||!spaces.length;
       card.style.display=card.hidden?'none':'';
-      card.querySelector('.building-card-tags span').textContent=spaces.length+' 个示例空间';
+      card.querySelector('.building-card-tags span').textContent=spaces.length+' 个空间';
       return {card:card,price:Math.min.apply(null,spaces.map(function(space){return Number(space[3].slice(1))})),area:Math.max.apply(null,spaces.map(function(space){return Number(space[1].match(/(\d+)㎡/)[1])}))};
     });
     if(sort==='租金最低')cards.sort(function(a,b){return a.price-b.price});

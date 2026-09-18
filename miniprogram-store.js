@@ -22,6 +22,13 @@
   };
   window.MiniStore={
     data:data,
+    displayText:function(record,value){
+      if(!record.sample||typeof value!=='string')return value;
+      return value.replace(/\s*·\s*示例$/,'').replace(/（演示）/g,'').replace(/^示例[：:]/,'').replace(/^演示用户$/,'用户');
+    },
+    displayState:function(record){
+      return record.state==='本机已保存 · 未发送'?'已保存':this.displayText(record,record.state);
+    },
     displayRecords:function(kind){return data[kind].length?data[kind]:(examples[kind]||[])},
     id:function(){return 'DEMO-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)},
     save:function(){

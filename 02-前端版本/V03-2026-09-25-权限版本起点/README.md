@@ -1,19 +1,12 @@
-# 星桥科创园前端预览
+# 星桥科创园前端预览 · v2
 
-> 本工作树专用于 V3，分支为 `codex/v3-preview`。
-> 请先阅读 [项目总体概览](00-总体概览/项目总体概览.md) 和 [每次更新记录](00-总体概览/更新记录.md)。
->
-> 当前静态预览入口：`02-前端版本/V03-2026-09-25-权限版本起点/miniprogram-view-v3.html`。
->
-> 下方为共同基线的历史说明，其中版本、入口和发布信息不表示本工作树当前状态。
+版本日期：2026-09-20
 
-当前小程序版本：**v2.0.0**。
-v1 封存预览：`versions/v1/miniprogram-view.html`。
-版本变更、数据兼容与回退说明见 `VERSIONS.md`。
+本目录是独立版本副本，可直接打开 `miniprogram-view-v3.html` 预览。该版本新增底部“企业服务”入口；根目录原始页面不受影响。
 
 静态前端演示，包含小程序手机壳预览、招商门户和管理端页面。
 
-- 小程序预览：`miniprogram-view.html`
+- 小程序预览：`miniprogram-view-v3.html`
 - 门户入口：`index.html`
 - 招商门户：`customer.html`
 - 管理端演示：`admin.html`
@@ -21,7 +14,7 @@ v1 封存预览：`versions/v1/miniprogram-view.html`。
 ## 本地预览
 
 在仓库目录运行 `python3 -m http.server 4174`，打开
-`http://localhost:4174/miniprogram-view.html`。
+`http://localhost:4174/miniprogram-view-v3.html`。
 
 ## 发布
 

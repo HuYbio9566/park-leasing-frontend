@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded',function(){
   function update(page){
     current=page;
     navTitle.textContent=titles[page]||'首页';
-    navBack.style.display=parents[page]?'flex':'none';
+    navBack.style.display=parents[page]||page==='meeting'?'flex':'none';
     document.querySelector('.tabbar').style.display=parents[page]?'none':'flex';
     document.querySelector('.phone').classList.toggle('subpage',!!parents[page]);
     document.querySelector('.phone').classList.toggle('home-screen',page==='home');

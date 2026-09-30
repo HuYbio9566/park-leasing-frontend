@@ -1,0 +1,37 @@
+const {chromium}=require('C:/Users/sunlei-it/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'),assert=require('assert'),fs=require('fs');
+(async()=>{
+let browser=await chromium.launch({channel:'msedge',headless:true}),context=await browser.newContext({viewport:{width:1440,height:1050}}),p=await context.newPage(),errors=[],checks=[];
+p.setDefaultTimeout(12000);p.on('pageerror',e=>errors.push(e.message));
+let url='file:///'+require('path').resolve(__dirname, '..').replaceAll('\\','/')+'/';
+const check=(name,value)=>{assert(value,name);checks.push(name);console.log('PASS '+name)};
+await p.goto(url+'index.html');await p.evaluate(()=>localStorage.removeItem('park-leasing-v4'));check('统一首页两个角色入口',await p.locator('.entry').count()===2);await p.locator('.gateway-image').evaluate(img=>img.decode());await p.screenshot({path:__dirname+'/entry-desktop.png',animations:'disabled'});
+await p.locator('a[href="customer.html"]').click();check('客户页面不显示后台导航',await p.locator('#nav').count()===0&&!(await p.locator('body').innerText()).includes('佣金管理'));
+check('园区概念图正常加载',await p.locator('.hero-img').evaluate(i=>i.complete&&i.naturalWidth>0));
+await p.screenshot({path:__dirname+'/customer-desktop.png',animations:'disabled',fullPage:true});
+await p.getByRole('link',{name:'找空间',exact:true}).click();check('公开房源展示',await p.locator('.listing').count()===4);
+await p.locator('#search-area').selectOption('small');await p.getByRole('button',{name:'查找空间',exact:true}).click();check('面积筛选',await p.locator('.listing').count()===1);
+await p.getByRole('button',{name:'重置',exact:true}).click();await p.locator('.listing').first().click();let room=await p.evaluate(()=>decodeURIComponent(location.hash.split('/')[1]));
+await p.getByRole('tab',{name:'布局示意'}).click();check('房源布局示意',await p.locator('.floorplan').count()===1);
+await p.getByRole('button',{name:'预约看房 →',exact:true}).click();check('预约先选择客户演示身份',await p.getByRole('dialog').innerText().then(t=>t.includes('选择客户体验账户')));
+await p.locator('[data-id="customer-a"]').click();await p.locator('#need').fill('计划20人研发办公，希望下月入驻');
+await p.locator('.consent input').check();await p.getByRole('button',{name:'提交看房申请',exact:true}).click();
+check('预约提交成功',await p.getByRole('dialog').innerText().then(t=>t.includes('期待与您')));
+await p.getByRole('button',{name:'查看我的申请',exact:true}).click();await p.waitForSelector('.application');check('客户看到自己的申请',await p.locator('.application').count()===1);
+await p.getByRole('button',{name:'切换体验账户',exact:true}).click();await p.locator('[data-id="customer-b"]').click();check('另一演示账户看不到A申请',await p.locator('.application').count()===0);
+await p.getByRole('button',{name:'切换体验账户',exact:true}).click();await p.locator('[data-id="customer-a"]').click();check('切回A保留申请',await p.locator('.application').count()===1);
+const admin=await context.newPage();admin.setDefaultTimeout(12000);admin.on('pageerror',e=>errors.push(e.message));await admin.goto(url+'admin.html');
+check('文件离线打开时双端共享申请',await admin.evaluate(()=>db.leads.some(l=>l.phone==='13910001001')));
+await admin.locator('#nav').getByRole('button',{name:'意向客户',exact:true}).click();await admin.locator('tr').filter({hasText:'澄川科技'}).first().getByRole('button',{name:'转商机',exact:true}).click();
+await admin.locator('.opp').filter({hasText:'澄川科技'}).click();await admin.locator('textarea[name="note"]').fill('内部跟进备注：内部审批预算10000，不向客户展示');await admin.locator('select[name="stage"]').selectOption('实地带看');await admin.getByRole('button',{name:'保存跟进',exact:true}).click();
+await p.bringToFront();await p.reload();check('管理员跟进同步客户阶段',await p.locator('.application-head .status-tag').innerText()==='预约带看');
+check('客户页不暴露内部跟进备注',!(await p.locator('body').innerText()).includes('内部审批预算'));
+await p.screenshot({path:__dirname+'/customer-progress.png',animations:'disabled',fullPage:true});
+await admin.bringToFront();await admin.evaluate(id=>{let r=db.rooms.find(r=>r.id===id);M.hold(db,r.id,'另一个客户','林晓');save();render()},room);
+await p.bringToFront();await p.goto(url+'customer.html#space/'+room);check('房源被预占后预约按钮禁用',await p.locator('button[data-action="apply"]').isDisabled());
+await admin.evaluate(id=>{let a=db.ads.find(a=>a.room===id);a.status='草稿';save()},room);await p.reload();check('下架房源详情失效',await p.locator('main').innerText().then(t=>t.includes('该房源已下架')));
+await p.goto(url+'customer.html#space/NO-ROOM');check('无效房源ID不展示资源',await p.locator('main').innerText().then(t=>t.includes('该房源已下架')));
+await p.goto(url+'customer.html#home');await p.setViewportSize({width:390,height:844});await p.screenshot({path:__dirname+'/customer-mobile.png',animations:'disabled'});check('客户手机布局无横向溢出',await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+await p.goto(url+'index.html');await p.screenshot({path:__dirname+'/entry-mobile.png',animations:'disabled'});check('入口手机布局无横向溢出',await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+await admin.bringToFront();await admin.getByRole('link',{name:'切换入口 ↗',exact:true}).click();check('后台可返回统一入口',await admin.locator('.entry').count()===2);
+check('浏览器无脚本错误',errors.length===0);fs.writeFileSync(__dirname+'/dual-portal-test-report.json',JSON.stringify({passed:checks.length,checks,errors},null,2));console.log(JSON.stringify({passed:checks.length,errors}));await browser.close()
+})().catch(e=>{console.error(e);process.exit(1)});

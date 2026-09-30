@@ -1,0 +1,18 @@
+{
+  "description": "星桥科创园招商与会议预约小程序前端原型",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "compileHotReLoad": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "trial",
+  "appid": "touristappid",
+  "projectname": "starbridge-park-mini",
+  "miniprogramRoot": "miniprogram/"
+}

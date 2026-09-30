@@ -1,0 +1,9 @@
+<view class="page detail-page" wx:if="{{space}}">
+  <image class="detail-image" src="{{space.image}}" mode="aspectFill"/>
+  <view class="detail-head"><view><text class="pill">在租 · 可预约</text><text class="detail-title">{{space.building}} · {{space.area}}㎡ {{space.type}}</text><text class="muted">{{space.id}} · {{space.floor}} · {{space.finish}}</text></view><view class="price"><text>¥{{space.price}}</text><text>/㎡/月起</text></view></view>
+  <view class="facts card"><view><text>{{space.area}}㎡</text><text>建筑面积</text></view><view><text>{{space.floor}}</text><text>所在楼层</text></view><view><text>{{space.finish}}</text><text>装修状态</text></view></view>
+  <view class="detail-block"><text class="eyebrow">ABOUT THE SPACE</text><text class="block-title">适合团队当下，也为成长预留余地</text><text class="body">{{space.note}} 预约到访后，由招商顾问介绍具体交付条件及租赁方案。</text></view>
+  <view class="amenities"><text>独立办公</text><text>灵活分区</text><text>共享会议</text><text>园区配套</text></view>
+  <view class="bottom-action safe-bottom"><button class="primary" bindtap="showForm">预约看房 →</button></view>
+  <view wx:if="{{showForm}}" class="modal-mask"><view class="modal card"><view class="modal-head"><text>预约看房</text><button bindtap="hideForm" aria-label="关闭预约表单">×</button></view><text class="modal-space">{{space.id}} · {{space.area}}㎡ {{space.type}}</text><input placeholder="联系人姓名" data-key="name" bindinput="input"/><input type="number" maxlength="11" placeholder="手机号" data-key="phone" bindinput="input"/><picker mode="date" value="{{form.date}}" start="2026-09-15" bindchange="dateChange"><view class="picker-field">到访日期：{{form.date}}⌄</view></picker><textarea placeholder="团队人数、预计入驻时间等" data-key="need" bindinput="input"></textarea><button class="primary" bindtap="submit">提交看房申请</button></view></view>
+</view>

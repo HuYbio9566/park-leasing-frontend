@@ -1,0 +1,27 @@
+<view class="page meeting-page">
+  <block wx:if="{{!detailId && !booking}}">
+    <view class="meeting-filters card"><picker mode="selector" range="{{areas}}" value="{{areas.indexOf(filters.area)}}" data-key="area" bindchange="pickerChange"><view class="filter-select"><text>{{filters.area === '全部' ? '全部区域' : filters.area}}</text><text class="select-arrow">⌄</text></view></picker><picker mode="selector" range="{{capacities}}" value="{{capacities.indexOf(filters.capacity)}}" data-key="capacity" bindchange="pickerChange"><view class="filter-select"><text>{{filters.capacity === '全部' ? '全部人数' : filters.capacity}}</text><text class="select-arrow">⌄</text></view></picker><picker mode="selector" range="{{types}}" value="{{types.indexOf(filters.type)}}" data-key="type" bindchange="pickerChange"><view class="filter-select"><text>{{filters.type === '全部' ? '全部类型' : filters.type}}</text><text class="select-arrow">⌄</text></view></picker></view>
+    <view class="result-head"><text>会议室</text><text class="muted">{{filteredMeetings.length}} 间可预约</text></view>
+    <button wx:for="{{filteredMeetings}}" wx:key="id" class="meeting-list-card card" data-id="{{item.id}}" bindtap="openDetail"><image src="{{item.image}}" mode="aspectFill"/><view class="meeting-list-copy"><view class="meeting-name"><text>{{item.name}}</text><text class="arrow">›</text></view><text class="room-meta">{{item.location}} · {{item.capacity}} · {{item.type}}</text><text class="room-facilities">{{item.facilities}}</text><view class="list-price"><text>¥{{item.price}}</text><text>/小时起</text></view></view></button>
+    <view wx:if="{{!filteredMeetings.length}}" class="empty card">暂无符合条件的会议室</view>
+  </block>
+  <block wx:if="{{detailId}}">
+    <view class="detail-head"><button class="back" bindtap="closeDetail">‹</button><text>会议室详情</text></view>
+    <view wx:for="{{meetings}}" wx:key="id" wx:if="{{item.id===detailId}}" class="detail-wrap">
+      <image class="detail-image" src="{{item.image}}" mode="aspectFill"/><scroll-view class="detail-gallery" scroll-x="true" show-scrollbar="{{false}}"><image wx:for="{{item.gallery}}" wx:key="*this" src="{{item}}" mode="aspectFill"/></scroll-view><view class="detail-title"><text>{{item.name}}</text><text class="room-meta">{{item.location}} · {{item.capacity}} · {{item.type}}</text></view>
+      <view class="detail-price"><text>¥{{item.price}}</text><text>/小时起</text></view>
+      <view class="detail-section"><text class="detail-label">空间介绍</text><text class="detail-note">{{item.note}}</text></view>
+      <view class="detail-section"><text class="detail-label">空间设施</text><text class="detail-note">{{item.facilities}}</text></view>
+      <button class="primary reserve-detail" data-id="{{item.id}}" bindtap="reserveRoom">预约会议室</button>
+    </view>
+  </block>
+  <block wx:if="{{booking}}">
+    <view class="detail-head"><button class="back" bindtap="closeBooking">‹</button><text>预约会议室</text></view>
+    <view class="date-head"><text>选择日期</text><text class="muted">2026年9月</text></view>
+    <view class="dates"><button wx:for="{{dates}}" wx:key="value" class="date {{dateIndex===index?'selected':''}}" data-index="{{index}}" bindtap="datePick"><text>{{item.label}}</text><text>{{item.day}}</text></button></view>
+    <view class="slot-head"><text>选择时段</text><view><text><view class="dot available"></view>可选</text><text><view class="dot booked"></view>已订</text></view></view>
+    <view class="slots"><button wx:for="{{slots}}" wx:key="time" class="slot {{item.status}} {{selected===item.time?'selected':''}}" data-time="{{item.time}}" data-status="{{item.status}}" bindtap="slotPick" disabled="{{item.status==='booked'}}"><text>{{item.time}}</text><text>{{item.status==='booked'?'已预订':selected===item.time?'已选择':'可预约'}}</text></button></view>
+    <view class="fee-note"><text>本次预计</text><text>{{selected ? '1 小时 · 使用免费配额' : '选择时段后计算'}}</text></view><button class="primary reserve" bindtap="reserve">{{selected ? '预约 '+selected : '请选择会议时段'}}</button>
+  </block>
+  <view wx:if="{{showForm}}" class="modal-mask"><view class="modal card"><view class="modal-head"><text>确认会议预约</text><button bindtap="hideForm" aria-label="关闭确认表单">×</button></view><view class="summary"><text>{{meetings[roomIndex].name}}</text><text>{{dates[dateIndex].value}} · {{selected}}</text><text>使用免费配额，本次应付 ¥0</text></view><input placeholder="请输入会议名称" value="{{title}}" bindinput="titleInput"/><text class="policy">如实际使用超出预约时长，将按规则多退少补。</text><button class="primary" bindtap="confirm">确认预约</button></view></view>
+</view>

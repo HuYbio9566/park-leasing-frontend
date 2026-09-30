@@ -1,34 +1,19 @@
-# Publish only the static frontend and its required assets.
-/*
-!/.gitignore
-!/.nojekyll
-!/README.md
-!/VERSIONS.md
-!/versions/
-!/*.html
-!/*.css
-!/*.js
-!/campus-hero.png
-!/vendor/
-!/miniprogram/
-/miniprogram/*
-!/miniprogram/assets/
+# 公开仓库只放「代码/」里的前端预览；资料/ 仅本地保存，不上传
+资料/
 
-# V03 visitor reservation frontend and its local verification files.
-!/02-前端版本/
-/02-前端版本/*
-!/02-前端版本/V03-2026-09-25-权限版本起点/
-/02-前端版本/V03-2026-09-25-权限版本起点/*
-!/02-前端版本/V03-2026-09-25-权限版本起点/miniprogram-visitor.js
-!/02-前端版本/V03-2026-09-25-权限版本起点/miniprogram-visitor.css
-!/02-前端版本/V03-2026-09-25-权限版本起点/vendor/
-/02-前端版本/V03-2026-09-25-权限版本起点/vendor/*
-!/02-前端版本/V03-2026-09-25-权限版本起点/vendor/qrcode-generator.js
-!/02-前端版本/V03-2026-09-25-权限版本起点/vendor/QRCODE-SOURCE.md
-!/04-程序文件/
-/04-程序文件/*
-!/04-程序文件/tests/
-/04-程序文件/tests/*
-!/04-程序文件/tests/visitor-reservation.cjs
-!/04-程序文件/tests/README.md
+# 依赖与自动生成的文件（可重新安装/生成，勿提交）
+node_modules/
+代码/miniprogram/miniprogram_npm/
+*.log
+
+# 交接包、压缩包不入库
+*.zip
+
+# 密钥
+.env
+.env.*
+
+# 系统与编辑器
 .DS_Store
+.obsidian/
+.server.pid

@@ -1,0 +1,16 @@
+page { --td-brand-color: #245c4a; --td-brand-color-active: #1d4c3d; --td-brand-color-light: #e8f0ec; --td-radius-default: 16rpx; background: #f6f7f2; color: #1c2b25; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+view, text, button, input, textarea, picker { box-sizing: border-box; }
+button { margin: 0; padding: 0; border: 0; background: transparent; line-height: 1.4; }
+button::after { border: 0; }
+.page { min-height: 100vh; padding: 0 32rpx 160rpx; }
+.eyebrow { color: #b36c35; font-size: 20rpx; font-weight: 700; letter-spacing: 4rpx; }
+.muted { color: #78867c; }
+.section-title { display: flex; align-items: flex-end; justify-content: space-between; margin: 52rpx 0 24rpx; }
+.section-heading { display: block; margin: 8rpx 0 0; font-size: 40rpx; font-weight: 600; letter-spacing: 1rpx; }
+.link { color: #245c4a; font-size: 24rpx; }
+.primary { display: flex; align-items: center; justify-content: center; min-height: 92rpx; padding: 0 32rpx; border-radius: 18rpx; background: #245c4a; color: #fffdf8; font-size: 28rpx; font-weight: 600; }
+.secondary { display: flex; align-items: center; justify-content: center; min-height: 84rpx; padding: 0 28rpx; border: 1rpx solid #d7ded4; border-radius: 16rpx; color: #245c4a; font-size: 26rpx; background: #fffdf8; }
+.card { border-radius: 24rpx; background: #fffdf8; box-shadow: 0 12rpx 34rpx rgba(35, 67, 53, .07); }
+.pill { display: inline-flex; padding: 8rpx 14rpx; border-radius: 999rpx; background: #e9f1e7; color: #245c4a; font-size: 20rpx; }
+.pill.orange { background: #f8eadc; color: #a25f2f; }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }

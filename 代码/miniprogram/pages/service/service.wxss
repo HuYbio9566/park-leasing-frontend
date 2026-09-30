@@ -1,0 +1,16 @@
+.service-page { padding-top: 28rpx; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20rpx; }
+.summary-card { padding: 28rpx; border-radius: 24rpx; background: #fffdf8; box-shadow: 0 12rpx 34rpx rgba(35,67,53,.07); }
+.summary-card text { display: block; color: #78867c; font-size: 22rpx; }
+.summary-card text:first-child { margin-bottom: 8rpx; color: #1c2b25; font-size: 44rpx; font-weight: 700; }
+.group-title { display: block; margin: 40rpx 0 18rpx; font-size: 28rpx; font-weight: 600; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 18rpx 0 24rpx; }
+.section-head text:first-child { font-size: 40rpx; font-weight: 700; }
+.section-head text:last-child { color: #78867c; font-size: 22rpx; }
+.menu-card { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20rpx; padding: 28rpx; }
+.item-title, .item-detail, .menu-price { display: block; }
+.item-title { font-size: 30rpx; font-weight: 600; }
+.item-detail { margin-top: 10rpx; color: #78867c; font-size: 22rpx; }
+.menu-price { margin-top: 18rpx; color: #a95f2f; font-size: 30rpx; font-weight: 700; }
+.form-card { margin-bottom: 28rpx; overflow: hidden; }
+.agreement { margin: 24rpx 0; }

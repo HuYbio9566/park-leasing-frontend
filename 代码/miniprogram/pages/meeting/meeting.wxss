@@ -1,0 +1,93 @@
+.page-intro { padding: 34rpx 0 28rpx; }
+.page-title { display: block; margin-top: 14rpx; font-family: "STSong", serif; font-size: 48rpx; line-height: 1.35; }
+.intro-sub { display: block; margin-top: 13rpx; color: #78867c; font-size: 23rpx; }
+.filters { padding: 10rpx 24rpx; }
+.meeting-filters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12rpx; margin: 0; padding: 12rpx; }
+.meeting-filters { box-sizing: border-box; height: 96rpx; }
+.filter-select { height: 72rpx; }
+.meeting-page { padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important; }
+.meeting-page > block > .result-head, .meeting-page > block > .meeting-list-card, .meeting-page > block > .empty { margin-left: 32rpx; margin-right: 32rpx; }
+.filter-select { position: relative; display: flex; align-items: center; justify-content: center; height: 72rpx; padding: 0 14rpx; border: 0; border-radius: 16rpx; color: #26372f; background: #f1f4f0; font-size: 20rpx; }
+.filter-select { border: 0; }
+.filter-select { font-size: 0; gap: 4rpx; justify-content: center; }
+.meeting-filters > picker .filter-select::before { display: none; }
+.filter-select text:nth-child(2) { margin-left: 8rpx; color: #26372f; font-size: 21rpx; }
+.filter-select text:first-of-type { margin-left: 0; color: #26372f; font-size: 21rpx; }
+.select-arrow { width: 0; height: 0; margin-left: 10rpx !important; border-left: 7rpx solid transparent; border-right: 7rpx solid transparent; border-top: 8rpx solid #69766f; color: transparent !important; font-size: 0 !important; }
+.filter-row { display: grid; grid-template-columns: 72rpx 1fr; align-items: center; min-height: 86rpx; border-bottom: 1rpx solid #e3e7df; font-size: 23rpx; font-weight: 600; }
+.filter-row:last-child { border-bottom: 0; }
+.filter-row scroll-view { min-width: 0; white-space: nowrap; }
+.chips { display: inline-flex; gap: 12rpx; padding: 8rpx 0; }
+.chip { min-width: auto; height: 54rpx; padding: 0 20rpx; border: 1rpx solid #d9dfd6; border-radius: 12rpx; background: #fff; color: #6d7a70; font-size: 21rpx; line-height: 52rpx; }
+.chip.active { border-color: #245c4a; background: #e5eee4; color: #245c4a; }
+.result-head { display: flex; align-items: center; justify-content: space-between; margin: 36rpx 0 18rpx; font-size: 29rpx; font-weight: 600; }
+.result-head .muted { color: #78867c; font-size: 21rpx; font-weight: 400; }
+.meeting-list-card { display: grid; grid-template-columns: 256rpx 1fr; width: 100%; height: 256rpx; margin-bottom: 20rpx; padding: 0; overflow: hidden; text-align: left; }
+.meeting-list-card image { width: 256rpx; height: 256rpx; }
+.meeting-list-copy { min-width: 0; padding: 24rpx 24rpx 20rpx; }
+.meeting-name { display: flex; justify-content: space-between; font-size: 29rpx; font-weight: 600; }
+.meeting-name .arrow { display: none; }
+.arrow { color: #8a948c; font-size: 38rpx; font-weight: 400; line-height: .8; }
+.room-facilities { display: block; margin-top: 18rpx; overflow: hidden; color: #78867c; font-size: 20rpx; text-overflow: ellipsis; white-space: nowrap; }
+.list-price { margin-top: 24rpx; color: #a95f2f; }
+.list-price text:first-child { font-size: 30rpx; font-weight: 700; }
+.list-price text:last-child { margin-left: 5rpx; font-size: 19rpx; }
+.empty { padding: 70rpx 20rpx; color: #89948c; text-align: center; font-size: 23rpx; }
+.detail-head { display: flex; align-items: center; gap: 18rpx; padding: 24rpx 0; font-size: 31rpx; font-weight: 600; }
+.back { width: 58rpx; height: 58rpx; padding: 0; border-radius: 50%; background: #fff; color: #26372f; font-size: 45rpx; line-height: 52rpx; }
+.detail-wrap { padding-bottom: 126rpx; }
+.detail-image { width: 100%; height: 430rpx; border-radius: 20rpx; }
+.detail-gallery { display: flex; margin-top: 16rpx; white-space: nowrap; }
+.detail-gallery image { display: inline-block; width: 150rpx; height: 100rpx; margin-right: 12rpx; border-radius: 12rpx; }
+.detail-title { margin-top: 28rpx; }
+.detail-title > text:first-child { display: block; font-size: 39rpx; font-weight: 650; }
+.detail-price { margin-top: 22rpx; color: #a95f2f; }
+.detail-price text:first-child { font-size: 38rpx; font-weight: 700; }
+.detail-price text:last-child { margin-left: 7rpx; font-size: 21rpx; }
+.detail-section { margin-top: 34rpx; padding-top: 28rpx; border-top: 1rpx solid #dce2d9; }
+.detail-label { display: block; margin-bottom: 14rpx; font-size: 28rpx; font-weight: 600; }
+.detail-note { color: #66756b; font-size: 23rpx; line-height: 1.8; }
+.reserve-detail { position: fixed; z-index: 8; right: 32rpx; bottom: calc(30rpx + env(safe-area-inset-bottom)); left: 32rpx; }
+.room-card { display: grid; grid-template-columns: 210rpx 1fr; gap: 22rpx; overflow: hidden; }
+.room-card image { width: 210rpx; height: 240rpx; }
+.room-card > view { padding: 26rpx 24rpx 20rpx 0; }
+.room-line { display: flex; align-items: center; justify-content: space-between; font-size: 30rpx; font-weight: 600; }
+.change { color: #245c4a; font-size: 20rpx; font-weight: 500; }
+.room-meta { display: block; margin-top: 10rpx; color: #78867c; font-size: 21rpx; }
+.quota { margin-top: 30rpx; padding-top: 17rpx; border-top: 1rpx solid #e3e7df; }
+.quota text { display: block; color: #245c4a; font-size: 22rpx; }
+.quota text:last-child { margin-top: 5rpx; color: #8a948c; font-size: 18rpx; }
+.date-head, .slot-head { display: flex; justify-content: space-between; align-items: center; margin: 38rpx 0 18rpx; font-size: 27rpx; font-weight: 600; }
+.date-head .muted { font-size: 21rpx; font-weight: 400; }
+.dates { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10rpx; }
+.date { min-height: 112rpx; border: 1rpx solid #d9dfd6; border-radius: 17rpx; color: #6d7a70; background: #fffdf8; }
+.date text { display: block; font-size: 20rpx; }
+.date text:last-child { margin-top: 6rpx; font-size: 29rpx; font-weight: 600; }
+.date.selected { border-color: #245c4a; background: #245c4a; color: #fff; }
+.slot-head > view { display: flex; gap: 18rpx; color: #78867c; font-size: 18rpx; font-weight: 400; }
+.dot { display: inline-block; width: 12rpx; height: 12rpx; margin-right: 7rpx; border-radius: 50%; }
+.dot.available { background: #638a76; }
+.dot.booked { background: #bec5bd; }
+.slots { display: grid; grid-template-columns: 1fr 1fr; gap: 14rpx; }
+.slot { min-height: 102rpx; padding: 15rpx 20rpx; border: 1rpx solid #d9dfd6; border-radius: 17rpx; background: #fffdf8; text-align: left; }
+.slot text { display: block; font-size: 23rpx; font-weight: 600; }
+.slot text:last-child { margin-top: 5rpx; color: #859087; font-size: 18rpx; font-weight: 400; }
+.slot.booked { background: #ecefeb; color: #a4ada5; }
+.slot.selected { border-color: #245c4a; background: #e5eee4; color: #245c4a; }
+.fee-note { display: flex; justify-content: space-between; margin: 28rpx 0 18rpx; padding: 22rpx 0; border-top: 1rpx solid #dce2d9; color: #78867c; font-size: 21rpx; }
+.fee-note text:last-child { color: #245c4a; }
+.reserve { width: 100%; }
+.modal-mask { position: fixed; z-index: 20; inset: 0; display: flex; align-items: flex-end; background: rgba(20,40,30,.48); }
+.modal { width: 100%; padding: 30rpx 32rpx calc(36rpx + env(safe-area-inset-bottom)); border-radius: 28rpx 28rpx 0 0; }
+.modal-head { display: flex; align-items: center; justify-content: space-between; font-size: 34rpx; font-weight: 600; }
+.modal-head button { width: 56rpx; height: 56rpx; color: #78867c; font-size: 42rpx; }
+.summary { margin: 22rpx 0; padding: 24rpx; border-radius: 16rpx; background: #edf2e9; }
+.summary text { display: block; margin-top: 8rpx; color: #65746a; font-size: 22rpx; }
+.summary text:first-child { margin: 0; color: #1c2b25; font-size: 28rpx; font-weight: 600; }
+.modal input { width: 100%; padding: 24rpx; border: 1rpx solid #d7ded4; border-radius: 14rpx; background: #fafbf8; font-size: 25rpx; }
+.policy { display: block; margin: 18rpx 0 25rpx; color: #849086; font-size: 20rpx; line-height: 1.7; }
+.meeting-name { justify-content: flex-start; }
+.arrow { display: none; }
+.room-meta { margin-top: 4rpx; }
+.room-facilities { margin-top: 4rpx; }
+.list-price { margin-top: 4rpx; }

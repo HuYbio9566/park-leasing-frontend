@@ -1,0 +1,37 @@
+<view class="home">
+  <view class="hero">
+    <swiper class="hero-swiper" current="{{heroIndex}}" autoplay="true" circular="true" interval="5000" duration="450" bindchange="heroChange">
+      <swiper-item wx:for="{{heroSlides}}" wx:key="title">
+        <image class="hero-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="hero-shade"></view>
+        <view class="hero-copy">
+          <text class="hero-title">{{item.title}}</text>
+          <text class="hero-sub">{{item.subtitle}}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="nav-safe">
+      <view class="brand"><view class="brand-mark">360</view><view><text>星桥科创园</text><text class="brand-en">STARBRIDGE PARK</text></view></view>
+      <button class="notice" data-type="notices" bindtap="openService" aria-label="消息通知"><image src="/assets/icons/notices.svg" mode="aspectFit"/><view class="notice-dot"></view></button>
+    </view>
+    <view class="hero-dots"><view wx:for="{{heroSlides}}" wx:key="title" class="hero-dot {{heroIndex===index?'active':''}}"></view></view>
+    <view class="hero-facts"><view wx:for="{{heroSlides[heroIndex].facts}}" wx:key="label"><text>{{item.value}}</text><text>{{item.label}}</text></view></view>
+  </view>
+
+  <view class="page content">
+    <view class="section-title service-heading"><text class="section-heading">快捷服务</text></view>
+    <t-grid column="4" align="center" t-class="service-grid">
+      <t-grid-item wx:for="{{services}}" wx:key="key" image="{{item.icon}}" text="{{item.name}}" data-type="{{item.key}}" bindtap="openService" t-class-image="service-icon" />
+    </t-grid>
+
+    <view class="section-title"><text class="section-heading">优选空间</text><t-button theme="default" variant="text" size="small" bindtap="goSpaces">查看全部</t-button></view>
+    <scroll-view class="space-scroll" scroll-x="true" enhanced="true" show-scrollbar="{{false}}">
+      <view class="space-row">
+        <button wx:for="{{featured}}" wx:key="id" class="space-card card" data-id="{{item.id}}" bindtap="openSpace">
+          <view class="image-wrap"><image src="{{item.image}}" mode="aspectFill" /><text class="pill">可预约</text></view>
+          <view class="space-copy"><text class="space-name">{{item.building}} · {{item.area}}㎡ {{item.type}}</text><text class="space-meta">{{item.floor}} · {{item.finish}}</text><view class="space-price"><text>¥{{item.price}}</text><text>/㎡/月起</text></view></view>
+        </button>
+      </view>
+    </scroll-view>
+  </view>
+</view>

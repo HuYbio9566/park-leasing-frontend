@@ -91,3 +91,10 @@
 - 查看 v1：打开 `versions/v1/miniprogram-view.html`。
 - 查看 v2：打开根目录 `miniprogram-view.html`。
 - 若需要正式回退，先保存 v2，再将 v1 的 HTML 及三个业务脚本复制回根目录，并更新本记录。回退须独立确认，不覆盖用户后续修改。
+
+## 版本目录位置（2026-09-30 整理）
+
+- v1：`versions/v1/miniprogram-view.html`
+- v2（2026-09-20 企业服务入口）：`versions/v2/miniprogram-view-v2.html`
+- v3（2026-09-25 权限版本起点，含访客预约）：`versions/v3/miniprogram-view-v3.html`
+- 当前线上：根目录 `miniprogram-view.html`

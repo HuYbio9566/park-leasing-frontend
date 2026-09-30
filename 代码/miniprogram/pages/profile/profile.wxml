@@ -1,0 +1,9 @@
+<view class="page profile-page">
+  <view class="profile-head"><view class="avatar">访</view><view><text class="profile-name">访客用户</text><text class="profile-note">登录后可同步预约与园区服务</text></view><button>登录 / 授权 ›</button></view>
+  <view class="summary card"><view><text>{{applications.length}}</text><text>看房申请</text></view><view><text>{{meetings.length}}</text><text>会议预约</text></view><view><text>0</text><text>待办事项</text></view></view>
+  <view class="section-title"><view><text class="eyebrow">MY REQUESTS</text><text class="section-heading">我的预约</text></view></view>
+  <view wx:for="{{applications}}" wx:key="index" class="request card"><view class="request-head"><text>{{item.room}} · 看房申请</text><text class="pill">{{item.status}}</text></view><text class="request-time">期望到访 {{item.date}}</text><view class="steps"><view class="done"></view><view></view><view></view></view><text class="muted">申请已提交，招商顾问将与您联系确认到访安排。</text></view>
+  <view wx:for="{{meetings}}" wx:key="index" class="request card"><view class="request-head"><text>{{item.room}} · {{item.title}}</text><text class="pill orange">{{item.status}}</text></view><text class="request-time">{{item.date}} · {{item.time}}</text><view class="fee-row"><text>预约费用</text><text>¥{{item.fee}}</text></view></view>
+  <view wx:if="{{!applications.length && !meetings.length}}" class="empty card"><view class="empty-mark">◇</view><text>还没有预约记录</text><text class="muted">找到喜欢的空间，或预订一间会议室。</text><view class="empty-actions"><button class="primary" bindtap="goSpaces">去找空间</button><button class="secondary" bindtap="goMeeting">订会议室</button></view></view>
+  <view class="service-list card"><button bindtap="call"><text>招商与园区咨询</text><text>›</text></button><button><text>使用帮助</text><text>›</text></button><button><text>隐私与授权</text><text>›</text></button></view>
+</view>

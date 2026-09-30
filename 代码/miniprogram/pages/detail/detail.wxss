@@ -1,0 +1,26 @@
+.detail-image { width: 100%; height: 420rpx; }
+.detail-head { display: flex; justify-content: space-between; gap: 20rpx; padding: 30rpx 0 24rpx; }
+.detail-title { display: block; margin: 15rpx 0 10rpx; font-size: 38rpx; font-weight: 600; line-height: 1.35; }
+.price { flex: none; align-self: flex-end; color: #b36c35; text-align: right; }
+.price text:first-child { font-size: 38rpx; font-weight: 700; }
+.price text:last-child { display: block; color: #78867c; font-size: 18rpx; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); padding: 24rpx 0; }
+.facts view { padding-left: 25rpx; border-left: 1rpx solid #e4e8e1; }
+.facts view:first-child { border: 0; }
+.facts text { display: block; }
+.facts text:first-child { margin-bottom: 7rpx; font-size: 28rpx; font-weight: 600; }
+.facts text:last-child { color: #78867c; font-size: 19rpx; }
+.detail-block { padding: 48rpx 0 26rpx; }
+.block-title { display: block; margin-top: 14rpx; font-family: "STSong", serif; font-size: 34rpx; }
+.body { display: block; margin-top: 18rpx; color: #65746a; font-size: 24rpx; line-height: 1.9; }
+.amenities { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24rpx; margin-bottom: 130rpx; }
+.amenities text { padding: 20rpx 0; border-bottom: 1rpx solid #dfe6dc; color: #53645a; font-size: 24rpx; }
+.bottom-action { position: fixed; z-index: 5; left: 0; right: 0; bottom: 0; padding: 18rpx 32rpx calc(18rpx + env(safe-area-inset-bottom)); background: rgba(246,247,242,.92); backdrop-filter: blur(12rpx); }
+.modal-mask { position: fixed; z-index: 20; inset: 0; display: flex; align-items: flex-end; background: rgba(20,40,30,.48); }
+.modal { width: 100%; padding: 30rpx 32rpx calc(36rpx + env(safe-area-inset-bottom)); border-radius: 28rpx 28rpx 0 0; }
+.modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10rpx; font-size: 34rpx; font-weight: 600; }
+.modal-head button { width: 56rpx; height: 56rpx; font-size: 42rpx; color: #78867c; }
+.modal-space { display: block; margin-bottom: 22rpx; color: #78867c; font-size: 22rpx; }
+.modal input, .modal textarea, .picker-field { width: 100%; margin-top: 16rpx; padding: 23rpx; border: 1rpx solid #d7ded4; border-radius: 14rpx; background: #fafbf8; font-size: 25rpx; }
+.modal textarea { height: 140rpx; }
+.modal .primary { margin-top: 24rpx; }

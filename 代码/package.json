@@ -1,0 +1,9 @@
+{
+  "name": "starbridge-park-mini",
+  "version": "2.0.0",
+  "private": true,
+  "dependencies": {
+    "lucide-static": "^0.468.0",
+    "tdesign-miniprogram": "^1.9.7"
+  }
+}

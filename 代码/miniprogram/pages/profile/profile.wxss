@@ -1,0 +1,28 @@
+.profile-head { display: grid; grid-template-columns: 94rpx 1fr auto; align-items: center; gap: 18rpx; padding: 48rpx 0 28rpx; }
+.avatar { display: grid; place-items: center; width: 94rpx; height: 94rpx; border-radius: 50%; background: #245c4a; color: #fff; font-family: "STSong", serif; font-size: 35rpx; }
+.profile-name, .profile-note { display: block; }
+.profile-name { font-size: 31rpx; font-weight: 600; }
+.profile-note { margin-top: 6rpx; color: #78867c; font-size: 19rpx; }
+.profile-head button { min-height: 72rpx; color: #245c4a; font-size: 22rpx; }
+.summary { display: grid; grid-template-columns: repeat(3, 1fr); padding: 26rpx 0; }
+.summary view { border-left: 1rpx solid #e3e7df; text-align: center; }
+.summary view:first-child { border: 0; }
+.summary text { display: block; color: #78867c; font-size: 19rpx; }
+.summary text:first-child { margin-bottom: 5rpx; color: #1c2b25; font-size: 34rpx; font-weight: 650; }
+.request { margin-bottom: 18rpx; padding: 26rpx; }
+.request-head { display: flex; align-items: center; justify-content: space-between; gap: 18rpx; font-size: 27rpx; font-weight: 600; }
+.request-time { display: block; margin: 14rpx 0; color: #68786d; font-size: 22rpx; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8rpx; margin: 22rpx 0 18rpx; }
+.steps view { height: 6rpx; border-radius: 4rpx; background: #dce2d9; }
+.steps .done { background: #245c4a; }
+.request .muted { font-size: 21rpx; line-height: 1.6; }
+.fee-row { display: flex; justify-content: space-between; padding-top: 16rpx; border-top: 1rpx solid #e3e7df; color: #78867c; font-size: 22rpx; }
+.fee-row text:last-child { color: #245c4a; font-weight: 600; }
+.empty { padding: 55rpx 30rpx; text-align: center; }
+.empty-mark { display: grid; place-items: center; width: 80rpx; height: 80rpx; margin: auto; border-radius: 50%; background: #edf2e9; color: #245c4a; font-size: 34rpx; }
+.empty > text { display: block; margin-top: 18rpx; font-size: 28rpx; }
+.empty > .muted { margin-top: 8rpx; font-size: 21rpx; }
+.empty-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14rpx; margin-top: 28rpx; }
+.service-list { margin-top: 26rpx; padding: 0 24rpx; }
+.service-list button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 96rpx; border-bottom: 1rpx solid #e3e7df; color: #3c4c42; font-size: 24rpx; text-align: left; }
+.service-list button:last-child { border: 0; }

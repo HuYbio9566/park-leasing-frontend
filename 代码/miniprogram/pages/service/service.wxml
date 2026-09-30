@@ -1,0 +1,34 @@
+<view class="page service-page">
+  <block wx:if="{{type === 'vehicle'}}">
+    <view class="summary-grid"><view class="summary-card"><text>1</text><text>已绑定车辆</text></view><view class="summary-card"><text>0</text><text>待缴停车费</text></view></view>
+    <text class="group-title">我的车辆</text>
+    <t-cell-group theme="card"><t-cell title="沪A · 8X6Q2" description="月租车 · 有效期至 2026-10-31" arrow /></t-cell-group>
+    <text class="group-title">快捷服务</text>
+    <t-cell-group theme="card"><t-cell title="停车缴费" arrow/><t-cell title="出入记录" arrow/></t-cell-group>
+  </block>
+
+  <block wx:elif="{{type === 'restaurant'}}">
+    <view class="section-head"><text>今日菜单</text><text>午餐 11:00–13:30</text></view>
+    <view wx:for="{{menus}}" wx:key="name" class="menu-card card"><view><text class="item-title">{{item.name}}</text><text class="item-detail">{{item.detail}}</text><text class="menu-price">¥{{item.price}}</text></view><t-button size="small" theme="primary" data-name="{{item.name}}" bindtap="reserveMeal">预订</t-button></view>
+  </block>
+
+  <block wx:elif="{{type === 'repair'}}">
+    <view class="form-card card"><t-input label="报修位置" placeholder="请输入楼宇及房间号"/><t-input label="问题类型" placeholder="如水电、空调、门禁"/><t-textarea label="问题描述" placeholder="请描述需要维修的问题" maxlength="300" indicator/></view>
+    <t-button block theme="primary" size="large" bindtap="submit">提交工单</t-button>
+  </block>
+
+  <block wx:elif="{{type === 'visitor'}}">
+    <view class="form-card card"><t-input label="访客姓名" placeholder="请输入姓名"/><t-input label="手机号码" type="number" maxlength="11" placeholder="请输入手机号"/><t-input label="到访企业" placeholder="请输入企业名称或房间号"/><t-input label="到访时间" placeholder="请选择到访日期和时间"/></view>
+    <view class="agreement"><t-checkbox checked="{{agreed}}" bindchange="agreementChange">我已阅读并同意《访客入园免责协议》</t-checkbox></view>
+    <t-button block theme="primary" size="large" bindtap="submit">提交访客申请</t-button>
+  </block>
+
+  <block wx:elif="{{type === 'notices'}}">
+    <t-cell-group theme="card"><t-cell wx:for="{{notices}}" wx:key="title" title="{{item.title}}" description="{{item.date}} · {{item.detail}}" arrow/></t-cell-group>
+  </block>
+
+  <block wx:elif="{{type === 'feedback'}}">
+    <view class="form-card card"><t-input label="反馈类型" placeholder="投诉、建议或设施问题"/><t-textarea label="反馈内容" placeholder="请填写具体情况" maxlength="500" indicator/><t-input label="联系电话" type="number" maxlength="11" placeholder="便于我们联系处理"/></view>
+    <t-button block theme="primary" size="large" bindtap="submit">提交反馈</t-button>
+  </block>
+</view>

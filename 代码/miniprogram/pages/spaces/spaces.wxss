@@ -1,0 +1,20 @@
+.page-intro { padding: 34rpx 0 28rpx; }
+.page-title { display: block; margin-top: 14rpx; font-family: "STSong", serif; font-size: 50rpx; }
+.intro-sub { display: block; margin-top: 13rpx; color: #78867c; font-size: 23rpx; }
+.meeting-filters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12rpx; box-sizing: border-box; height: 96rpx; margin: 0 -32rpx; padding: 12rpx 16rpx; }
+.space-filters { margin-top: 0; }
+.filter-select { position: relative; display: flex; align-items: center; justify-content: center; height: 72rpx; padding: 0 14rpx; border-radius: 16rpx; background: #f1f4f0; color: #26372f; font-size: 21rpx; gap: 4rpx; }
+.select-arrow { width: 0; height: 0; margin-left: 10rpx; border-left: 7rpx solid transparent; border-right: 7rpx solid transparent; border-top: 8rpx solid #69766f; color: transparent; font-size: 0; }
+.result-head { display: flex; justify-content: space-between; margin: 30rpx 0 18rpx; color: #53645a; font-size: 22rpx; }
+.listing { display: grid; gap: 20rpx; }
+.listing-card { display: flex; overflow: hidden; text-align: left; }
+.listing-card > image { width: 235rpx; min-height: 265rpx; flex: none; }
+.listing-body { flex: 1; padding: 23rpx 22rpx; }
+.listing-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10rpx; }
+.listing-name { font-size: 27rpx; font-weight: 600; line-height: 1.45; }
+.listing-meta { display: block; margin-top: 12rpx; color: #78867c; font-size: 21rpx; }
+.listing-bottom { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 60rpx; padding-top: 16rpx; border-top: 1rpx solid #e4e8e1; }
+.rent { color: #b36c35; font-size: 31rpx; font-weight: 700; }
+.rent text { color: #78867c; font-size: 18rpx; font-weight: 400; }
+.detail-link { color: #245c4a; font-size: 21rpx; }
+.empty { display: flex; flex-direction: column; align-items: center; gap: 12rpx; padding: 90rpx 0; font-size: 29rpx; }

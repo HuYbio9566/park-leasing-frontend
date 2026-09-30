@@ -31,3 +31,4 @@
 /04-程序文件/tests/*
 !/04-程序文件/tests/visitor-reservation.cjs
 !/04-程序文件/tests/README.md
+.DS_Store

@@ -65,7 +65,7 @@
 <section id="vehicle" class="hidden"><div class="page-top"><button class="back" data-page="home"><i class="ri-arrow-left-line"></i></button><div class="title">车辆管理</div></div><div class="summary"><div class="summary-item"><b>1</b><span>已绑定车辆</span></div><div class="summary-item"><b>0</b><span>待缴停车费</span></div></div><div class="field-title"><b>我的车辆</b><button class="chip"><i class="ri-add-line"></i> 添加</button></div><div class="card"><div class="list-row"><span class="list-icon"><i class="ri-car-line"></i></span><div class="list-body"><b>沪A · 8X6Q2</b><span>月租车 · 有效期至 2026-10-31</span></div><i class="ri-arrow-right-s-line"></i></div></div><div class="field-title"><b>快捷服务</b></div><div class="card"><div class="profile-row"><i class="ri-bank-card-line"></i>停车缴费<i class="ri-arrow-right-s-line"></i></div><div class="profile-row"><i class="ri-history-line"></i>出入记录<i class="ri-arrow-right-s-line"></i></div></div></section>
 <section id="restaurant" class="hidden"><div class="page-top"><button class="back" data-page="home"><i class="ri-arrow-left-line"></i></button><div class="title">园区餐厅</div></div><div class="chips"><button class="chip active">今日菜单</button><button class="chip">本周菜单</button><button class="chip">我的订单</button></div><div class="field-title"><b>午餐供应</b><span class="muted">11:00–13:30</span></div><div class="menu-card card"><img src="miniprogram/assets/campus-hero.jpg" alt="商务套餐"><div class="list-body"><b>商务套餐</b><span>荤素搭配 · 米饭 · 例汤</span><div class="price">¥28</div></div><button class="chip active">预订</button></div><div class="menu-card card"><img src="miniprogram/assets/campus-hero.jpg" alt="轻食套餐"><div class="list-body"><b>轻食套餐</b><span>时蔬 · 鸡胸 · 水果</span><div class="price">¥32</div></div><button class="chip active">预订</button></div></section>
 <section id="repair" class="hidden"><div class="page-top"><button class="back" data-page="home"><i class="ri-arrow-left-line"></i></button><div class="title">报修工单</div></div><div class="form-card card"><div class="form-row"><label>报修位置</label><select><option>A座</option><option>B座</option><option>C座</option><option>D座</option><option>E座</option></select></div><div class="form-row"><label>具体房间</label><input placeholder="请输入楼层及房间号"></div><div class="form-row"><label>问题类型</label><select><option>水电维修</option><option>空调设备</option><option>门禁设施</option><option>其他</option></select></div><div class="form-row"><label>问题描述</label><textarea placeholder="请描述需要维修的问题"></textarea></div></div><button class="primary-button">提交工单</button></section>
-<section id="visitor" class="hidden"><div class="page-top"><button class="back" data-page="home"><i class="ri-arrow-left-line"></i></button><div class="title">访客登记</div></div><div class="form-card card"><div class="form-row"><label>访客姓名</label><input placeholder="请输入姓名"></div><div class="form-row"><label>手机号码</label><input type="tel" maxlength="11" placeholder="请输入手机号"></div><div class="form-row"><label>到访企业</label><input placeholder="请输入企业名称或房间号"></div><div class="form-row"><label>到访时间</label><input id="visitor-date" readonly placeholder="请选择到访日期和时间"></div></div><label class="agreement"><input type="checkbox">我已阅读并同意《访客入园免责协议》，承诺遵守园区管理规定。</label><button class="primary-button">提交访客申请</button></section><div id="date-picker" class="date-picker hidden"><div class="date-picker-mask"></div><div class="date-picker-sheet"><div class="date-picker-head"><button type="button" id="date-cancel">取消</button><b>选择到访时间</b><button type="button" id="date-confirm">完成</button></div><div class="date-picker-subtitle">2026年9月</div><div class="date-wheels"><div class="date-wheel"><span>周一</span><strong>9月14日</strong><span>周二</span></div><div class="date-wheel"><span>上午</span><strong>14:00</strong><span>15:00</span></div></div></div></div>
+<section id="visitor" class="hidden"><p>正在加载访客预约…</p></section>
 <section id="notices" class="hidden"><div class="page-top"><button class="back" data-page="home"><i class="ri-arrow-left-line"></i></button><div class="title">通知公告</div></div><div class="card"><div class="list-row"><div class="notice-date"><b>15</b>09月</div><div class="list-body"><b>关于园区消防演练的通知</b><span>本周五下午开展消防演练，请各企业提前安排。</span></div><i class="ri-arrow-right-s-line"></i></div><div class="list-row"><div class="notice-date"><b>12</b>09月</div><div class="list-body"><b>中秋节园区服务安排</b><span>假期门禁、餐厅及物业值班时间说明。</span></div><i class="ri-arrow-right-s-line"></i></div><div class="list-row"><div class="notice-date"><b>08</b>09月</div><div class="list-body"><b>地下车库维护提醒</b><span>B区部分车位将临时封闭，请按指引停放。</span></div><i class="ri-arrow-right-s-line"></i></div></div></section>
 <section id="feedback" class="hidden"><div class="page-top"><button class="back" data-page="home"><i class="ri-arrow-left-line"></i></button><div class="title">投诉建议</div></div><div class="form-card card"><div class="form-row"><label>反馈类型</label><select><option>服务建议</option><option>物业投诉</option><option>设施问题</option><option>其他</option></select></div><div class="form-row"><label>反馈内容</label><textarea placeholder="请填写具体情况"></textarea></div><div class="form-row"><label>联系电话</label><input type="tel" maxlength="11" placeholder="便于我们联系处理"></div></div><button class="primary-button">提交反馈</button></section>
 <section id="profile" class="hidden">
@@ -89,15 +89,14 @@
           <div class="mp-avatar">唐</div>
           <div class="mp-profile-main">
             <div class="mp-profile-heading">
-              <div>
-                <div class="mp-name">唐慧丽</div>
+              <div class="mp-profile-copy">
+                <div class="mp-name-row">
+                  <div class="mp-name">唐慧丽</div>
+                  <span class="mp-badge"><i data-lucide="user-round" aria-hidden="true"></i><span data-profile-badge="0"></span></span>
+                </div>
                 <div class="mp-company">北京XX科技有限公司</div>
               </div>
               <button class="mp-identity-link" type="button" data-profile-identity=""><span data-identity-label="">企业与身份</span> <span aria-hidden="true"><i data-lucide="chevron-right" aria-hidden="true"></i></span></button>
-            </div>
-            <div class="mp-badges">
-              <span class="mp-badge"><i data-lucide="user-round" aria-hidden="true"></i><span data-profile-badge="0"></span></span>
-              <span class="mp-badge"><i data-lucide="shield-check" aria-hidden="true"></i><span data-profile-badge="1"></span></span>
             </div>
           </div>
         </div>
@@ -129,11 +128,11 @@
 
       <article class="mp-card mp-section-card mp-my-services">
         <div class="mp-service-grid mp-four-col">
-          <div class="mp-service-item" tabindex="0" aria-label="我的预约" data-profile-entry="我的预约" data-page="my-bookings" data-permission="meeting" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+          <div class="mp-service-item" tabindex="0" aria-label="我的会议" data-profile-entry="我的会议" data-page="my-bookings" data-permission="meeting" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
             <span class="mp-icon-box">
               <i data-lucide="calendar-check" aria-hidden="true"></i>
             </span>
-            <div class="mp-service-title">我的预约</div>
+            <div class="mp-service-title">我的会议</div>
           </div>
           <button class="mp-service-item" type="button" data-profile-entry="我的访客" data-page="visitor-records" data-permission="visitor">
             <span class="mp-icon-box">
@@ -144,14 +143,12 @@
             </div>
             <span class="mp-arrow"><i data-lucide="chevron-right" aria-hidden="true"></i></span>
           </button>
-          <button class="mp-service-item" type="button" data-profile-entry="报修与服务" data-page="repair-records" data-permission="repair">
-            <span class="mp-icon-box">
-              <i data-lucide="wrench" aria-hidden="true"></i>
+          <button class="mp-tile-item" type="button" data-profile-entry="我的收藏" data-profile-notice="我的收藏暂未开放" data-permission="public">
+            <span class="mp-icon-box mp-small">
+              <i data-lucide="star" aria-hidden="true"></i>
             </span>
-            <div class="mp-service-text">
-              <div class="mp-service-title">报修与服务</div>
-            </div>
             <span class="mp-arrow"><i data-lucide="chevron-right" aria-hidden="true"></i></span>
+            <div class="mp-service-title">我的收藏</div>
           </button>
           <button class="mp-service-item" type="button" data-profile-entry="我的申请" data-profile-notice="我的申请暂未开放" data-permission="authenticated">
             <span class="mp-icon-box">
@@ -169,12 +166,14 @@
             <span class="mp-arrow"><i data-lucide="chevron-right" aria-hidden="true"></i></span>
             <div class="mp-service-title">空间咨询</div>
           </button>
-          <button class="mp-tile-item" type="button" data-profile-entry="我的收藏" data-profile-notice="我的收藏暂未开放" data-permission="public">
-            <span class="mp-icon-box mp-small">
-              <i data-lucide="star" aria-hidden="true"></i>
+          <button class="mp-service-item" type="button" data-profile-entry="报修与服务" data-page="repair-records" data-permission="repair">
+            <span class="mp-icon-box">
+              <i data-lucide="wrench" aria-hidden="true"></i>
             </span>
+            <div class="mp-service-text">
+              <div class="mp-service-title">报修与服务</div>
+            </div>
             <span class="mp-arrow"><i data-lucide="chevron-right" aria-hidden="true"></i></span>
-            <div class="mp-service-title">我的收藏</div>
           </button>
         </div>
       </article>
@@ -267,7 +266,8 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
   document.querySelector('.phone').appendChild(profileNotice);
   var switcher=document.createElement('div');
   switcher.className='role-switch';
-  switcher.innerHTML='<span class="role-switch-label">人员视图 · 演示</span><button type="button" data-role="guest">未认证/访客</button><button type="button" data-role="employee">企业普通员工</button><button type="button" data-role="admin">企业管理员</button><button type="button" data-role="internal">自有员工</button><button type="button" data-role="property">物业人员</button>';
+  switcher.setAttribute('aria-label','人员视图切换');
+  switcher.innerHTML='<button type="button" data-role="guest">未认证/访客</button><button type="button" data-role="employee">企业普通员工</button><button type="button" data-role="admin">企业管理员</button><button type="button" data-role="internal">自有员工</button><button type="button" data-role="property">物业人员</button>';
   document.body.appendChild(switcher);
   switcher.style.cssText='position:fixed;top:24px;right:0;width:max-content;padding:8px;z-index:100';
   var roles={
@@ -283,10 +283,9 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
     profile.querySelector('.mp-name').textContent=data.name;
     profile.querySelector('.mp-company').textContent=data.company;
     profile.querySelector('[data-identity-label]').textContent=data.login;
-    profile.querySelector('[data-profile-badge="0"]').textContent=data.label;
-    profile.querySelector('[data-profile-badge="1"]').textContent=role==='guest'?'未认证':'已认证';
-    var stateIcon=document.createElement('i');stateIcon.setAttribute('data-lucide',role==='guest'?'shield-question':'shield-check');stateIcon.setAttribute('aria-hidden','true');profile.querySelector('[data-profile-badge="1"]').previousElementSibling.replaceWith(stateIcon);lucide.createIcons({attrs:{"stroke-width":1.8,"aria-hidden":"true",focusable:"false"}});
-    profile.querySelector('[data-profile-todos]').hidden=role==='guest';
+    profile.querySelector('[data-profile-badge="0"]').textContent={guest:'未认证',employee:'企业员工',admin:'管理员',internal:'已认证',property:'物业人员'}[role];
+    var stateIcon=document.createElement('i');stateIcon.setAttribute('data-lucide',role==='guest'?'shield-question':role==='internal'?'shield-check':'user-round');stateIcon.setAttribute('aria-hidden','true');profile.querySelector('[data-profile-badge="0"]').previousElementSibling.replaceWith(stateIcon);lucide.createIcons({attrs:{"stroke-width":1.8,"aria-hidden":"true",focusable:"false"}});
+    profile.querySelector('[data-profile-todos]').hidden=role==='guest'||role==='employee'||role==='internal';
     profile.querySelectorAll('.mp-todo-box .mp-num').forEach(function(num,i){num.textContent=['2','1','1','5'][i]});
     profile.querySelectorAll('[data-permission]').forEach(function(entry){
       var permission=entry.dataset.permission;
@@ -310,9 +309,6 @@ var iconMap={'ri-add-line':'plus','ri-arrow-left-line':'arrow-left','ri-arrow-ri
   });
   apply('guest');
 })();
-</script>
-<script>
-(function(){setTimeout(function(){var quick=document.querySelector('#home.home-new .home-new-quick button:first-child b');if(quick)quick.textContent='访客预约';},0);})();
 </script>
 <script>
 (function(){setTimeout(function(){var home=document.getElementById('home');if(!home)return;var cards=home.querySelectorAll('.home-new-card');var space=Array.from(cards).find(function(card){var title=card.querySelector('h2');return title&&title.textContent.trim()==='优选空间'});if(space)home.appendChild(space)},0)})();
@@ -547,6 +543,7 @@ document.addEventListener('DOMContentLoaded',function(){
   var detail=document.getElementById('space-detail');
   var modal=document.getElementById('contact-modal');
   if(!detail||!modal)return;
+  document.querySelector('.phone').appendChild(modal);
   window.__spaceToast=function(message){var node=document.querySelector('.navbar>span');if(node){node.textContent=message;setTimeout(function(){if(!detail.classList.contains('hidden'))node.textContent='空间详情'},1500)}};
   var hero=detail.querySelector('.space-detail-hero');
   var track=document.getElementById('space-detail-track');
@@ -611,12 +608,6 @@ document.addEventListener('DOMContentLoaded',function(){
     modal.classList.add('hidden');
     alert('留言已提交，工作人员会尽快联系你');
   };
-  var datePicker=document.getElementById('date-picker');
-  var visitorDate=document.getElementById('visitor-date');
-  visitorDate.onclick=function(){datePicker.classList.remove('hidden')};
-  document.getElementById('date-cancel').onclick=function(){datePicker.classList.add('hidden')};
-  document.getElementById('date-confirm').onclick=function(){visitorDate.value='2026-09-14 14:00';datePicker.classList.add('hidden')};
-  document.querySelector('.date-picker-mask').onclick=function(){datePicker.classList.add('hidden')};
 })();
 </script>
 <style>
@@ -625,7 +616,6 @@ document.addEventListener('DOMContentLoaded',function(){
 .booking-dates{grid-template-columns:repeat(7,1fr);display:grid;gap:6px;overflow:visible}.booking-dates .chip{height:58px;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:12px}.booking-dates .chip small{font-size:10px;color:var(--muted)}.booking-dates .chip b{font-size:16px;font-weight:600}.booking-dates .chip.active{background:var(--brand);border-color:var(--brand);color:#fff}.booking-dates .chip.active small{color:#dbece4}.booking-dates .calendar-more{grid-column:span 2;flex-direction:row;gap:5px}.calendar-more svg{width:15px;height:15px}.booking-calendar.hidden{display:none}.booking-calendar{position:absolute;z-index:70;inset:0}.booking-calendar-mask{position:absolute;inset:0;background:rgba(12,21,17,.32);backdrop-filter:blur(2px)}.booking-calendar-sheet{position:absolute;left:0;right:0;bottom:0;padding:10px 16px 24px;border-radius:22px 22px 0 0;background:rgba(250,252,250,.98);box-shadow:0 -8px 28px rgba(27,54,42,.18)}.booking-calendar-head{display:flex;align-items:center;justify-content:space-between;height:42px;border-bottom:1px solid var(--line);font-size:15px}.booking-calendar-head button{padding:6px 2px;border:0;background:none;color:var(--brand);font-size:14px}.calendar-month{padding:14px 0;text-align:center;color:var(--muted);font-size:13px}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.calendar-grid button{height:38px;border:0;border-radius:10px;background:transparent;color:var(--text);font-size:14px}.calendar-grid button.active{background:var(--brand);color:#fff;font-weight:600}
 .booking-slots .slot{cursor:pointer}
 .booking-slots .slot.selected{border-color:var(--brand);background:var(--soft);color:var(--brand);font-weight:600}
-.date-picker.hidden{display:none}.date-picker{position:absolute;z-index:60;inset:0}.date-picker-mask{position:absolute;inset:0;background:rgba(12,21,17,.32);backdrop-filter:blur(2px)}.date-picker-sheet{position:absolute;left:0;right:0;bottom:0;padding:10px 16px 24px;border-radius:22px 22px 0 0;background:rgba(250,252,250,.97);box-shadow:0 -8px 28px rgba(27,54,42,.18)}.date-picker-head{display:flex;align-items:center;justify-content:space-between;height:42px;border-bottom:1px solid var(--line);font-size:15px}.date-picker-head button{padding:6px 2px;border:0;background:none;color:var(--brand);font-size:14px}.date-picker-head b{font-size:15px}.date-picker-subtitle{padding:14px 0 8px;text-align:center;color:var(--muted);font-size:12px}.date-wheels{display:grid;grid-template-columns:1fr 1fr;gap:8px;height:138px;overflow:hidden}.date-wheel{display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 0;color:#a4ada7;font-size:13px}.date-wheel strong{display:flex;align-items:center;justify-content:center;width:100%;height:42px;border-radius:10px;background:var(--soft);color:var(--brand);font-size:16px;font-weight:600}.date-picker-sheet:after{content:"";display:block;width:36px;height:4px;margin:12px auto -12px;border-radius:3px;background:#c5ccc8}
 .screen #visitor-records,.screen #repair-records{padding-top:16px}
 #visitor-records>.field-title:first-child,#repair-records>.field-title:first-child{margin-top:0}
 #notices{padding:16px}.screen #notices>.card{margin:0;padding:0 16px}
@@ -832,12 +822,12 @@ document.addEventListener('DOMContentLoaded',function(){
 .phone-button{width:auto;min-height:44px;margin-top:10px;border:1px solid var(--brand);border-radius:var(--r-sm);background:#fff;color:var(--brand);font-weight:600}
 .phone-button span{margin-left:6px;font-size:12px;font-weight:500}
 .contact-modal.hidden{display:none}
-.contact-modal:not(.hidden),.wechat-modal:not(.hidden){position:fixed;inset:0}.screen:has(.contact-modal:not(.hidden)),.screen:has(.wechat-modal:not(.hidden)){overflow:hidden}
+.wechat-modal:not(.hidden){position:fixed;inset:0}.phone:has(>.contact-modal:not(.hidden))>.screen,.screen:has(.wechat-modal:not(.hidden)){overflow:hidden}
 .contact-modal{position:absolute;z-index:50;inset:0}
-.contact-modal:not(.hidden),.wechat-modal:not(.hidden){position:fixed}
+.wechat-modal:not(.hidden){position:fixed}
 .wechat-modal.hidden{display:none}.wechat-modal{position:absolute;z-index:55;inset:0}.wechat-mask{position:absolute;inset:0;background:rgba(0,0,0,.48)}.wechat-sheet{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(320px,calc(100% - 40px));padding:24px 20px 20px;background:#fff;border-radius:16px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.2)}.wechat-sheet>b{display:block;font-size:17px}.wechat-sheet p{margin:8px 0 14px;color:var(--muted);font-size:12px}.wechat-qr{display:block;width:210px;height:210px;margin:0 auto 16px;border:1px solid #eee}.wechat-close{position:absolute;right:10px;top:8px;border:0;background:transparent;color:var(--muted);font-size:26px;line-height:1;cursor:pointer}.wechat-sheet .primary-button{width:100%;height:40px}.manager-inline{cursor:pointer}
 .contact-mask{position:absolute;inset:0;background:rgba(16,27,21,.42)}
-.contact-sheet{position:absolute;left:0;right:0;bottom:0;max-height:calc(100% - 24px);overflow-y:auto;padding:18px 16px 20px;border-radius:18px 18px 0 0;background:var(--bg);box-shadow:0 -8px 30px rgba(27,54,42,.18)}
+.contact-sheet{position:absolute;left:0;right:0;bottom:0;max-height:calc(100% - 24px);overflow-y:auto;overscroll-behavior:contain;padding:18px 16px 20px;border-radius:18px 18px 0 0;background:var(--bg);box-shadow:0 -8px 30px rgba(27,54,42,.18)}
 #booking-record-detail{overflow-wrap:anywhere;white-space:pre-wrap}
 .contact-sheet-head{display:flex;align-items:center;justify-content:space-between;font-size:18px}
 .contact-sheet-head button{width:30px;height:30px;padding:0;border:0;background:none;color:var(--muted);font-size:26px;line-height:1}
@@ -981,7 +971,7 @@ document.addEventListener('DOMContentLoaded',function(){
 .meeting-filters{align-items:center;justify-items:center}
 .meeting-filters label{width:100%;text-align:center}
 .space-filters{position:sticky;top:0;z-index:25;width:calc(100% + 32px);margin-left:-16px;background:#fff}
-#meeting>.meeting-filters{position:sticky;top:0;z-index:25;height:64px;box-sizing:border-box;background:#fff}
+#meeting>.meeting-filters{position:sticky;top:0;z-index:25;height:auto;padding:8px;box-sizing:border-box;background:#fff}
 .screen #spaces{padding-top:0}
 .space-results{width:calc(100% + 32px);margin:0 0 0 -16px;padding:16px;background:transparent;border:0;border-radius:0;box-shadow:none}
 .space-results .space{height:128px;margin:0 0 16px;padding:0;border:0;border-radius:var(--r-md)!important;background:#fff;box-shadow:0 6px 18px rgba(27,54,42,.08);overflow:hidden}
@@ -1214,7 +1204,7 @@ document.addEventListener('DOMContentLoaded',function(){
 .meeting-results .meeting-features,#meeting-detail .meeting-features{display:flex;flex-wrap:wrap;gap:6px;overflow:visible;white-space:normal}
 .meeting-features>span{padding:4px 8px;border-radius:4px;background:var(--soft);color:var(--brand);font-size:12px;line-height:16px;white-space:nowrap}
 .meeting-card-footer{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:6px;padding-top:12px;border-top:1px solid #f0f2f1}
-.meeting-quick-open{border:0;border-radius:8px;background:var(--brand);color:#fff;padding:8px 12px;font-family:inherit;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer}
+.meeting-quick-open{border:0;border-radius:8px;background:var(--brand);color:#fff;padding:8px 12px;font-family:inherit;font-size:14px;font-weight:400;white-space:nowrap;cursor:pointer}
 .meeting-results .meeting-name{font-size:15px}
 .meeting-results .meta{font-size:11px}
 .quick-booking{position:absolute;inset:0;z-index:80;display:flex;align-items:flex-end;background:rgba(12,21,17,.38)}
@@ -1527,6 +1517,9 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="miniprogram-filters.js"></script>
 <script src="miniprogram-services.js?v=20260922"></script>
+<link rel="stylesheet" href="miniprogram-visitor.css?v=20260928">
+<script src="vendor/qrcode-generator.js"></script>
+<script src="miniprogram-visitor.js?v=20260928"></script>
 <style>
 .tabbar button[data-page="meeting"]{display:none}
 </style>
@@ -1611,8 +1604,8 @@ document.addEventListener('DOMContentLoaded',function(){
 .enterprise-gpt-hero-copy em svg{width:13px;height:13px}
 .enterprise-gpt-dots{position:absolute;z-index:2;left:20px;bottom:9px;display:flex;align-items:center;gap:7px}
 .enterprise-gpt-dots i{width:6px;height:6px;border-radius:50%;background:#ffffff7a}.enterprise-gpt-dots i.active{width:16px;border-radius:8px;background:#fff}
-.enterprise-gpt-section-head{display:flex;align-items:center;justify-content:space-between;margin:18px 2px 10px}.enterprise-gpt-section-head h2{margin:0;font-size:17px;line-height:1.2}.enterprise-gpt-section-head button{display:flex;align-items:center;padding:0;border:0;background:none;color:#185f4f;font-size:11px}.enterprise-gpt-section-head svg{width:14px;height:14px}
-.enterprise-gpt-service-card{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:13px 4px 12px;border-radius:13px;background:#fff;box-shadow:0 7px 18px rgba(61,82,73,.06)}
+.enterprise-gpt-section-head{display:flex;align-items:center;justify-content:space-between;margin:8px 0 0}.enterprise-gpt-section-head h2{margin:0;font-size:17px;line-height:1.2}.enterprise-gpt-section-head button{display:flex;align-items:center;padding:0;border:0;background:none;color:#185f4f;font-size:11px}.enterprise-gpt-section-head svg{width:14px;height:14px}
+.enterprise-gpt-service-card{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 8px;padding:12px 4px 12px;border-radius:13px;background:#fff;box-shadow:0 7px 18px rgba(61,82,73,.06)}
 .enterprise-gpt-service-card button{display:flex;flex-direction:column;align-items:center;min-width:0;padding:0 2px;border:0;background:none;color:var(--text);text-align:center}.enterprise-gpt-icon{display:grid;place-items:center;width:40px;height:40px;margin-bottom:7px;border-radius:12px;background:linear-gradient(145deg,#edf6f2,#f7faf9);color:#246853}.enterprise-gpt-icon.blue{background:linear-gradient(145deg,#eef4f9,#f8fafc);color:#55738f}.enterprise-gpt-icon.orange{background:linear-gradient(145deg,#fff5eb,#fffaf4);color:#a8640f}.enterprise-gpt-icon svg{width:22px;height:22px}.enterprise-gpt-service-card b{font-size:11px;white-space:nowrap}.enterprise-gpt-service-card small{display:block;max-width:100%;margin-top:4px;overflow:hidden;color:#7c838b;font-size:9px;text-overflow:ellipsis;white-space:nowrap}
 .enterprise-gpt-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.enterprise-gpt-event{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:0 0 10px;border:0;border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(61,82,73,.06);color:var(--text);text-align:left;overflow:hidden}.enterprise-gpt-event-img{position:relative;display:block;width:100%;height:76px;overflow:hidden;background:#ddd}.enterprise-gpt-event-img img{width:100%;height:100%;object-fit:cover}.enterprise-gpt-event-img i{position:absolute;top:8px;left:9px;padding:2px 7px;border-radius:4px;background:#1d765e;color:#fff;font-size:10px;font-style:normal;font-weight:650}.enterprise-gpt-event-img i.ended{background:#6c7478}.enterprise-gpt-event small,.enterprise-gpt-event b,.enterprise-gpt-event em{display:block;width:100%;padding:0 9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.enterprise-gpt-event small{margin-top:9px;color:#7b828a;font-size:9px}.enterprise-gpt-event b{margin-top:6px;font-size:14px;line-height:1.35}.enterprise-gpt-event em{margin-top:5px;color:#7e858c;font-size:9px;font-style:normal}
 .enterprise-gpt-news{padding:4px 16px;border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(61,82,73,.06)}.enterprise-gpt-news button{display:grid;grid-template-columns:72px minmax(0,1fr);gap:9px;align-items:center;width:100%;min-height:80px;padding:8px 0;border:0;border-bottom:1px solid #edf0ef;background:none;color:var(--text);text-align:left}.enterprise-gpt-news button:last-child{border-bottom:0}.enterprise-gpt-news button>span:first-child{width:72px;height:49px;overflow:hidden;border-radius:6px;background:#ddd}.enterprise-gpt-news button>span:first-child img{width:100%;height:100%;object-fit:cover}.enterprise-gpt-news button>span:nth-child(2){min-width:0}.enterprise-gpt-news b{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:11px;line-height:1.4}.enterprise-gpt-news b i{display:inline-block;margin-right:5px;padding:1px 5px;border-radius:3px;background:#1a755f;color:#fff;font-size:9px;font-style:normal;font-weight:500;vertical-align:1px}.enterprise-gpt-news small{display:block;margin-top:4px;color:#7f868e;font-size:9px}.enterprise-gpt-news>button>svg{display:none}
@@ -1656,7 +1649,7 @@ document.addEventListener('DOMContentLoaded',function(){
 .space-finder-search svg{width:17px;height:17px;color:var(--brand)}
 .space-finder-search input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:13px}
 .space-finder-search input::placeholder{color:#9aa49f}
-.space-finder-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 34px;gap:6px;margin-top:0;padding:16px 0 0;border:0;background:#fff}
+.space-finder-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 34px;gap:6px;margin-top:0;padding:12px 0 0;border:0;background:#fff}
 .space-finder-filters label,.space-finder-filters>button{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;height:34px;padding:0 6px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--muted);font-size:10px}
 .space-finder-filters label select,.space-finder-head select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer}
 .space-finder-filters label svg{width:12px;height:12px;margin-left:3px}.space-finder-filters>button{font-size:0}.space-finder-filters>button svg{width:15px;height:15px;color:var(--brand)}
@@ -1665,8 +1658,8 @@ document.addEventListener('DOMContentLoaded',function(){
 .space-finder-list{display:grid;gap:12px}.space-finder-card{display:flex;min-height:166px;overflow:hidden;border-radius:13px;background:#fff;box-shadow:0 6px 16px rgba(61,82,73,.07)}.space-finder-photo{position:relative;flex:0 0 118px;min-height:166px;background:#dce7e1}.space-finder-photo img{width:100%;height:100%;object-fit:cover}.space-finder-photo>span{position:absolute;left:7px;bottom:7px;display:flex;align-items:center;gap:3px;padding:3px 6px;border-radius:4px;background:#173f33c9;color:#fff;font-size:9px}.space-finder-photo>span svg{width:11px;height:11px}.space-finder-copy{min-width:0;flex:1;padding:11px 10px 9px}.space-finder-copy h3{font-size:14px}.space-finder-spec{display:flex;align-items:baseline;gap:7px;margin-top:6px;color:var(--muted);font-size:9px}.space-finder-spec strong{color:var(--text);font-size:18px}.space-finder-spec strong small{font-size:9px;font-weight:500}.space-finder-tags-inline{display:flex;gap:5px;margin-top:5px}.space-finder-tags-inline span{padding:2px 5px;border-radius:3px;background:#eef5f1;color:#4d806a;font-size:8px}.space-finder-copy p{margin:6px 0 0;overflow:hidden;color:#7d8982;font-size:9px;text-overflow:ellipsis;white-space:nowrap}.space-finder-price{display:flex;gap:14px;margin-top:7px;color:#8a938e;font-size:8px}.space-finder-price b{display:block;margin-top:2px;color:var(--accent);font-size:12px}.space-finder-price b small{margin-left:2px;color:#8a938e;font-size:8px;font-weight:500}.space-finder-actions{display:flex;gap:6px;margin-top:7px}.space-finder-actions button{flex:1;height:25px;padding:0;border:1px solid #c9ddd3;border-radius:5px;background:#fff;color:var(--brand);font-size:9px}.space-finder-actions button.primary{border-color:var(--brand);background:var(--brand);color:#fff}.space-finder-consult{display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px;border-radius:12px;background:#e8f3ed}.space-finder-consult img{width:48px;height:48px;object-fit:cover;border-radius:50%}.space-finder-consult>div{min-width:0;flex:1}.space-finder-consult h3{font-size:13px}.space-finder-consult p{margin:3px 0 5px;color:#668075;font-size:10px}.space-finder-consult span{display:flex;align-items:center;gap:3px;color:#668075;font-size:8px}.space-finder-consult span svg{width:11px;height:11px;color:var(--brand)}.space-finder-consult button{flex:0 0 auto;height:29px;padding:0 9px;border:0;border-radius:6px;background:var(--brand);color:#fff;font-size:10px}
 .space-finder-consult{position:absolute;z-index:20;left:12px;right:12px;bottom:82px;margin:0;box-shadow:0 8px 22px rgba(27,54,42,.16)}.space-finder-consult.is-dismissed,.space-finder-consult.is-page-hidden{display:none}.space-finder-consult-close{position:absolute!important;top:-8px;right:-6px!important;width:24px!important;height:24px!important;padding:0!important;border:1px solid #d7e0db!important;border-radius:50%!important;background:#fff!important;color:var(--muted)!important;font-size:0!important;box-shadow:0 3px 8px rgba(27,54,42,.14)}.space-finder-consult-close svg{width:13px;height:13px}
 .space-finder-photo{flex:0 0 118px;width:118px;height:118px;min-height:118px;align-self:flex-start;margin:8px;border-radius:8px;overflow:hidden}.space-finder-photo img{display:block;width:100%;height:100%;object-fit:cover}
-.space-finder-list{margin-top:16px}
-.space-finder-results{padding-top:16px}
+#spaces .space-finder-list{margin-top:0}
+#spaces .space-finder-results{padding-top:8px}
 .space-finder-results{padding-bottom:16px}
 .space-finder{font-size:14px;padding-top:16px;padding-bottom:16px}
 .space-finder-actions{gap:8px}
@@ -1794,7 +1787,7 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 </style>
 <style>#home.home-new{padding-bottom:16px}</style>
 <style>.home-new-event{width:100%;height:auto;padding:0;border:0;background:none;aspect-ratio:16 / 9}.home-new-event img{width:100%;height:100%;object-fit:cover}</style>
-<style>#home.home-new .home-new-space{grid-template-columns:minmax(0,128px) minmax(0,1fr)}#home.home-new .home-new-space-photo{width:128px;height:128px;aspect-ratio:auto}#home.home-new .home-new-quick button:first-child b{font-size:0}#home.home-new .home-new-quick button:first-child b:after{content:'访客预约';font-size:11px}</style>
+<style>#home.home-new .home-new-space{grid-template-columns:minmax(0,128px) minmax(0,1fr)}#home.home-new .home-new-space-photo{width:128px;height:128px;aspect-ratio:auto}</style>
 <style>#home.home-new .home-new-tags span,#home.home-new .home-new-price{font-size:11px}</style>
 <style>
 #home.home-new .home-new-price{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:clamp(4px,4%,8px);margin:8px 0;color:#8a938e;font-size:12px;line-height:1.2}
@@ -1895,7 +1888,7 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 })();
 </script>
 <script>
-(function(){var home=document.getElementById('home');if(!home)return;home.className='home-new';home.innerHTML='<div class="home-new-top"><button class="home-new-icon" type="button" aria-label="消息"><i data-lucide="bell"></i><span class="dot"></span></button><strong class="home-new-title">星桥科创园</strong><button class="home-new-icon" type="button" aria-label="更多"><i data-lucide="more-horizontal"></i></button><button class="home-new-park" type="button"><i data-lucide="map-pin" aria-hidden="true"></i><b>星桥科创园</b><i class="park-triangle" data-lucide="chevron-down" aria-hidden="true"></i></button></div><div class="home-new-hero"><img src="miniprogram/assets/home-banner.png" alt="园区首页宣传横幅" width="1600" height="901"></div><div class="home-new-card home-new-quick"><button data-page="spaces"><span class="quick-icon"><img src="miniprogram/assets/预约看房.png" alt=""></span><b>预约看房</b><small>实地考察 · 洽谈入驻</small></button><button data-page="meeting"><span class="quick-icon"><img src="miniprogram/assets/会议室.png" alt=""></span><b>会议室</b><small>专业会议 · 高效便捷</small></button><button data-page="enterprise-services"><span class="quick-icon"><img src="miniprogram/assets/园区介绍.png" alt=""></span><b>园区介绍</b><small>了解园区 · 产业生态</small></button><button data-page="enterprise-services"><span class="quick-icon"><img src="miniprogram/assets/招商咨询.png" alt=""></span><b>招商咨询</b><small>专属顾问 · 一对一服务</small></button></div><article id="home-park-services" class="home-new-card" hidden aria-labelledby="home-park-services-title"><div class="home-new-head"><div><h2 id="home-park-services-title">园区服务</h2></div><button type="button" data-page="enterprise-services">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-park-service-grid"><button type="button" data-page="my-bookings"><span class="home-park-service-icon"><i data-lucide="calendar-check" aria-hidden="true"></i></span><b>我的会议</b></button><button type="button" data-page="visitor"><span class="home-park-service-icon"><i data-lucide="user-plus" aria-hidden="true"></i></span><b>访客登记</b></button><button type="button" data-page="vehicle"><span class="home-park-service-icon"><i data-lucide="car" aria-hidden="true"></i></span><b>车辆服务</b></button><button type="button" data-page="repair"><span class="home-park-service-icon"><i data-lucide="wrench" aria-hidden="true"></i></span><b>物业报修</b></button><button type="button" data-page="restaurant"><span class="home-park-service-icon"><i data-lucide="utensils" aria-hidden="true"></i></span><b>订餐服务</b></button><button type="button" data-park-unavailable="物品放行" aria-disabled="true"><span class="home-park-service-icon"><i data-lucide="package-check" aria-hidden="true"></i></span><b>物品放行</b></button><button type="button" data-park-unavailable="装修申请" aria-disabled="true"><span class="home-park-service-icon"><i data-lucide="paint-roller" aria-hidden="true"></i></span><b>装修申请</b></button><button type="button" data-page="enterprise-services"><span class="home-park-service-icon"><i data-lucide="grid-2x2" aria-hidden="true"></i></span><b>更多服务</b></button></div><p class="home-park-service-notice" role="status" hidden></p></article><div class="home-new-card"><div class="home-new-head"><div><h2>园区活动</h2><p>精彩活动，链接更多合作机会</p></div><button data-page="enterprise-services">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-events"><button class="home-new-event" data-page="enterprise-services"><img src="miniprogram/assets/home-event-salon.png" alt="科创沙龙：汇聚行业智慧，共话未来发展" width="1600" height="900"></button><button class="home-new-event" data-page="enterprise-services"><img src="miniprogram/assets/home-event-exchange.png" alt="企业交流会：链接合作机遇，共建产业生态" width="1600" height="900"></button></div></div><div id="home-featured-spaces" class="home-new-card"><div class="home-new-head"><div><h2>优选空间</h2><p>高品质办公空间，助力企业高效成长</p></div><button data-page="spaces">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-space"><div class="home-new-space-photo"><img src="miniprogram/assets/spaces/space-card-1.png" alt="A座研发办公空间"></div><div class="home-new-space-info"><h3>320m²研发办公使用大厅格局</h3><div class="home-new-tags"><span>精装修</span><span>南向</span></div><div class="home-new-price"><span><span class="home-new-price-label">租金</span><b>¥70<small>/m²/月</small></b></span><span><span class="home-new-price-label">物业费</span><b>¥12<small>/m²/月</small></b></span></div></div></div><div class="home-new-space"><div class="home-new-space-photo"><img src="miniprogram/assets/spaces/space-card-2.png" alt="B座创新办公空间"></div><div class="home-new-space-info"><h3>180m²创新办公独立户型</h3><div class="home-new-tags"><span>精装修</span><span>南向</span></div><div class="home-new-price"><span><span class="home-new-price-label">租金</span><b>¥65<small>/m²/月</small></b></span><span><span class="home-new-price-label">物业费</span><b>¥12<small>/m²/月</small></b></span></div></div></div></div><div class="home-new-find"><button type="button" data-page="spaces" aria-label="帮我选址"><img src="miniprogram/assets/home-find-space.png" alt="还没找到合适的空间？告诉我们需求，获取专业选址建议。帮我选址"></button></div><div class="home-new-card"><div class="home-new-head"><div><h2>企业服务推荐</h2><p>一站式企业服务，陪伴企业全生命周期发展</p></div><button data-page="enterprise-services">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-service-grid"><button data-page="enterprise-services"><span class="service-icon"><i data-lucide="file-text"></i></span><b>政策服务</b><small>解读政策<br>助力企业发展</small></button><button data-page="enterprise-services"><span class="service-icon"><i data-lucide="database"></i></span><b>金融服务</b><small>对接资源<br>实现企业成长</small></button><button data-page="enterprise-services"><span class="service-icon"><i data-lucide="shield-check"></i></span><b>法律服务</b><small>专业法律支持<br>护航企业经营</small></button></div></div><div class="home-new-card"><div class="home-new-head"><h2>园区公告</h2><button data-page="notices">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-notice-list"><a class="home-new-notice" href="#" data-page="notices"><time><b>09-15</b><small>2026</small></time><div><h3>关于园区消防演练的通知</h3><p>本周五下午开展消防演练，请各企业提前安排。</p></div><i data-lucide="chevron-right"></i></a><a class="home-new-notice" href="#" data-page="notices"><time><b>09-12</b><small>2026</small></time><div><h3>中秋节园区服务安排</h3><p>假期门禁、餐厅及物业值班时间说明。</p></div><i data-lucide="chevron-right"></i></a></div></div>';if(window.lucide)lucide.createIcons({attrs:{"stroke-width":1.8,"aria-hidden":"true",focusable:"false"}})})();
+(function(){var home=document.getElementById('home');if(!home)return;home.className='home-new';home.innerHTML='<div class="home-new-top"><button class="home-new-icon" type="button" aria-label="消息"><i data-lucide="bell"></i><span class="dot"></span></button><strong class="home-new-title">星桥科创园</strong><button class="home-new-icon" type="button" aria-label="更多"><i data-lucide="more-horizontal"></i></button><button class="home-new-park" type="button"><i data-lucide="map-pin" aria-hidden="true"></i><b>星桥科创园</b><i class="park-triangle" data-lucide="chevron-down" aria-hidden="true"></i></button></div><div class="home-new-hero"><img src="miniprogram/assets/home-banner.png" alt="园区首页宣传横幅" width="1600" height="901"></div><div class="home-new-card home-new-quick"><button data-page="visitor"><span class="quick-icon"><img src="miniprogram/assets/预约看房.png" alt=""></span><b>访客预约</b><small>填写信息 · 预约来访</small></button><button data-page="meeting"><span class="quick-icon"><img src="miniprogram/assets/会议室.png" alt=""></span><b>场地预定</b><small>专业会议 · 高效便捷</small></button><button data-page="enterprise-services"><span class="quick-icon"><img src="miniprogram/assets/园区介绍.png" alt=""></span><b>园区介绍</b><small>了解园区 · 产业生态</small></button><button data-page="enterprise-services"><span class="quick-icon"><img src="miniprogram/assets/招商咨询.png" alt=""></span><b>招商咨询</b><small>专属顾问 · 一对一服务</small></button></div><article id="home-park-services" class="home-new-card" hidden aria-labelledby="home-park-services-title"><div class="home-new-head"><div><h2 id="home-park-services-title">园区服务</h2></div><button type="button" data-page="enterprise-services">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-park-service-grid"><button type="button" data-page="vehicle"><span class="home-park-service-icon"><i data-lucide="car" aria-hidden="true"></i></span><b>车辆服务</b></button><button type="button" data-page="repair"><span class="home-park-service-icon"><i data-lucide="wrench" aria-hidden="true"></i></span><b>物业报修</b></button><button type="button" data-page="restaurant"><span class="home-park-service-icon"><i data-lucide="utensils" aria-hidden="true"></i></span><b>订餐服务</b></button><button type="button" data-park-unavailable="物品放行" aria-disabled="true"><span class="home-park-service-icon"><i data-lucide="package-check" aria-hidden="true"></i></span><b>物品放行</b></button><button type="button" data-park-unavailable="装修申请" aria-disabled="true"><span class="home-park-service-icon"><i data-lucide="paint-roller" aria-hidden="true"></i></span><b>装修申请</b></button><button type="button" data-page="feedback"><span class="home-park-service-icon"><i data-lucide="message-square" aria-hidden="true"></i></span><b>反馈通道</b></button><button type="button" data-park-unavailable="水电缴费" aria-disabled="true"><span class="home-park-service-icon"><i data-lucide="zap" aria-hidden="true"></i></span><b>水电缴费</b></button><button type="button" data-page="enterprise-services"><span class="home-park-service-icon"><i data-lucide="grid-2x2" aria-hidden="true"></i></span><b>更多服务</b></button></div><p class="home-park-service-notice" role="status" hidden></p></article><div class="home-new-card"><div class="home-new-head"><div><h2>园区活动</h2><p>精彩活动，链接更多合作机会</p></div><button data-page="enterprise-services">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-events"><button class="home-new-event" data-page="enterprise-services"><img src="miniprogram/assets/home-event-salon.png" alt="科创沙龙：汇聚行业智慧，共话未来发展" width="1600" height="900"></button><button class="home-new-event" data-page="enterprise-services"><img src="miniprogram/assets/home-event-exchange.png" alt="企业交流会：链接合作机遇，共建产业生态" width="1600" height="900"></button></div></div><div id="home-featured-spaces" class="home-new-card"><div class="home-new-head"><div><h2>优选空间</h2><p>高品质办公空间，助力企业高效成长</p></div><button data-page="spaces">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-space"><div class="home-new-space-photo"><img src="miniprogram/assets/spaces/space-card-1.png" alt="A座研发办公空间"></div><div class="home-new-space-info"><h3>320m²研发办公使用大厅格局</h3><div class="home-new-tags"><span>精装修</span><span>南向</span></div><div class="home-new-price"><span><span class="home-new-price-label">租金</span><b>¥70<small>/m²/月</small></b></span><span><span class="home-new-price-label">物业费</span><b>¥12<small>/m²/月</small></b></span></div></div></div><div class="home-new-space"><div class="home-new-space-photo"><img src="miniprogram/assets/spaces/space-card-2.png" alt="B座创新办公空间"></div><div class="home-new-space-info"><h3>180m²创新办公独立户型</h3><div class="home-new-tags"><span>精装修</span><span>南向</span></div><div class="home-new-price"><span><span class="home-new-price-label">租金</span><b>¥65<small>/m²/月</small></b></span><span><span class="home-new-price-label">物业费</span><b>¥12<small>/m²/月</small></b></span></div></div></div></div><div class="home-new-find"><button type="button" data-page="spaces" aria-label="帮我选址"><img src="miniprogram/assets/home-find-space.png" alt="还没找到合适的空间？告诉我们需求，获取专业选址建议。帮我选址"></button></div><div class="home-new-card"><div class="home-new-head"><div><h2>企业服务推荐</h2><p>一站式企业服务，陪伴企业全生命周期发展</p></div><button data-page="enterprise-services">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-service-grid"><button data-page="enterprise-services"><span class="service-icon"><i data-lucide="file-text"></i></span><b>政策服务</b><small>解读政策<br>助力企业发展</small></button><button data-page="enterprise-services"><span class="service-icon"><i data-lucide="database"></i></span><b>金融服务</b><small>对接资源<br>实现企业成长</small></button><button data-page="enterprise-services"><span class="service-icon"><i data-lucide="shield-check"></i></span><b>法律服务</b><small>专业法律支持<br>护航企业经营</small></button></div></div><div class="home-new-card"><div class="home-new-head"><h2>园区公告</h2><button data-page="notices">查看全部 <i data-lucide="chevron-right" aria-hidden="true"></i></button></div><div class="home-new-notice-list"><a class="home-new-notice" href="#" data-page="notices"><time><b>09-15</b><small>2026</small></time><div><h3>关于园区消防演练的通知</h3><p>本周五下午开展消防演练，请各企业提前安排。</p></div><i data-lucide="chevron-right"></i></a><a class="home-new-notice" href="#" data-page="notices"><time><b>09-12</b><small>2026</small></time><div><h3>中秋节园区服务安排</h3><p>假期门禁、餐厅及物业值班时间说明。</p></div><i data-lucide="chevron-right"></i></a></div></div>';if(window.lucide)lucide.createIcons({attrs:{"stroke-width":1.8,"aria-hidden":"true",focusable:"false"}})})();
 </script>
 
 <style>
@@ -1930,11 +1923,11 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
   margin-bottom: 13px;
   overflow: hidden;
 }#profile .mp-profile-card { height: 157px; padding: 15px 16px 0; }#profile .mp-profile-top { display: flex; gap: 13px; height: 93px; }#profile .mp-avatar {
-  width: 64px; height: 64px; flex: 0 0 64px; border-radius: 50%;
+  width: 56px; height: 56px; flex: 0 0 56px; border-radius: 50%;
   background: radial-gradient(circle at 32% 28%, #24a56d, #0b8155 68%, #08734b 100%);
   box-shadow: inset -5px -6px 12px rgba(0,55,35,.12), inset 2px 2px 6px rgba(255,255,255,.12);
-  color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 650;
-}#profile .mp-profile-main { min-width: 0; flex: 1; }#profile .mp-profile-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; }#profile .mp-name { margin-top: 5px; font-size: 18px; line-height: 1.2; font-weight: 760; }#profile .mp-company { margin-top: 7px; color: #62798a; font-size: 12px; line-height: 1.2; white-space: nowrap; }#profile .mp-identity-link { margin-top: 18px; white-space: nowrap; font-size: 12.5px; font-weight: 520; color: #263044; }#profile .mp-identity-link span { margin-left: 4px; color: #697786; font-size: 18px; vertical-align: -1px; }#profile .mp-badges { margin-top: 10px; display: flex; align-items: center; gap: 7px; }#profile .mp-badge { height: 24px; border-radius: 999px; padding: 0 9px; display: inline-flex; align-items: center; gap: 5px; color: #117f54; background: #e9f7f0; font-size: 10.5px; font-weight: 650; white-space: nowrap; }#profile .mp-badge svg { width: 13px; height: 13px; }#profile .mp-profile-bottom { height: 49px; border-top: 1px solid rgba(26,47,64,.07); }#profile .mp-bind-row { height: 49px; display: flex; align-items: center; justify-content: space-between; }#profile .mp-bind-left { display: flex; align-items: center; gap: 11px; font-size: 12.5px; color: #2e3b4d; font-weight: 500; }#profile .mp-bind-icon { width: 21px; height: 21px; color: #0a8255; display: inline-flex; }#profile .mp-bind-icon svg { width: 21px; height: 21px; }#profile .mp-chev { font-size: 20px; color: #83909d; }#profile .mp-section-card { padding: 13px 10px 11px; }#profile .mp-section-header { height: 31px; padding: 0 7px 8px; display: flex; align-items: flex-start; justify-content: space-between; }#profile .mp-section-title-wrap { display: flex; align-items: center; gap: 10px; }#profile .mp-section-title-wrap h3 { margin: 1px 0 0; font-size: 16px; line-height: 20px; font-weight: 760; }#profile .mp-section-icon { width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #0b8255; background: #eaf7f1; }#profile .mp-section-icon svg { width: 17px; height: 17px; }#profile .mp-more { padding-top: 3px; font-size: 11.5px; color: #788594; }#profile .mp-more span { font-size: 17px; vertical-align: -1px; color: #84909e; }#profile .mp-section-card:has(.mp-todo-grid) { height: 157px; }#profile .mp-todo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 3px; }#profile .mp-todo-box { height: 96px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 11px; }#profile .mp-todo-box.mp-mint { background: linear-gradient(180deg,#f0f9f5,#eef7f4); }#profile .mp-todo-box.mp-sand { background: linear-gradient(180deg,#fbf7ef,#fbf7ee); }#profile .mp-todo-box.mp-bluebg { background: linear-gradient(180deg,#f2f7fd,#f1f5fc); }#profile .mp-todo-box.mp-lavender { background: linear-gradient(180deg,#f6f2fd,#f4f0fb); }#profile .mp-num { font-size: 24px; line-height: 1; font-weight: 720; margin-bottom: 7px; }#profile .mp-label { font-size: 11.5px; color: #5e6e7f; line-height: 1; }#profile .mp-todo-svg { width: 23px; height: 23px; margin-top: 10px; }#profile .mp-green-t { color: #0b8256; }#profile .mp-gold-t { color: #bd7f18; }#profile .mp-blue-t { color: #2172d9; }#profile .mp-purple-t { color: #5543c5; }#profile .mp-service-grid.mp-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; padding: 0 1px 0; }#profile .mp-service-item { min-height: 75px; border-radius: 10px; border: 1px solid rgba(25,43,61,.075); background: rgba(255,255,255,.84); padding: 12px 10px; position: relative; display: grid; grid-template-columns: 38px 1fr; align-items: start; column-gap: 9px; }#profile .mp-icon-box { width: 38px; height: 38px; border-radius: 9px; background: linear-gradient(180deg,#edf8f3,#f3faf7); color: #0b8256; display: inline-flex; align-items: center; justify-content: center; }#profile .mp-icon-box svg { width: 23px; height: 23px; }#profile .mp-service-text { min-width: 0; padding: 1px 14px 0 0; }#profile .mp-service-title { font-size: 12.5px; line-height: 1.25; font-weight: 720; white-space: nowrap; }#profile .mp-service-desc { margin-top: 5px; color: #7a8796; font-size: 10.5px; line-height: 1.35; }#profile .mp-service-item .mp-arrow, #profile .mp-tile-item .mp-arrow { position: absolute; right: 9px; top: 15px; font-size: 18px; line-height: 1; color: #85919f; }#profile .mp-section-card:has(.mp-service-grid.mp-two-col):not(.mp-bottom-space) { min-height: 218px; }#profile .mp-service-grid.mp-three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 0 1px; }#profile .mp-tile-item { height: 104px; border-radius: 10px; border: 1px solid rgba(25,43,61,.075); background: rgba(255,255,255,.84); padding: 13px 10px 9px; position: relative; }#profile .mp-icon-box.mp-small { width: 36px; height: 36px; border-radius: 9px; }#profile .mp-icon-box.mp-small svg { width: 23px; height: 23px; }#profile .mp-tile-item .mp-service-title { margin-top: 8px; font-size: 12.5px; }#profile .mp-tile-item .mp-service-desc { margin-top: 5px; font-size: 10px; line-height: 1.35; }#profile .mp-section-card:has(.mp-three-col) { min-height: 156px; }#profile .mp-bottom-space { min-height: 173px; margin-bottom: 0; }#profile .mp-bottom-space .mp-service-item { min-height: 68px; padding-top: 11px; padding-bottom: 9px; }#profile .mp-bottom-space .mp-service-grid.mp-two-col { gap: 8px; }#profile .mp-bottom-space .mp-icon-box { width: 36px; height: 36px; }#profile .mp-bottom-space .mp-service-desc { margin-top: 4px; }
+  color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 650;
+}#profile .mp-profile-main { min-width: 0; flex: 1; }#profile .mp-profile-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; }#profile .mp-name { margin-top: 5px; font-size: 18px; line-height: 1.2; font-weight: 760; }#profile .mp-company { margin-top: 7px; color: #62798a; font-size: 12px; line-height: 1.2; white-space: nowrap; }#profile .mp-identity-link { margin-top: 18px; white-space: nowrap; font-size: 12.5px; font-weight: 520; color: #263044; }#profile .mp-identity-link span { margin-left: 4px; color: #697786; font-size: 18px; vertical-align: -1px; }#profile .mp-badge { height: 24px; border-radius: 999px; padding: 0 9px; display: inline-flex; align-items: center; gap: 5px; color: #117f54; background: #e9f7f0; font-size: 10.5px; font-weight: 650; white-space: nowrap; }#profile .mp-badge svg { width: 13px; height: 13px; }#profile .mp-profile-bottom { height: 49px; border-top: 1px solid rgba(26,47,64,.07); }#profile .mp-bind-row { height: 49px; display: flex; align-items: center; justify-content: space-between; }#profile .mp-bind-left { display: flex; align-items: center; gap: 11px; font-size: 12.5px; color: #2e3b4d; font-weight: 500; }#profile .mp-bind-icon { width: 21px; height: 21px; color: #0a8255; display: inline-flex; }#profile .mp-bind-icon svg { width: 21px; height: 21px; }#profile .mp-chev { font-size: 20px; color: #83909d; }#profile .mp-section-card { padding: 13px 10px 11px; }#profile .mp-section-header { height: 31px; padding: 0 7px 8px; display: flex; align-items: flex-start; justify-content: space-between; }#profile .mp-section-title-wrap { display: flex; align-items: center; gap: 10px; }#profile .mp-section-title-wrap h3 { margin: 1px 0 0; font-size: 16px; line-height: 20px; font-weight: 760; }#profile .mp-section-icon { width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #0b8255; background: #eaf7f1; }#profile .mp-section-icon svg { width: 17px; height: 17px; }#profile .mp-more { padding-top: 3px; font-size: 11.5px; color: #788594; }#profile .mp-more span { font-size: 17px; vertical-align: -1px; color: #84909e; }#profile .mp-section-card:has(.mp-todo-grid) { height: 157px; }#profile .mp-todo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 3px; }#profile .mp-todo-box { height: 96px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 11px; }#profile .mp-todo-box.mp-mint { background: linear-gradient(180deg,#f0f9f5,#eef7f4); }#profile .mp-todo-box.mp-sand { background: linear-gradient(180deg,#fbf7ef,#fbf7ee); }#profile .mp-todo-box.mp-bluebg { background: linear-gradient(180deg,#f2f7fd,#f1f5fc); }#profile .mp-todo-box.mp-lavender { background: linear-gradient(180deg,#f6f2fd,#f4f0fb); }#profile .mp-num { font-size: 24px; line-height: 1; font-weight: 720; margin-bottom: 7px; }#profile .mp-label { font-size: 11.5px; color: #5e6e7f; line-height: 1; }#profile .mp-todo-svg { width: 23px; height: 23px; margin-top: 10px; }#profile .mp-green-t { color: #0b8256; }#profile .mp-gold-t { color: #bd7f18; }#profile .mp-blue-t { color: #2172d9; }#profile .mp-purple-t { color: #5543c5; }#profile .mp-service-grid.mp-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; padding: 0 1px 0; }#profile .mp-service-item { min-height: 75px; border-radius: 10px; border: 1px solid rgba(25,43,61,.075); background: rgba(255,255,255,.84); padding: 12px 10px; position: relative; display: grid; grid-template-columns: 38px 1fr; align-items: start; column-gap: 9px; }#profile .mp-icon-box { width: 38px; height: 38px; border-radius: 9px; background: linear-gradient(180deg,#edf8f3,#f3faf7); color: #0b8256; display: inline-flex; align-items: center; justify-content: center; }#profile .mp-icon-box svg { width: 23px; height: 23px; }#profile .mp-service-text { min-width: 0; padding: 1px 14px 0 0; }#profile .mp-service-title { font-size: 12.5px; line-height: 1.25; font-weight: 720; white-space: nowrap; }#profile .mp-service-desc { margin-top: 5px; color: #7a8796; font-size: 10.5px; line-height: 1.35; }#profile .mp-service-item .mp-arrow, #profile .mp-tile-item .mp-arrow { position: absolute; right: 9px; top: 15px; font-size: 18px; line-height: 1; color: #85919f; }#profile .mp-section-card:has(.mp-service-grid.mp-two-col):not(.mp-bottom-space) { min-height: 218px; }#profile .mp-service-grid.mp-three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 0 1px; }#profile .mp-tile-item { height: 104px; border-radius: 10px; border: 1px solid rgba(25,43,61,.075); background: rgba(255,255,255,.84); padding: 13px 10px 9px; position: relative; }#profile .mp-icon-box.mp-small { width: 36px; height: 36px; border-radius: 9px; }#profile .mp-icon-box.mp-small svg { width: 23px; height: 23px; }#profile .mp-tile-item .mp-service-title { margin-top: 8px; font-size: 12.5px; }#profile .mp-tile-item .mp-service-desc { margin-top: 5px; font-size: 10px; line-height: 1.35; }#profile .mp-section-card:has(.mp-three-col) { min-height: 156px; }#profile .mp-bottom-space { min-height: 173px; margin-bottom: 0; }#profile .mp-bottom-space .mp-service-item { min-height: 68px; padding-top: 11px; padding-bottom: 9px; }#profile .mp-bottom-space .mp-service-grid.mp-two-col { gap: 8px; }#profile .mp-bottom-space .mp-icon-box { width: 36px; height: 36px; }#profile .mp-bottom-space .mp-service-desc { margin-top: 4px; }
 
 
 .screen #profile{padding:0;max-width:none;min-height:100%;margin:0;background:none;border:0;box-shadow:none}
@@ -1943,7 +1936,7 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 #profile .mp-hero-decoration{top:-69px;height:244px}
 #profile .mp-content{position:relative;padding-bottom:20px;container-type:inline-size}
 #profile .mp-profile-card{height:auto;min-height:96px;background:none;border-radius:0;box-shadow:none;margin:0;padding:0}
-#profile .mp-profile-top{height:auto;min-height:93px;background:none;justify-content:flex-start;align-items:flex-start;gap:16px}
+#profile .mp-profile-top{height:auto;min-height:96px;background:none;justify-content:center;align-items:center;gap:16px}
 #profile .mp-profile-heading>div{min-width:0}
 #profile .mp-company{white-space:normal;overflow-wrap:anywhere}
 #profile .mp-identity-link{font-size:12.5px;margin-top:18px}
@@ -1965,11 +1958,10 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 .phone:has(#profile:not(.hidden))>.status,.phone:has(#profile:not(.hidden))>.navbar{border:0;box-shadow:none}
 .phone:has(#profile:not(.hidden))>.screen{position:relative;z-index:1;background:transparent}
 @container (max-width:340px){
-  #profile .mp-avatar{width:56px;height:56px;flex-basis:56px;font-size:28px}
   #profile .mp-profile-top{gap:9px}
   #profile .mp-profile-heading{flex-wrap:wrap;gap:2px}
   #profile .mp-identity-link{margin-top:2px;font-size:11px}
-  #profile .mp-badges{gap:4px;margin:8px 0}
+
   #profile .mp-badge{padding:0 6px;font-size:10px}
   #profile .mp-service-item{grid-template-columns:30px minmax(0,1fr);column-gap:6px;padding:10px 7px}
   #profile .mp-service-item .mp-icon-box{width:30px;height:30px}
@@ -1997,6 +1989,8 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 .phone .wechat-close{display:grid;place-items:center;width:var(--touch-size);height:var(--touch-size);top:4px;right:4px}
 .phone .wechat-close svg{width:22px;height:22px}
 #home.home-new .home-new-head>button,.enterprise-gpt-section-head button{min-height:var(--touch-size);font-size:12px!important}
+#home.home-new #home-park-services>.home-new-head{height:28px;align-items:center}
+#home.home-new #home-park-services>.home-new-head>button{height:28px;min-height:28px}
 #home.home-new .home-new-top,#home.home-new .home-new-park{min-height:var(--touch-size)}
 #home.home-new .home-new-park .park-triangle{width:16px;height:16px;flex-basis:16px;transform:none;color:var(--muted)}
 .home-new-dots{gap:0;right:0;bottom:0}
@@ -2004,14 +1998,19 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 .home-new-dots button::after{content:"";width:6px;height:6px;border:1px solid #fff;border-radius:50%}
 .home-new-dots button.active{background:transparent}
 .home-new-dots button.active::after{background:#fff}
-.space-finder-search{height:46px}
-.space-finder-search input{min-height:44px}
-.space-finder-filters label,.space-finder-actions button,.meeting-quick-open{min-height:44px}
+.space-finder-search{height:40px}
+.space-finder-search input{height:100%;min-height:0}
+.space-finder-filters label{min-height:40px}
+.space-finder-actions button,.meeting-quick-open{min-height:44px}
+#meeting .meeting-quick-open{width:64px;height:40px;min-height:40px;flex-shrink:0}
 .space-finder-actions button{height:40px;min-height:40px;font-size:14px!important}
-.space-finder-head label{display:inline-flex;align-items:center;min-height:44px}
+#spaces .space-finder-head{height:40px}
+#spaces .space-finder-head label{display:inline-flex;align-items:center;height:20px;min-height:20px;font-size:12px!important}
 .space-finder-head label svg{top:50%;transform:translateY(-50%)}
 .phone .meeting-filters{height:auto;min-height:56px}
 .phone .filter-trigger{min-height:44px}
+#meeting>.meeting-filters label{height:40px}
+#meeting>.meeting-filters .filter-trigger{height:40px;min-height:40px;font-size:14px}
 .phone .form-row input:not([type="checkbox"]):not([type="radio"]),.phone .form-row select{min-height:44px}
 .phone .agreement{min-height:44px;align-items:center}
 .phone .agreement input{flex-shrink:0;width:20px;height:20px;margin:0}
@@ -2024,6 +2023,12 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 #profile .mp-content{padding-inline:16px;background:none}
 #profile .mp-identity-link,#profile .mp-more{display:inline-flex;align-items:center;gap:2px;min-height:44px;font-size:12px}
 #profile .mp-identity-link{margin-top:6px}
+#profile .mp-profile-heading{flex-wrap:wrap}
+#profile .mp-profile-copy{box-sizing:border-box;height:56px;padding:6px 0;display:flex;flex-direction:column;justify-content:space-between}
+#profile .mp-profile-copy .mp-company{margin-top:0}
+#profile .mp-name-row{display:flex;align-items:center;gap:6px;margin-top:0}
+#profile .mp-name-row .mp-name{margin-top:0;white-space:nowrap}
+#profile .mp-name-row .mp-badge{flex-shrink:0;height:22px;padding:0 6px;font-size:10px}
 #profile .mp-section-header{height:auto;min-height:44px;align-items:center;padding-bottom:8px}
 #profile .mp-my-services .mp-section-header{display:none}
 #profile .mp-my-services{--entry-font-size:12px;--entry-line-height:18px;--entry-height:82px;--entry-padding:8px;--entry-gap:8px;--entry-column-gap:4px;--entry-icon-box:36px;--entry-card-spacing:12px;padding:var(--entry-card-spacing);margin-top:var(--entry-card-spacing);margin-bottom:var(--entry-card-spacing)}
@@ -2044,7 +2049,7 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 #profile .mp-section-card:has(.mp-todo-grid){height:auto}
 #profile .mp-section-card:has(.mp-todo-grid){padding:12px;margin-bottom:12px}
 #profile .mp-todo-grid .mp-todo-svg{display:none}
-#profile .mp-todo-grid .mp-todo-box{height:auto;min-height:0;padding:12px 0 20px;justify-content:center}
+#profile .mp-todo-grid .mp-todo-box{height:auto;min-height:0;padding:16px 0;justify-content:center}
 #profile .mp-icon-box svg,#profile .mp-icon-box.mp-small svg,#profile .mp-todo-svg{width:var(--icon-size);height:var(--icon-size)}
 #profile .mp-section-icon svg{width:18px;height:18px}
 #profile .mp-identity-link svg,#profile .mp-more svg,#profile .mp-chev svg,#profile .mp-arrow svg{display:block;width:var(--icon-small);height:var(--icon-small)}
@@ -2066,7 +2071,7 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 }
 
 .permission-guide-dock{position:fixed;top:var(--preview-top);left:0;z-index:101;width:40px;height:40px}
-.permission-guide{position:absolute;top:0;left:0;transform:translateX(0);width:480px;max-width:100vw;max-height:calc(100dvh - 48px);overflow:auto;padding:20px;border:1px solid #d9e5de;border-radius:0 18px 18px 0;background:rgba(255,255,255,.96);box-shadow:0 14px 36px rgba(27,54,42,.14);color:var(--text);transition:transform .28s cubic-bezier(.22,1,.36,1),opacity .2s ease,visibility 0s}
+.permission-guide{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:640px;max-width:100vw;max-height:calc(100dvh - 2 * max(16px,env(safe-area-inset-top,0px),env(safe-area-inset-bottom,0px)));overflow:auto;padding:20px;border:1px solid #d9e5de;border-radius:18px;background:rgba(255,255,255,.96);box-shadow:0 14px 36px rgba(27,54,42,.14);color:var(--text);transition:opacity .2s ease,visibility 0s}
 .permission-guide-kicker{color:var(--brand);font-size:11px;font-weight:700;letter-spacing:.08em}
 .permission-guide-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .permission-guide-toggle{display:grid;place-items:center;flex-shrink:0;width:28px;height:28px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--brand);cursor:pointer}
@@ -2076,8 +2081,8 @@ document.querySelectorAll('.enterprise-gpt-news b i').forEach(function(tag){
 :root{--preview-top:24px}
 .phone{margin-top:var(--preview-top)}
 body>.role-switch{top:var(--preview-top)!important;transform:none!important}
-.permission-guide.is-collapsed{transform:translateX(calc(-100% - 24px));opacity:0;visibility:hidden;pointer-events:none;transition-delay:0s,0s,.28s}
-.permission-guide-open{position:absolute;top:0;left:0;width:40px;height:40px;border-radius:0 8px 8px 0;box-shadow:0 4px 14px rgba(27,54,42,.08);opacity:0;visibility:hidden;transition:opacity .18s ease,visibility 0s .18s}
+.permission-guide.is-collapsed{opacity:0;visibility:hidden;pointer-events:none;transition-delay:0s,.2s}
+.permission-guide-open{position:fixed;top:auto;left:auto;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));width:48px;height:48px;border:0;border-radius:50%;background:var(--brand);color:#fff;box-shadow:0 4px 14px rgba(27,54,42,.08);opacity:0;visibility:hidden;transition:opacity .18s ease,visibility 0s .18s}
 .permission-guide-open svg{transform:rotate(90deg)}
 .permission-guide.is-collapsed+.permission-guide-open{opacity:1;visibility:visible;transition-delay:0s}
 .permission-guide h2{margin:7px 0 8px;font-size:19px;line-height:1.35}
@@ -2087,7 +2092,7 @@ body>.role-switch{top:var(--preview-top)!important;transform:none!important}
 .permission-module-list{display:grid;gap:8px}.permission-module{padding:10px 11px;border:1px solid #e3ebe6;border-radius:10px;background:#fbfdfb}.permission-module strong{display:block;color:var(--text);font-size:12px}.permission-module p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.55}
 .permission-guide-foot{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);color:#7b8881;font-size:11px;line-height:1.55}
 .permission-service{display:flex;justify-content:space-between;gap:8px;margin-top:7px;font-size:12px}.permission-service span{color:var(--muted)}.permission-service em{font-style:normal;color:var(--brand)}
-@media(max-width:1040px){.permission-guide-dock{position:relative;top:auto;margin:16px 0 0}.permission-guide{max-height:min(420px,calc(100dvh - 32px))}.phone{margin-top:16px}body>.role-switch{position:relative!important;top:auto!important;right:auto!important;transform:none!important;flex-direction:row;flex-wrap:wrap;justify-content:center;width:min(390px,calc(100vw - 32px))!important;margin:16px auto;border-radius:12px}.role-switch-label{width:100%}}
+@media(max-width:1040px){.permission-guide-dock{position:fixed;top:56px;margin:0}.phone{margin-top:16px}body>.role-switch{position:relative!important;top:0!important;right:auto!important;transform:none!important;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;width:max-content!important;max-width:100%;height:40px;overflow-x:auto;margin:0 auto;padding:0 8px 8px!important;border-top:0;border-bottom:0;border-radius:0 0 12px 12px}body>.role-switch button{flex:0 0 auto;font-size:12px;border-radius:8px;height:32px;min-height:32px}}
 @media(prefers-reduced-motion:reduce){.permission-guide,.permission-guide-open{transition:none}}
 </style>
 <script>
@@ -2136,11 +2141,11 @@ body>.role-switch{top:var(--preview-top)!important;transform:none!important}
       role.textContent=active.textContent;
       list.replaceChildren();
       function module(title,copy){var article=document.createElement('article'),heading=document.createElement('strong'),text=document.createElement('p');article.className='permission-module';heading.textContent=title;text.textContent=copy;article.append(heading,text);list.appendChild(article);return article}
-      module('01 · 我的 / 身份卡 · 已变化',profile.querySelector('.mp-name').textContent+' · '+profile.querySelector('.mp-company').textContent+' · '+profile.querySelector('[data-profile-badge="0"]').textContent+' · '+profile.querySelector('[data-profile-badge="1"]').textContent+'。身份按钮显示「'+profile.querySelector('[data-identity-label]').textContent+'」。');
-      module('02 · 我的 / 待办 · 演示',profile.dataset.role==='guest'?'访客隐藏待办模块。':'展示待审批、待支付、待确认和全部事项。企业管理员沿用新稿中的演示数字 2、1、1、5；其他身份显示「—」，不代表实际待办数量。待办处理暂未开放。');
+      module('01 · 我的 / 身份卡 · 已变化',profile.querySelector('.mp-name').textContent+' · '+profile.querySelector('.mp-company').textContent+'。姓名后仅显示一个「'+profile.querySelector('[data-profile-badge="0"]').textContent+'」标签。身份按钮显示「'+profile.querySelector('[data-identity-label]').textContent+'」。');
+      module('02 · 我的 / 待办 · 演示',profile.querySelector('[data-profile-todos]').hidden?'未认证/访客、企业普通员工和自有员工隐藏待办模块。':'企业管理员和物业人员展示待审批、待支付、待确认和全部事项。当前数字为 2、1、1、5，不代表实际待办数量。待办处理暂未开放。');
       var services=module('03 · 我的 / 服务入口 · 按身份变化','「我的」已替换为新稿分组。预约、访客、报修记录、企业服务、意见反馈及隐私与授权连接已有页面，空间咨询打开咨询窗口；我的申请、收藏、客服及关于我们暂未开放。');
       profile.querySelectorAll('[data-profile-entry]').forEach(function(row){var item=document.createElement('div'),label=document.createElement('span'),state=document.createElement('em');item.className='permission-service';label.textContent=row.dataset.profileEntry;state.textContent=row.hidden?'隐藏':row.dataset.profileNotice?'显示 · 暂未开放':'显示';item.append(label,state);services.appendChild(item)});
-      module('04 · 首页 / 园区服务 · 已变化',profile.dataset.role==='guest'?'未认证/访客隐藏「园区服务」。轮播、快捷入口、园区活动、空间推荐、企业服务和公告保持不变。':'在「园区活动」上方显示「园区服务」，四种已认证身份使用同一组八个入口：我的会议、访客登记、车辆服务、物业报修、订餐服务、物品放行、装修申请、更多服务。物品放行和装修申请暂未开放，其余入口连接已有页面；不新增审批、派单或数据权限。');
+      module('04 · 首页 / 园区服务 · 已变化',profile.dataset.role==='guest'?'未认证/访客隐藏「园区服务」。轮播、快捷入口、园区活动、空间推荐、企业服务和公告保持不变。':'在「园区活动」上方显示「园区服务」，四种已认证身份使用同一组八个入口：车辆服务、物业报修、订餐服务、物品放行、装修申请、反馈通道、水电缴费、更多服务。物品放行、装修申请和水电缴费暂未开放，其余入口连接已有页面；我的会议和我的访客仅在「我的」模块展示；不新增审批、派单或数据权限。');
       module('05 · 招商空间 · 未变化','空间列表、筛选、详情与看房咨询流程保持一致，当前没有按身份增加入驻或装修审批。');
       module('06 · 会议室 · 未变化','首页会议室入口、列表、价格、时段和预约流程不随身份切换；当前没有因选择访客或物业身份而新增预约拦截。');
       module('07 · 其他服务 / 记录 · 未变化','车辆、访客、报修、餐厅、公告、投诉建议和预约记录的页面内容未随身份切换，也未切换成审批或物业处理视图。');
@@ -2153,5 +2158,150 @@ body>.role-switch{top:var(--preview-top)!important;transform:none!important}
     render();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<style>
+.screen #leasing-chat{height:100%;padding:0;background:var(--bg)}
+#leasing-chat:not(.hidden){display:flex;flex-direction:column}
+#leasing-chat .chat-agent{display:flex;align-items:center;gap:10px;padding:16px;background:#fff;border-bottom:1px solid var(--line)}
+#leasing-chat .chat-avatar{display:grid;place-items:center;flex:0 0 36px;height:36px;border-radius:12px;background:var(--soft);color:var(--brand);font-size:13px;font-weight:600}
+#leasing-chat .chat-agent strong{font-size:15px}
+#leasing-chat .chat-agent p{margin:4px 0 0;color:var(--muted);font-size:12px}
+#leasing-chat .chat-messages{flex:1;min-height:0;overflow:auto;padding:16px;overscroll-behavior:contain}
+#leasing-chat .chat-message{display:flex;align-items:flex-start;gap:8px;margin-bottom:18px}
+#leasing-chat .chat-message-copy{min-width:0;max-width:calc(100% - 44px)}
+#leasing-chat .chat-message-meta{display:block;margin-bottom:5px;font-size:10px;color:var(--muted)}
+#leasing-chat .chat-bubble{margin:0;padding:11px 13px;border-radius:0 12px 12px 12px;background:#fff;font-size:14px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+#leasing-chat .chat-message.is-self{justify-content:flex-end}
+#leasing-chat .is-self .chat-message-meta{text-align:right}
+#leasing-chat .is-self .chat-bubble{border-radius:12px 0 12px 12px;background:var(--brand);color:#fff}
+#leasing-chat .chat-composer{flex-shrink:0;padding:10px 16px max(12px,env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid var(--line)}
+#leasing-chat .chat-topics{display:flex;gap:8px;overflow:auto;margin-bottom:10px}
+#leasing-chat .chat-topics button{flex-shrink:0;min-height:36px;padding:6px 12px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--brand);font-size:12px}
+#leasing-chat .chat-input-row{display:flex;align-items:flex-end;gap:8px}
+#leasing-chat textarea{flex:1;min-width:0;height:64px;resize:none;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit;font-size:14px;line-height:1.5}
+#leasing-chat .chat-send{width:64px;height:44px;flex-shrink:0;border:0;border-radius:8px;background:var(--brand);color:#fff;font-size:14px}
+#leasing-chat button{cursor:pointer}
+#leasing-chat button:disabled{opacity:.45;cursor:default}
+#leasing-chat :is(button,textarea):focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+#leasing-chat .chat-status{min-height:18px;margin:6px 0 0;color:var(--muted);font-size:11px;line-height:18px}
+</style>
+<script>
+(function(){
+  function initLeasingChat(){
+    var entry=Array.from(document.querySelectorAll('#home .home-new-quick button')).find(function(button){return button.querySelector('b').textContent==='招商咨询'});
+    var page=document.createElement('section');page.id='leasing-chat';page.className='hidden';
+    page.setAttribute('aria-label','招商客服聊天');
+    page.innerHTML='<header class="chat-agent"><span class="chat-avatar" aria-hidden="true">客服</span><div><strong>园区招商顾问</strong><p>自助咨询 · 自动回复</p></div></header><div class="chat-messages" role="log" aria-live="polite" aria-relevant="additions" aria-label="聊天消息" tabindex="0"></div><form class="chat-composer"><div class="chat-topics" aria-label="快捷提问"><button type="button">空间租赁</button><button type="button">入驻政策</button><button type="button">预约看房</button></div><div class="chat-input-row"><textarea aria-label="咨询内容" aria-describedby="leasing-chat-status" placeholder="请输入您想咨询的问题…" maxlength="500"></textarea><button class="chat-send" type="submit" disabled>发送</button></div><p id="leasing-chat-status" class="chat-status" role="status"></p></form>';
+    document.querySelector('.screen').appendChild(page);
+    window.__setMiniRoute('leasing-chat','招商咨询','home');
+    entry.dataset.page='leasing-chat';entry.type='button';
+    var log=page.querySelector('.chat-messages'),form=page.querySelector('form'),input=page.querySelector('textarea'),send=page.querySelector('.chat-send'),status=page.querySelector('.chat-status');
+    var topics=Array.from(page.querySelectorAll('.chat-topics button')),pending=false,timer;
+    function update(){send.disabled=pending||!input.value.trim();topics.forEach(function(button){button.disabled=pending});status.textContent=pending?'正在回复…':input.value.length+' / 500 字 · Enter 发送，Shift+Enter 换行'}
+    function append(text,self){
+      var row=document.createElement('article');row.className='chat-message'+(self?' is-self':'');
+      if(!self){var avatar=document.createElement('span');avatar.className='chat-avatar';avatar.textContent='客服';avatar.setAttribute('aria-hidden','true');row.appendChild(avatar)}
+      var copy=document.createElement('div');copy.className='chat-message-copy';
+      var meta=document.createElement('span');meta.className='chat-message-meta';meta.textContent=(self?'我':'招商顾问 · 自动回复')+' · '+new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});
+      var bubble=document.createElement('p');bubble.className='chat-bubble';bubble.textContent=text;copy.append(meta,bubble);row.appendChild(copy);log.appendChild(row);log.scrollTop=log.scrollHeight;
+    }
+    function reply(text){
+      if(/看房|参观|预约/.test(text))return '预约看房通常需要意向空间、到访时间及人数。您可以继续描述意向，或返回首页进入「招商空间」查看房源并填写看房咨询。具体预约请与招商人员确认。';
+      if(/政策|入驻|补贴|注册/.test(text))return '入驻政策需结合企业行业、规模与具体条件核实。您可以补充行业和计划入驻时间；具体政策、资格及补贴以园区正式确认结果为准。';
+      if(/空间|租|面积|价格|费用|办公/.test(text))return '选址时可以先明确办公或研发用途、所需面积、预算及预计入驻时间。可返回首页进入「招商空间」查看示例房源；实际可租面积、租金与物业费需由招商人员确认。您更关注哪一项？';
+      return '您可以继续补充空间用途、面积需求或入驻时间，也可以选择下方的快捷问题了解相关信息。请勿输入敏感信息。';
+    }
+    function submit(text){
+      text=text.trim();if(pending||!text)return;
+      if(text.length>500){status.textContent='内容不能超过 500 字，请缩短后发送。';return}
+      append(text,true);input.value='';pending=true;update();
+      timer=setTimeout(function(){append(reply(text),false);pending=false;update()},600);
+    }
+    form.addEventListener('submit',function(event){event.preventDefault();submit(input.value)});
+    input.addEventListener('input',update);
+    input.addEventListener('keydown',function(event){if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing&&event.keyCode!==229){event.preventDefault();submit(input.value)}});
+    topics.forEach(function(button){button.addEventListener('click',function(){submit(button.textContent)})});
+    function reset(){
+      clearTimeout(timer);pending=false;input.value='';log.replaceChildren();
+      append('您好，欢迎咨询园区招商服务。您想了解空间租赁、入驻政策，还是预约看房？',false);update();
+    }
+    new MutationObserver(reset).observe(document.getElementById('profile'),{attributes:true,attributeFilter:['data-role']});
+    new MutationObserver(function(){if(!page.classList.contains('hidden'))log.scrollTop=log.scrollHeight}).observe(page,{attributes:true,attributeFilter:['class']});
+    reset();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initLeasingChat,{once:true});else initLeasingChat();
+})();
+</script>
+<style>
+.screen #park-intro{padding:0;background:#fff;color:var(--text)}
+#park-intro .park-cover{position:relative;margin:0;height:320px;background:#244b3c;overflow:hidden}
+#park-intro .park-cover img{width:100%;height:100%;object-fit:cover}
+#park-intro .park-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 20%,rgba(15,42,31,.82))}
+#park-intro .park-cover-copy{position:absolute;z-index:1;bottom:28px;left:24px;right:24px;color:#fff}
+#park-intro .park-eyebrow{display:block;font-size:11px;letter-spacing:2px;line-height:1.6}
+#park-intro h1{margin:10px 0;font-size:30px;line-height:1.25;letter-spacing:1px}
+#park-intro .park-cover-copy p{margin:0;color:#eef5ed;font-size:14px}
+#park-intro .park-nav{position:sticky;top:0;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#fff;border-bottom:1px solid var(--line)}
+#park-intro button{cursor:pointer}
+#park-intro .park-nav button{min-height:48px;border:0;background:transparent;color:var(--brand);font-size:13px;white-space:nowrap}
+#park-intro .park-block{padding:30px 24px;scroll-margin-top:48px}
+#park-intro .park-block h2{margin:8px 0 16px;font-size:23px;line-height:1.45;font-weight:650}
+#park-intro .park-block>p{margin:0 0 14px;font-size:14px;line-height:1.9;color:var(--muted)}
+#park-intro .park-kicker{color:var(--brand);font-size:11px;letter-spacing:2px}
+#park-intro .park-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+#park-intro .park-tags span{padding:6px 10px;border-radius:4px;background:var(--soft);color:var(--brand);font-size:11px}
+#park-intro .park-film{margin:0 24px 6px;overflow:hidden;border-radius:14px;background:#edf3ee}
+#park-intro .park-film-poster{position:relative;aspect-ratio:16/9;background:#244b3c}
+#park-intro .park-film-poster img{display:block;width:100%;height:100%;object-fit:cover}
+#park-intro .park-film-poster span{position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:20px;background:#173d30;color:#fff;font-size:11px}
+#park-intro .park-film figcaption{padding:16px;font-size:14px;line-height:1.6}
+#park-intro .park-film small{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+#park-intro figure{margin:0}
+#park-intro .park-space{margin:0 0 24px}
+#park-intro .park-space img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px}
+#park-intro .park-space h3{margin:14px 0 6px;font-size:17px}
+#park-intro .park-space p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+#park-intro .park-link{min-height:44px;padding:0;border:0;background:none;color:var(--brand);font-size:14px;font-weight:600}
+#park-intro .park-services{background:#f1f5f1}
+#park-intro .park-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px;margin-top:24px}
+#park-intro .park-service-grid b{font-size:14px}
+#park-intro .park-service-grid p{margin:7px 0 0;font-size:12px;line-height:1.8;color:var(--muted)}
+#park-intro .park-life-photo{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-top:24px}
+#park-intro .park-visit-list{margin:20px 0 0;padding:0;list-style:none;counter-reset:visit}
+#park-intro .park-visit-list li{position:relative;padding:0 0 22px 38px;counter-increment:visit;font-size:14px;line-height:1.6}
+#park-intro .park-visit-list li:before{content:counter(visit,decimal-leading-zero);position:absolute;left:0;top:0;color:var(--brand);font-size:13px;font-weight:600}
+#park-intro .park-visit-list small{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+#park-intro .park-disclaimer{padding:16px 24px 24px;background:#f6f8f5;color:var(--muted);font-size:11px;line-height:1.8}
+#park-intro .park-actions{position:sticky;bottom:0;z-index:4;display:flex;gap:10px;padding:12px 16px max(12px,env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid var(--line)}
+#park-intro .park-actions button{flex:1;min-width:0;min-height:44px;border:1px solid var(--brand);border-radius:9px;color:var(--brand);background:#fff;font-size:14px}
+#park-intro .park-actions .park-primary{background:var(--brand);color:#fff}
+#park-intro button:focus-visible{outline:2px solid var(--brand);outline-offset:-3px}
+</style>
+<script>
+(function(){
+  function initParkIntro(){
+    var entry=Array.from(document.querySelectorAll('#home .home-new-quick button')).find(function(button){return button.querySelector('b').textContent==='园区介绍'});
+    var page=document.createElement('section');page.id='park-intro';page.className='hidden';page.setAttribute('aria-label','园区介绍');
+    page.innerHTML=`
+      <figure class="park-cover"><img src="miniprogram/assets/campus-hero.jpg" alt="园区环境示意：绿树步道与现代办公建筑" width="1200" height="675"><figcaption class="park-cover-copy"><span class="park-eyebrow">工作 · 连接 · 生活</span><h1 class="park-name">星桥科创园</h1><p>科创为桥，连接无限可能</p></figcaption></figure>
+      <nav class="park-nav" aria-label="园区介绍目录"><button type="button" data-park-anchor="park-overview">园区概览</button><button type="button" data-park-anchor="park-spaces">办公空间</button><button type="button" data-park-anchor="park-services">生活配套</button><button type="button" data-park-anchor="park-visit">到访指南</button></nav>
+      <article class="park-block" id="park-overview"><span class="park-kicker">01 / 关于园区</span><h2>让想法生长，<br>让工作融入生活。</h2><p>一处理想的办公所在，不止于一间办公室。这里的展示围绕办公、交流与日常生活展开，带您提前感受企业与人才相遇的空间。</p><p>沿着绿意步道走进园区，从专注工作的办公区域，到交换灵感的共享空间，寻找适合团队的工作节奏，也为未来的发展预留可能。</p><div class="park-tags"><span>研发办公</span><span>共享交流</span><span>绿色环境</span></div></article>
+      <figure class="park-film"><div class="park-film-poster"><img src="miniprogram/assets/home-banner-video-poster.png" loading="lazy" alt="园区影像封面示意"><span>宣传片 · 待上传</span></div><figcaption><strong>换个视角，走近园区</strong><small>视频位置已预留，正式宣传片素材暂未提供；当前仅展示封面，不支持播放。</small></figcaption></figure>
+      <article class="park-block" id="park-spaces"><span class="park-kicker">02 / 空间与灵感</span><h2>为不同的团队，<br>留出成长的空间。</h2><figure class="park-space"><img src="miniprogram/assets/space-detail/office-1.jpg" loading="lazy" alt="办公空间示意：明亮落地窗与开放式讨论桌"><figcaption><h3>办公与研发 · 专注每一步</h3><p>从团队协作到独立办公，结合使用人数、空间用途与入驻计划，挑选适合自己的工作场所。</p></figcaption></figure><figure class="park-space"><img src="miniprogram/assets/meeting-01.jpg" loading="lazy" alt="共享会议空间示意"><figcaption><h3>共享会议 · 好想法在此相遇</h3><p>洽谈、讨论、项目汇报，让正式会议与灵感交流各得其所。具体房型、设施和预约规则可在会议室页面了解。</p></figcaption></figure><button class="park-link" type="button" data-page="spaces">浏览招商空间 →</button></article>
+      <article class="park-block park-services" id="park-services"><span class="park-kicker">03 / 工作之外</span><h2>把日常照顾好，<br>把更多时间留给热爱。</h2><p>从抵达园区，到午间小憩，再到企业之间的交流，认识办公之外的园区生活。</p><div class="park-service-grid"><div><b>餐饮与休憩</b><p>了解用餐安排与休闲空间，让工作间隙也有舒适的停留。</p></div><div><b>车辆与出行</b><p>到访前咨询停车位置与通行规则，提前规划出行。</p></div><div><b>物业与支持</b><p>了解日常报修、服务联系和办公环境维护方式。</p></div><div><b>社群与交流</b><p>关注园区活动与企业交流，让人与机会建立连接。</p></div></div><img class="park-life-photo" src="miniprogram/assets/home-event-exchange.png" loading="lazy" alt="园区企业交流活动示意"></article>
+      <article class="park-block" id="park-visit"><span class="park-kicker">04 / 期待相见</span><h2>下一站，<span class="park-name">星桥科创园</span>。</h2><p>在线了解之后，不妨为团队安排一次实地探访。园区详细地址、交通路线与接待时间待正式资料确认，可先体验下方咨询流程。</p><ol class="park-visit-list"><li>了解空间与需求<small>查看空间介绍，梳理团队人数、用途和预计入驻时间。</small></li><li>联系招商确认到访<small>正式到访需由园区确认时间、地点及接待安排。</small></li><li>按指引登记入园<small>访客登记、停车及通行要求以实际园区通知为准。</small></li></ol></article>
+      <div class="park-disclaimer">展示说明：本页为园区介绍原型，文案与图片为演示素材，不代表实景或已开放配套；实际空间、服务及租赁信息以园区确认为准。招商咨询目前为演示会话，不会生成真实预约。</div>
+      <footer class="park-actions"><button type="button" data-page="spaces">查看空间</button><button class="park-primary" type="button" data-page="leasing-chat">招商咨询</button></footer>`;
+    document.querySelector('.screen').appendChild(page);
+    window.__setMiniRoute('park-intro','园区介绍','home');entry.dataset.page='park-intro';entry.type='button';
+    function syncParkName(){var name=document.querySelector('#home .home-new-park b');if(name)page.querySelectorAll('.park-name').forEach(function(node){node.textContent=name.textContent})}
+    entry.addEventListener('click',syncParkName);syncParkName();
+    page.querySelectorAll('[data-park-anchor]').forEach(function(button){button.addEventListener('click',function(){
+      var target=document.getElementById(button.dataset.parkAnchor),screen=document.querySelector('.screen');
+      screen.scrollTop+=target.getBoundingClientRect().top-screen.getBoundingClientRect().top-page.querySelector('.park-nav').offsetHeight;
+    })});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initParkIntro,{once:true});else initParkIntro();
 })();
 </script>

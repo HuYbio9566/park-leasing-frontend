@@ -13,3 +13,21 @@
 !/miniprogram/
 /miniprogram/*
 !/miniprogram/assets/
+
+# V03 visitor reservation frontend and its local verification files.
+!/02-前端版本/
+/02-前端版本/*
+!/02-前端版本/V03-2026-09-25-权限版本起点/
+/02-前端版本/V03-2026-09-25-权限版本起点/*
+!/02-前端版本/V03-2026-09-25-权限版本起点/miniprogram-visitor.js
+!/02-前端版本/V03-2026-09-25-权限版本起点/miniprogram-visitor.css
+!/02-前端版本/V03-2026-09-25-权限版本起点/vendor/
+/02-前端版本/V03-2026-09-25-权限版本起点/vendor/*
+!/02-前端版本/V03-2026-09-25-权限版本起点/vendor/qrcode-generator.js
+!/02-前端版本/V03-2026-09-25-权限版本起点/vendor/QRCODE-SOURCE.md
+!/04-程序文件/
+/04-程序文件/*
+!/04-程序文件/tests/
+/04-程序文件/tests/*
+!/04-程序文件/tests/visitor-reservation.cjs
+!/04-程序文件/tests/README.md
